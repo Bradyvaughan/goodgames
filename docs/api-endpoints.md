@@ -1,20 +1,22 @@
-HTML API
-  - GET / (loads the React web app)
+# HTML API
 
-JSON API
+## Root
+  - `GET /`  (loads the React web app)
 
-  Sessions:
+# JSON API
+
+##  Session
     - POST /api/sessions
     - GET /api/sessions
     - DELETE /api/sessions
 
-  Games:
+##  Games
     - POST /api/games (upload new game to database)
     - GET /api/games  (Get list of games)
     - GET /api/games/gameId (get single game details)
 
 
-  Libraries
+##  Libraries
     - POST /api/libraries (create new library)
     - GET /api/libraries  (view library index)
     - POST /api/library/libraryId (add game to library)
@@ -22,7 +24,7 @@ JSON API
     - DELETE /api/libraries/libraryId  (delete library wholesale)
     - GET /api/libraries/libraryId  (view library detail)
 
-  Reviews
+##  Reviews
     - POST  /api/reviews (create new review)
     - GET  /api/reviews (view review index)
     - GET  /api/reviews/reviewId (view a single review)
