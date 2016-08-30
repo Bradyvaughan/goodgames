@@ -1,7 +1,7 @@
 import {receiveCurrentUser, receiveErrors }
   from '../actions/session_actions';
 
-import { signUp, login, logout } from '../util/api_util';
+import { signUp, login, logout } from '../util/api_util/session_util';
 
 
 

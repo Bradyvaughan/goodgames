@@ -20,3 +20,15 @@ User.create([{username: "SidMeier", email:"sid@firaxis.com", password:"civilizat
   {username: "Notch", email: "notch@mojang.com", password: "minecraft"},
   {username: "RobPardo", email: "Pardo@blizzard.com", password: "loktarogar"},
   {username: "SatoshiTajiri", email: "pokemonmaster@gamefreak.com", password: "catchemall"}])
+
+
+Game.create([{title: "xcom", description:"best ever", published_on: DateTime.current,
+  avg_rating: 4.7, cover: "placeholder"},
+  {title: "Call of Duty", description: "shooty shooterson", published_on: DateTime.current,
+    avg_rating: 3.2, cover: "placeholder"},
+  {title: "Valkyria Chronicles", description: "realtime anime xcom", published_on: DateTime.current,
+    avg_rating: 4.2, cover: "placeholder"},
+  {title: "DC:SS", description:"OG roguelike", published_on: DateTime.current,
+    avg_rating: 4.8, cover: "placeholder"},
+  {title: "No Man's Sky", description: "Disappointment", published_on: DateTime.current,
+    avg_rating: 1.6, cover: "placeholder"},])
