@@ -1,12 +1,13 @@
 ```json
 {
-  currentUser: {
-    id: 1,
-    username: "Brady"
+  session: {
+    currentUser:{
+      username: "Brady"
+      id: 1,
+    }
+    errors: []
   },
   forms: {
-    signUp: {errors: []},
-    logIn: {errors: []},
     EditReview: {errors: ["Review can't be blank!"]}
   },
   games: {
