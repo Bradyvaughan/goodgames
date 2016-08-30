@@ -1,11 +1,13 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 
 class SignUp extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {username: "", password: "", email: ""};
     this.handleClick = this.handleClick.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   handleClick(e) {
@@ -17,10 +19,31 @@ class SignUp extends React.Component {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      hashHistory.push("/home");
+    }
+  }
+
+  renderErrors() {
+    let errors = this.props.errors.map((error, i) => (
+      <li key={`error-${i}`}>{error}</li>
+    ));
+    return(
+      <ul>
+        {errors}
+      </ul>
+    );
+  }
+
   render () {
     return(
       <div className="big-form form">
-
+          {this.renderErrors()}
         <div>
           <label htmlFor="username">Username:</label>
           <input type="text" id="username"
@@ -37,8 +60,8 @@ class SignUp extends React.Component {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password"
             onChange={this.linkState("password")}/>
-          <button onClick={this.handleClick}>Sign Up</button>
         </div>
+        <button onClick={this.handleClick}>Sign Up</button>
       </div>
     );
   }

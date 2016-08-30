@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './login';
-import SignUp from './signUp';
+import LoginContainer from './forms/login_container';
+import SignUpContainer from './forms/sign_up_container';
 
 
 export const App = () => (
   <div>
-    <Login />
-    <SignUp />
+    <LoginContainer />
+    <SignUpContainer />
   </div>
 );
