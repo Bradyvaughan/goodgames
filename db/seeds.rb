@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create([{username: "SidMeier", email:"sid@firaxis.com", password:"civilization"},
+  {username: "BenBrode", email: "Bbrode@blizzard.com", password: "HAHAHAHAHAHAHA"},
+  {username: "PeterMolyneaux", email: "dunno@blank.com", password: "fables"},
+  {username: "ShigeruMiyamoto", email: "bigdaddy@nintendo.com", password: "nintendo"},
+  {username: "MasahiroSakurai", email: "Sakurai@nintendo.com", password: "smashbros"},
+  {username: "RichardGarriott", email: "British@ultima.com", password: "lordbritish"},
+  {username: "CliveBarker", email: "dunno@blank.com", password: "jericho"},
+  {username: "ToddHoward", email: "Howard@bethesda.com", password: "sweetlies"},
+  {username: "IceFrog", email: "IceFrog@valve.com", password: "DoftheA"},
+  {username: "HideoKojima", email: "Sad@konami.com", password: "patriots"},
+  {username: "GabeNewell", email: "GabeN@valve.com", password: "steamvalve"},
+  {username: "Notch", email: "notch@mojang.com", password: "minecraft"},
+  {username: "RobPardo", email: "Pardo@blizzard.com", password: "loktarogar"},
+  {username: "SatoshiTajiri", email: "pokemonmaster@gamefreak.com", password: "catchemall"}])

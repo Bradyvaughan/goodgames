@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.logout = logout;
   let preloadedState = {};
   if (window.currentUser) {
-    preloadedState = {session: {currentUser: window.currentUser}};
+    preloadedState = {session: {currentUser: window.currentUser, errors: []}};
   }
   const store = configureStore(preloadedState);
   window.store = store;

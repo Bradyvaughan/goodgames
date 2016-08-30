@@ -64,17 +64,20 @@ GoodGames is a web application inspired by Good Reads built using Ruby on Rails 
 - [ ] Style games components
 - [ ] Seed games
 
-### Phase 3: Notebooks (2 day)
+### Phase 3: Libraries (2 day)
 
 **Objective:** Games can be added to or removed from game Libraries that can be created, viewed, edited, and destroyed through the API
 
 - [ ] `Library` model
 - [ ] Seed database with a small amount of test data
+- [ ] Make a join table for games and libraries.
 - [ ] CRUD API for libraries (`LibrariesController`)
 - [ ] JBuilder views for libraries
-- [ ] `Played` and `Want to Play` libraries automatically created on user registration
+- [ ] `Played` and `Want to Play` `Currently Playing` libraries automatically created on user registration
+- [ ] Use the above default libraries to make a `Played Status` component
 - [ ] Games may be added or removed from libraries
 - [ ] Viewing games by library
+- [ ] Make library components
 - [ ] Style library components
 - [ ] Seed libraries
 

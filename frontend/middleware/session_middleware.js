@@ -12,18 +12,18 @@ export const SessionMiddleware = store => next => action => {
   let error;
   switch (action.type) {
     case "LOGIN":
-      success = () => store.dispatch(receiveCurrentUser(action.user));
-      error = response => store.dispatch(receiveErrors(response));
+      success = (data) => store.dispatch(receiveCurrentUser(data));
+      error = response => store.dispatch(receiveErrors(response.responseJSON));
       login({user: action.user}, success, error);
       return next(action);
     case "SIGN_UP":
-      success = () => store.dispatch(receiveCurrentUser(action.user));
-      error = response => store.dispatch(receiveErrors(response));
+      success = (data) => store.dispatch(receiveCurrentUser(data));
+      error = response => store.dispatch(receiveErrors(response.responseJSON));
       signUp({user: action.user}, success, error);
       return next(action);
     case "LOGOUT":
       success = () => next(action);
-      error = response => store.dispatch(receiveErrors(response));
+      error = response => store.dispatch(receiveErrors(response.responseJSON));
       logout(success, error);
       break;
     default:

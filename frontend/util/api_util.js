@@ -1,30 +1,30 @@
 
 
-export const signUp = (user, success, errors) => {
+export const signUp = (user, success, error) => {
   $.ajax({
     type: "POST",
     url: "api/users",
     success,
-    errors,
+    error,
     data: user
   });
 };
 
-export const login = (user, success, errors) => {
+export const login = (user, success, error) => {
   $.ajax({
     type: "POST",
     url: "api/session",
     success,
-    errors,
+    error,
     data: user
   });
 };
 
-export const logout = (success, errors) => {
+export const logout = (success, error) => {
   $.ajax({
     type: "DELETE",
     url: "api/session",
     success,
-    errors
+    error
   });
 };
