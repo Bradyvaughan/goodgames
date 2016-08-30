@@ -43,14 +43,18 @@ ul {
   justify-content: center;
   border: 1px solid black;
   border-radius: 7px;
-  background-color: #98fb98;
+  /*background-color: #98fb98;*/
   color: #266ce3;
   font-family: sans-serif;
 }
 
 .form input {
-  background-color: #dbfbdb;
+  /*background-color: #dbfbdb;*/
   border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: none;
+  border: 1px solid #999;
+  padding: 5px;
 }
 
 .small-form {
@@ -76,7 +80,7 @@ ul {
 .big-form button {
   width: 70px;
   margin-top: 10px;
-  background-color: #dbfbdb;
+  /*background-color: #dbfbdb;*/
   border-radius: 5px;
 }
 
