@@ -18,13 +18,13 @@ class Login extends React.Component {
 
   render () {
     return(
-      <div>
+      <div className="small-form form">
         <label>
-          Username
+          <span>Username: </span>
           <input type="text" onChange={this.linkState("username")}/>
         </label>
         <label>
-          Password
+          <span>Password: </span>
           <input type="password" onChange={this.linkState("password")}/>
         </label>
         <input type="submit" value="Log In" onClick={this.handleClick}/>

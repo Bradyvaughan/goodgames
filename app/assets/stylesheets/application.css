@@ -13,3 +13,88 @@
  *= require_tree .
  *= require_self
  */
+
+ html, head, body, header,
+nav, h1, a, ul, li, main,
+section, p, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+header, nav, main, section,
+footer, small {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 7px;
+  background-color: #98fb98;
+  color: #266ce3;
+  font-family: sans-serif;
+}
+
+.form input {
+  background-color: #dbfbdb;
+  border-radius: 4px;
+}
+
+.small-form {
+  width: 500px;
+  height: 40px;
+  justify-content: space-around;
+}
+
+.small-form label {
+  align-self: center;
+}
+
+.small-form input {
+  align-self: center
+}
+
+.big-form {
+  flex-direction: column;
+  width: 180px;
+  height: 220px;
+}
+
+.big-form button {
+  width: 70px;
+  margin-top: 10px;
+  background-color: #dbfbdb;
+  border-radius: 5px;
+}
+
+.big-form label {
+  display: block;
+}
+
+.big-form div {
+  align-self: center;
+  width: 150px;
+  margin: 10px;
+}
+
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}

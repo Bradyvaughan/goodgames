@@ -7,7 +7,7 @@ class SignUp extends React.Component {
     this.state = {username: "", password: "", email: ""};
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   handleClick(e) {
     e.preventDefault();
     this.props.signUp(this.state);
@@ -19,20 +19,26 @@ class SignUp extends React.Component {
 
   render () {
     return(
-      <div>
-        <label>
-          Username
-          <input type="text" onChange={this.linkState("username")}/>
-        </label>
-        <label>
-          Email
-          <input type="text" onChange={this.linkState("email")}/>
-        </label>
-        <label>
-          Password
-          <input type="password" onChange={this.linkState("password")}/>
-        </label>
-        <input type="submit" value="Sign Up" onClick={this.handleClick}/>
+      <div className="big-form form">
+
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input type="text" id="username"
+            onChange={this.linkState("username")}/>
+        </div>
+
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input type="text" id="email"
+            onChange={this.linkState("email")}/>
+        </div>
+
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password"
+            onChange={this.linkState("password")}/>
+          <button onClick={this.handleClick}>Sign Up</button>
+        </div>
       </div>
     );
   }
