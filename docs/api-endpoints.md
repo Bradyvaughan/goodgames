@@ -6,14 +6,16 @@
 # JSON API
 
 ##  Session
-    - POST /api/sessions
-    - GET /api/sessions
-    - DELETE /api/sessions
+    - POST /api/users
+    - POST /api/session
+    - DELETE /api/session
 
 ##  Games
     - POST /api/games (upload new game to database)
     - GET /api/games  (Get list of games)
     - GET /api/games/gameId (get single game details)
+    - DELETE /api/games/gameId (delete a game from database)
+    - UPDATE /api/games/gameId (change a game in the database)
 
 
 ##  Libraries

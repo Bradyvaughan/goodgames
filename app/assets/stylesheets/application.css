@@ -43,7 +43,6 @@ ul {
   justify-content: center;
   border: 1px solid black;
   border-radius: 7px;
-  /*background-color: #98fb98;*/
   color: #266ce3;
   font-family: sans-serif;
   padding: 5px;
@@ -60,27 +59,12 @@ ul {
 }
 
 .form input {
-  /*background-color: #dbfbdb;*/
   border-radius: 4px;
   box-shadow: none;
   border: 1px solid #999;
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: #eee;
-}
-
-.small-form {
-  width: 520px;
-  height: 40px;
-  justify-content: space-around;
-}
-
-.small-form label {
-  align-self: center;
-}
-
-.small-form input {
-  align-self: center
 }
 
 .big-form {
@@ -91,7 +75,6 @@ ul {
 .big-form button {
   width: 70px;
   margin-top: 10px;
-  /*background-color: #dbfbdb;*/
   border-radius: 5px;
   background-color: #eee;
 }
@@ -107,6 +90,30 @@ ul {
 
 .big-form input {
   width: 100%;
+}
+
+/******************************************************************/
+
+.game-item {
+  background-color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  border: 1px solid #000;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.game-item:hover {
+  background-color: #eee;
+}
+
+.flex {
+  display: flex;
+}
+
+.vert-center {
+  align-self: center;
 }
 
 
