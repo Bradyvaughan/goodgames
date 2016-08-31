@@ -19,7 +19,7 @@ class GamesIndexItem extends React.Component {
           <img src="/public/placeholderImage.jpg"/>
           <div>
             <p>{this.props.game.title}</p>
-            <p>{this.props.game.published_on.toString()}</p>
+            <p>{this.props.game.published_on}</p>
             <p>{this.props.game.avg_rating}</p>
           </div>
         </div>

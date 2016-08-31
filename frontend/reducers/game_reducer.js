@@ -1,6 +1,8 @@
 import { merge } from 'lodash';
 
-export const GameReducer = (state={games: {}, gameErrors: []}, action) => {
+export const GameReducer = (
+  state={games: {img: "", title: "", description: "", avg_rating: "", published_on: ""},
+   gameErrors: []}, action) => {
   let newState = merge({},state);
   switch (action.type) {
     case "RECEIVE_ALL_GAMES":
