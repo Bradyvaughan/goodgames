@@ -5,7 +5,7 @@ class Api::GamesController < ApplicationController
     if @game.save
       render :show
     else
-      render(json: @game.errors.full_messages, status 422)
+      render(json: @game.errors.full_messages, status: 422)
     end
   end
 
@@ -15,7 +15,11 @@ class Api::GamesController < ApplicationController
 
   def show
     @game = Game.find_by_id(params[:id])
-    @game ? render :show : render(json: "Game not found.", status 404)
+    if @game
+      render :show
+    else
+      render(json: "Game not found.", status: 404)
+    end
   end
 
   def update
@@ -23,14 +27,18 @@ class Api::GamesController < ApplicationController
     if @game.update(game_params)
       render :show
     else
-      render(json: @game.errors.full_messages, status 422)
+      render(json: @game.errors.full_messages, status: 422)
     end
   end
 
   def destroy
     @game = Game.find_by_id(params[:id])
 
-    @game ? @game.destroy : render(json: "Game not found", status 404)
+    if @game
+      @game.destroy
+    else
+      render(json: "Game not found", status: 404)
+    end
   end
 
   def game_params
