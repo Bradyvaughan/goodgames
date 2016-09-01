@@ -7,7 +7,7 @@ class Api::LibrariesController < ApplicationController
   def show
     @library = Library.find_by_id(params[:id])
     if @library
-      render: show
+      render :show
     else
       render(json: "Library not found", status: 404)
     end
@@ -15,7 +15,7 @@ class Api::LibrariesController < ApplicationController
 
   def create
     @library = Library.new({name: library_params[:name],
-      description: library_params[:description], user_id: params[:user_id])
+      description: library_params[:description], user_id: params[:user_id]})
     if @library.save
       render :show
     else

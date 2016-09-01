@@ -66,7 +66,7 @@ links = []
 
 (1..5).each do |game_id|
   (1..14).each do |user_no|
-    links << {game_id: game_id, library_id: user_no * 3}
+    links << {game_id: game_id, library_id: user_no * 3 - rand(3)}
   end
 end
 
