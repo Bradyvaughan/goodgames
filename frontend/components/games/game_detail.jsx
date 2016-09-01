@@ -1,6 +1,11 @@
 import React from 'react';
+import {hashHistory} from 'react-router';
 
 class GameDetail extends React.Component {
+
+  handleClick(){
+    hashHistory.push("/games");
+  }
 
   componentDidMount() {
     this.props.getGame(this.props.params.id);
@@ -17,6 +22,9 @@ class GameDetail extends React.Component {
       <div className="game-detail">
         <section className="game-sidebar">
           <img src="http://vignette3.wikia.nocookie.net/wowwiki/images/7/75/Captain_Placeholder.jpg/revision/latest?cb=20070324064719"/>
+          <span className="button" onClick={this.handleClick}>
+            Back To Index
+          </span>
           <section className = "drop-down">
             <span className="button">Played Status Placeholder</span>
             <ul className = "menu">
@@ -24,6 +32,7 @@ class GameDetail extends React.Component {
               <li>Currently Playing</li>
               <li>Wanting to Play</li>
             </ul>
+
           </section>
         </section>
         <section className="game-body">

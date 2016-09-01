@@ -16,7 +16,7 @@ class GamesIndexItem extends React.Component {
     return(
       <div className="game-item" onClick={this.handleClick}>
         <div className="flex">
-          <img src="/public/placeholderImage.jpg"/>
+          <img src="http://vignette3.wikia.nocookie.net/wowwiki/images/7/75/Captain_Placeholder.jpg/revision/latest?cb=20070324064719"/>
           <div>
             <p>{this.props.game.title}</p>
             <p>{this.props.game.published_on}</p>

@@ -117,6 +117,11 @@ body {
   cursor: pointer;
 }
 
+.game-item img {
+  height: 50px;
+  width: auto;
+}
+
 .game-item:hover {
   background-color: #eee;
 }
