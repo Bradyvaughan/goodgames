@@ -7,6 +7,7 @@ import { signUp, login, logout } from './actions/session_actions';
 //   from './actions/game_actions';
 import { getAllLibraries, getLibrary, createLibrary, deleteLibrary }
   from './actions/library_actions';
+import { createLink, deleteLink } from './actions/link_actions';
 
 
 
@@ -18,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () =>{
   }
   const store = configureStore(preloadedState);
   window.store = store;
-  window.signUp = signUp;
-  window.getLibrary = getLibrary;
+  window.login = login;
+  window.getAllLibraries = getAllLibraries;
   window.createLibrary = createLibrary;
-  window.deleteLibrary = deleteLibrary;
+  window.createLink = createLink;
 
 
   ReactDOM.render(<Root store={store}/>,document.getElementById("root"));
