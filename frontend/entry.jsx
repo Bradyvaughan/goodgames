@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.logout = logout;
   window.updateGame = updateGame;
   window.getAllGames = getAllGames;
-  let preloadedState = {};
+  let preloadedState = {session: {currentUser: null, errors: []},
+    games: {games: {img: "", title: "", description: "", avg_rating: "", published_on: ""}, errors: []}};
   if (window.currentUser) {
-    preloadedState = {
-      session: {currentUser: window.currentUser, errors: []},
-    };
+    preloadedState.session.currentUser = window.currentUser;
   }
   const store = configureStore(preloadedState);
   window.store = store;

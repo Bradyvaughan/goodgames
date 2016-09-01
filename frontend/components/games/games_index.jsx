@@ -13,7 +13,7 @@ class GamesIndex extends React.Component {
       return(<GamesIndexItem game={games[key]} gameId={key} key={`game-${key}`}/>);
     });
     return(
-      <ul>
+      <ul className="index">
         {gameDex}
       </ul>
     );
