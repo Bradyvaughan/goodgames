@@ -26,7 +26,7 @@
 #
 # p seeds
 
-User.create([{username: "SidMeier", email:"sid@firaxis.com", password:"civilization"},
+User.create!([{username: "SidMeier", email:"sid@firaxis.com", password:"civilization"},
   {username: "BenBrode", email: "Bbrode@blizzard.com", password: "HAHAHAHAHAHAHA"},
   {username: "PeterMolyneaux", email: "dunno@blank.com", password: "fables"},
   {username: "ShigeruMiyamoto", email: "bigdaddy@nintendo.com", password: "nintendo"},
@@ -42,7 +42,7 @@ User.create([{username: "SidMeier", email:"sid@firaxis.com", password:"civilizat
   {username: "SatoshiTajiri", email: "pokemonmaster@gamefreak.com", password: "catchemall"}])
 
 
-Game.create([{title: "xcom", description:"best ever", published_on: DateTime.current,
+Game.create!([{title: "xcom", description:"best ever", published_on: DateTime.current,
   avg_rating: 4.7, cover: "placeholder"},
   {title: "Call of Duty", description: "shooty shooterson", published_on: DateTime.current,
     avg_rating: 3.2, cover: "placeholder"},
@@ -73,6 +73,18 @@ end
 LibraryLink.create!(links)
 
 
+ips = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+title_array = ["sweet game", "what a disappointment!", "Riot did it better",
+"blizz, pls", "dlc needs work", "I can't believe I paid for this",
+"0 stars", "10/10 would play again", "elbows pointy, would not play"]
+
+reviews = []
+(1...14).each do |user|
+  reviews << {user_id: user, game_id: 1 + rand(5), body: ips, title: title_array.sample}
+end
+
+Review.create!(reviews)
     # "6PwCgMNcYumsh9RuphT0EtapJ2Khp1XEa01jsna6rpjcuoGGNL"
 
     # GiantBomb 5d89fc0c90da501c4033686e21b3bea624fa6a8a

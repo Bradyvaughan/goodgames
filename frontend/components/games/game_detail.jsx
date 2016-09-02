@@ -6,6 +6,7 @@ class GameDetail extends React.Component {
   constructor(props) {
     super(props);
     this.handleAdd = this.handleAdd.bind(this);
+    this.addToLib = this.addToLib.bind(this);
   }
 
   handleIndex(){
@@ -15,6 +16,11 @@ class GameDetail extends React.Component {
   handleAdd(key) {
     return(() => (this.props.createLink(this.props.currentId,
       key, this.props.params.id)));
+  }
+
+  addToLib(libName) {
+    return () => this.props.specCreate(this.props.currentId,
+    libName, this.props.params.id);
   }
 
   componentDidMount() {
@@ -57,9 +63,9 @@ class GameDetail extends React.Component {
           <section className = "drop-down">
             <span className="button">{played}</span>
             <ul className = "menu">
-              <li>Played</li>
-              <li>Currently Playing</li>
-              <li>Wanting to Play</li>
+              <li onClick={this.addToLib("Played")}>Played</li>
+              <li onClick={this.addToLib("Currently Playing")}>Currently Playing</li>
+              <li onClick={this.addToLib("Wanting to Play")}>Wanting to Play</li>
             </ul>
 
           </section>

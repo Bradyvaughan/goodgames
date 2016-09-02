@@ -17,3 +17,13 @@ export const destroyLibraryLink = (id, success, error) => {
     error,
   });
 };
+
+export const specCreateLink = (userId, name, gameId, success, error) => {
+  $.ajax({
+    type: "POST",
+    url: `api/users/${userId}/libraries/${name}`,
+    success,
+    error,
+    data: {library_link: {game_id: gameId}}
+  });
+};

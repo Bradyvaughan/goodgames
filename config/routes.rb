@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :games, only: [:create, :destroy, :index, :update, :show]
     resource :session, only: [:create, :destroy]
   end
+
+  post 'api/users/:user_id/libraries/:name', to: 'api/library_links#spec_create'
 end

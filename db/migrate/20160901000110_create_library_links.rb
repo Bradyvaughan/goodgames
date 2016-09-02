@@ -5,5 +5,6 @@ class CreateLibraryLinks < ActiveRecord::Migration[5.0]
       t.integer :library_id, null: false
       t.timestamps
     end
+    add_index(:library_links, [:game_id, :library_id], unique: true)
   end
 end
