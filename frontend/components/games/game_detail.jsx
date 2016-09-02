@@ -26,7 +26,7 @@ class GameDetail extends React.Component {
     let game = this.props.games;
 
     if (!game) {
-      game = {img: "", title: "", description: "", avg_rating: "", published_on: ""};
+      game = {img: "", title: "", description: "", avg_rating: "", published_on: "", libraries: []};
     }
 
     let libList = Object.keys(this.props.libraries).map((key) => (
@@ -34,6 +34,18 @@ class GameDetail extends React.Component {
         {this.props.libraries[key].name}
       </li>
     ));
+    let libz = game.libraries.map((library) => (
+      <li key={`lib-${library.name}`}>{library.name}</li>
+    ));
+
+    let played = "Played?";
+
+    const libs = ["Currently Playing", "Played", "Wanting to Play"];
+    game.libraries.forEach((library) => {
+      if (libs.indexOf(library.name) > -1) {
+        played = library.name;
+      }
+    });
 
     return(
       <div className="game-detail">
@@ -43,7 +55,7 @@ class GameDetail extends React.Component {
             Back To Index
           </span>
           <section className = "drop-down">
-            <span className="button">Played?</span>
+            <span className="button">{played}</span>
             <ul className = "menu">
               <li>Played</li>
               <li>Currently Playing</li>
@@ -76,10 +88,7 @@ class GameDetail extends React.Component {
               </p>
               <div className="bottom-bar">
                 <ul>
-                  <li>Libraries:</li>
-                  <li><a>example 1</a></li>
-                  <li><a>example 2</a></li>
-                  <li><a>example 3</a></li>
+                  {libz}
                 </ul>
 
                 <p className="button vert-center">

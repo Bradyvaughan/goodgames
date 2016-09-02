@@ -13,7 +13,7 @@ import { createLink, deleteLink } from './actions/link_actions';
 
 document.addEventListener("DOMContentLoaded", () =>{
   let preloadedState = {session: {currentUser: null, errors: []},
-    games: {games: {img: "", title: "", description: "", avg_rating: "", published_on: ""}, errors: []}};
+    games: {games: {img: "", title: "", description: "", avg_rating: "", published_on: "", libraries: []}, errors: []}};
   if (window.currentUser) {
     preloadedState.session.currentUser = window.currentUser;
   }
