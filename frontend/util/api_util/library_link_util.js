@@ -5,7 +5,7 @@ export const createLibraryLink =
     url: `api/users/${userId}/libraries/${libraryId}/library_links`,
     success,
     error,
-    data: {library: {gameId}}
+    data: {library_link: {game_id: gameId}}
   });
 };
 

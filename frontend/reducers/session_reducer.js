@@ -3,7 +3,6 @@ import { merge } from 'lodash';
 
 export const SessionReducer =
   (state = {currentUser: null, errors: []}, action) => {
-    // debugger;
     let newState = merge({}, state);
   switch (action.type) {
     case "RECEIVE_CURRENT_USER":

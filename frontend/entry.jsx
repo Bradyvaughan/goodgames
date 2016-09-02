@@ -21,8 +21,10 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.store = store;
   window.login = login;
   window.getAllLibraries = getAllLibraries;
+  window.getLibrary = getLibrary;
   window.createLibrary = createLibrary;
   window.createLink = createLink;
+  window.deleteLink = deleteLink;
 
 
   ReactDOM.render(<Root store={store}/>,document.getElementById("root"));

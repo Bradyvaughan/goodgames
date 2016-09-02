@@ -3,12 +3,23 @@ import {hashHistory} from 'react-router';
 
 class GameDetail extends React.Component {
 
-  handleClick(){
+  constructor(props) {
+    super(props);
+    this.handleAdd = this.handleAdd.bind(this);
+  }
+
+  handleIndex(){
     hashHistory.push("/games");
+  }
+
+  handleAdd(key) {
+    return(() => (this.props.createLink(this.props.currentId,
+      key, this.props.params.id)));
   }
 
   componentDidMount() {
     this.props.getGame(this.props.params.id);
+    this.props.getAllLibraries(this.props.currentId);
   }
 
   render() {
@@ -18,15 +29,21 @@ class GameDetail extends React.Component {
       game = {img: "", title: "", description: "", avg_rating: "", published_on: ""};
     }
 
+    let libList = Object.keys(this.props.libraries).map((key) => (
+      <li key={`library-${key}`} onClick={this.handleAdd(key)}>
+        {this.props.libraries[key].name}
+      </li>
+    ));
+
     return(
       <div className="game-detail">
         <section className="game-sidebar">
           <img src="http://vignette3.wikia.nocookie.net/wowwiki/images/7/75/Captain_Placeholder.jpg/revision/latest?cb=20070324064719"/>
-          <span className="button" onClick={this.handleClick}>
+          <span className="button" onClick={this.handleIndex}>
             Back To Index
           </span>
           <section className = "drop-down">
-            <span className="button">Played Status Placeholder</span>
+            <span className="button">Played?</span>
             <ul className = "menu">
               <li>Played</li>
               <li>Currently Playing</li>
@@ -37,12 +54,21 @@ class GameDetail extends React.Component {
         </section>
         <section className="game-body">
           <div className='game-info'>
-            <ul>
-              <li><h3>{game.title}</h3></li>
-              <li>Released On: {game.published_on}</li>
-              <li>Average Rating:  {game.avg_rating}</li>
-            </ul>
+            <div className='summary'>
+              <ul>
+                <li><h3>{game.title}</h3></li>
+                <li>Released On: {game.published_on}</li>
+                <li>Average Rating:  {game.avg_rating}</li>
+              </ul>
 
+              <section className="lib-list">
+                <div className="button">Add to Library
+                </div>
+                <ul className = "menu">
+                  {libList}
+                </ul>
+              </section>
+            </div>
             <section className="large-block">
               <h4>Description:</h4>
               <p>

@@ -221,7 +221,7 @@ nav label {
 
 .index {
   padding-top: 20px;
-  width: 900px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -258,12 +258,14 @@ nav label {
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  width: 100%;
+  width: 70%;
+  left: 15%;
 }
 
 .drop-down li {
   border-bottom: 1px solid black;
   cursor: pointer;
+  text-align: center;
 }
 .drop-down li:hover {
   background-color: #ccc;
@@ -284,8 +286,42 @@ nav label {
 }
 
 .game-info ul {
-  border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.lib-list {
+  height: 26px;
+  align-self: center;
+}
+
+.summary .menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  cursor: pointer;
+  opacity: .9;
+}
+
+.summary .menu li {
+  border-top: 1px solid #ccc;
+}
+.summary .menu li:hover {
+  border-top: 1px solid #ccc;
+  background-color: #eee;
+}
+
+.lib-list:hover .menu, .menu:hover {
+  z-index: 8000;
+  display: block;
 }
 
 .game-info li {
@@ -341,8 +377,73 @@ nav label {
   font-size: 50px;
 }
 
+/***************************HOME***********************************/
+
+.home {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.home-sidebar {
+  width: 25%;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.home-sidebar h1 {
+  color: #f4f;
+  font-size: 22px;
+  padding: 10px;
+}
 
 
+.home-sidebar li {
+  color: #44f;
+  text-decoration: underline;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.home-sidebar li span {
+  cursor: pointer;
+}
+
+.icon {
+  font-weight: 1000;
+  padding: 3px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.home-sidebar .button {
+  margin: 0 auto;
+  text-align: center;
+  width: 60%;
+  margin-top: 10px;
+}
+
+.home-body {
+  width: 100%;
+}
+
+.index li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.index .icon {
+  width: 3%;
+  align-self: center;
+}
+
+
+
+.hidden {
+  display: none;
+}
 
 /* Clearfix */
 

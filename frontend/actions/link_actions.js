@@ -5,7 +5,7 @@ export const createLink = (userId, libraryId, gameId) => ({
   gameId
 });
 
-export const deleteLink = (id) => ({
+export const deleteLink = (linkId) => ({
   type: "DELETE_LINK",
-  id
+  linkId
 });

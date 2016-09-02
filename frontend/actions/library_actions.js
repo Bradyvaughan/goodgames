@@ -3,9 +3,8 @@ export const getAllLibraries = (userId) => ({
   userId
 });
 
-export const getLibrary = (userId, id) =>({
+export const getLibrary = (id) =>({
   type: "GET_LIBRARY",
-  userId,
   id
 });
 
