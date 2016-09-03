@@ -13,22 +13,12 @@ class SignUp extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.signUp(this.state);
-    document.getElementById('signUp').classList.toggle('hidden');
+    // document.getElementById('signUp').classList.toggle('hidden');
   }
 
   linkState(key) {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
-
-  // componentDidUpdate() {
-  //   this.redirectIfLoggedIn();
-  // }
-  //
-  // redirectIfLoggedIn() {
-  //   if (this.props.loggedIn) {
-  //     hashHistory.push("/home");
-  //   }
-  // }
 
   renderErrors() {
     let errors = this.props.errors.map((error, i) => (

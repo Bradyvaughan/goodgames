@@ -12,7 +12,10 @@ export const SessionMiddleware = store => next => action => {
   let error;
   switch (action.type) {
     case "LOGIN":
-      success = (data) => store.dispatch(receiveCurrentUser(data));
+      success = (data) => {
+        store.dispatch(receiveCurrentUser(data));
+        document.getElementById('login').classList.toggle('hidden');
+      };
       error = response => store.dispatch(receiveErrors(response.responseJSON));
       login({user: action.user}, success, error);
       return next(action);
@@ -22,6 +25,8 @@ export const SessionMiddleware = store => next => action => {
         store.dispatch(createLibrary(data.id, {name: "Played"}));
         store.dispatch(createLibrary(data.id, {name: "Currently Playing"}));
         store.dispatch(createLibrary(data.id, {name: "Wanting to Play"}));
+        document.getElementById('signUp').classList.toggle('hidden');
+        // store.dispatch(receiveErrors({errors: []}));
       };
       error = response => store.dispatch(receiveErrors(response.responseJSON));
       signUp({user: action.user}, success, error);

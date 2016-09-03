@@ -12,18 +12,7 @@ class Login extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.login(this.state);
-    document.getElementById('login').classList.toggle('hidden');
   }
-
-  // componentDidUpdate() {
-  //   this.redirectIfLoggedIn();
-  // }
-
-  // redirectIfLoggedIn() {
-  //   if (this.props.loggedIn) {
-  //     hashHistory.push("/home");
-  //   }
-  // }
 
   renderErrors() {
     let errors = this.props.errors.map((error, i) => (
