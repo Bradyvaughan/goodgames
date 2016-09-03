@@ -5,9 +5,10 @@ export const createLink = (userId, libraryId, gameId) => ({
   gameId
 });
 
-export const deleteLink = (linkId) => ({
+export const deleteLink = (linkId, libraryId) => ({
   type: "DELETE_LINK",
-  linkId
+  linkId,
+  libraryId
 });
 
 export const specCreate = (userId, libraryName, gameId) => ({

@@ -12,7 +12,7 @@ export const GameReducer = (
       newState.games = action.data;
       return newState;
     case "RECEIVE_ERRORS":
-      newState.errors = action.errors;
+      newState.gameErrors = action.errors;
       return newState;
     default:
       return state;

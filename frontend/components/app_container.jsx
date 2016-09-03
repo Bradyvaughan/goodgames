@@ -2,8 +2,12 @@ import App from './app';
 import { connect } from 'react-redux';
 import { logout } from '../actions/session_actions';
 
+const mapStateToProps = state => ({
+  currentUser: state.session.currentUser
+});
+
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

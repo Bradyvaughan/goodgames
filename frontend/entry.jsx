@@ -8,6 +8,7 @@ import { signUp, login, logout } from './actions/session_actions';
 import { getAllLibraries, getLibrary, createLibrary, deleteLibrary }
   from './actions/library_actions';
 import { createLink, deleteLink } from './actions/link_actions';
+import { getAllReviews, getReview, createReview, deleteReview, updateReview } from './actions/review_actions';
 import { specCreateLink } from './util/api_util/library_link_util';
 
 
@@ -27,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.createLink = createLink;
   window.deleteLink = deleteLink;
   window.specCreateLink = specCreateLink;
+  window.getAllReviews = getAllReviews;
+  window.getReview = getReview;
+  window.createReview = createReview;
+  window.deleteReview = deleteReview;
+  window.updateReview = updateReview
 
 
   ReactDOM.render(<Root store={store}/>,document.getElementById("root"));

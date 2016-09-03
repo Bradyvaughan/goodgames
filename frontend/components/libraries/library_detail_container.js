@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getLibrary: (id) => dispatch(getLibrary(id)),
-  deleteLink: (linkId) => dispatch(deleteLink(linkId))
+  deleteLink: (linkId, libraryId) => dispatch(deleteLink(linkId, libraryId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LibraryDetail);

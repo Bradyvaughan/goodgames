@@ -4,7 +4,8 @@ import { GameMiddleware } from './game_middleware';
 import { LibraryMiddleware } from './library_middleware';
 import { LinkMiddleware } from './link_middleware';
 import { LibrariesMiddleware } from './libraries_middleware';
+import { ReviewMiddleware } from './review_middleware';
 
 export const MasterMiddleware =
   applyMiddleware(SessionMiddleware, GameMiddleware, LibraryMiddleware,
-    LibrariesMiddleware, LinkMiddleware);
+    LibrariesMiddleware, LinkMiddleware, ReviewMiddleware);

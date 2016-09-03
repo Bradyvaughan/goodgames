@@ -53,12 +53,16 @@ body {
 /**********************Form*****************************/
 .form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   border: 1px solid black;
   border-radius: 7px;
   color: #266ce3;
   font-family: sans-serif;
   padding: 5px;
+  z-index: 9999;
+  background: #eee;
+  opacity: .9;
 }
 
 .side-list {
@@ -81,8 +85,8 @@ body {
 }
 
 .big-form {
-  flex-direction: column;
   width: 250px;
+  position: absolute;
 }
 
 .big-form button {
@@ -443,6 +447,15 @@ nav label {
 
 .hidden {
   display: none;
+}
+
+
+.review-list {
+  font-size: 14px;
+}
+
+.inline-form {
+  position: absolute;
 }
 
 /* Clearfix */

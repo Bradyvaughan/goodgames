@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     end
     resources :library_links, only: [:destroy]
     resources :libraries, only: [:destroy, :show]
-    resources :games, only: [:create, :destroy, :index, :update, :show]
+    resources :games, only: [:create, :destroy, :index, :update, :show] do
+      resources :reviews, except: [:new, :edit]
+    end
     resource :session, only: [:create, :destroy]
   end
 

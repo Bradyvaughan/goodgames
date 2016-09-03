@@ -75,13 +75,38 @@ LibraryLink.create!(links)
 
 ips = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
 
+review_bodies = ["This game is an ambitious offering, but it falls
+  well short of the classics of the genre.  More polish and fewer
+  features could have gone a long way towards creating an overall more
+  fun experience.
+    I hope that future efforts come together more, but I can't reccomend
+  this game.",
+  "This is likely the worst game that has ever been made.  Why was this
+  created?  Why did I buy it?",
+  "I love this game.  I play it at least 3 hours a day.",
+  "Halp, I can't stop playing!  I haven't been to work in four days. I'm
+  not sure I care any more.  Game is love, game is life.",
+  "This game is great, except that the controls are super annoying!  If
+  they just fixed that, it would be the best game ever.",
+  "6.5 / 10, no comeback mechanics.", "I hear a lot of people hating on
+  this game right now, but I think it's great.  Sure, the mechanics are
+  a bit weird, but it's a super unique and original idea that was
+  executed pretty well.  Stop expecting the Mona Lisa, people.  This
+  is pretty good.",
+  "This game is such a casual clown fiesta.  L2P a real game, n00bs.",
+  "I love this game, but it's a shame that the multiplayer is full of
+  13-year-olds that have held sexual congress with my mother.",
+  "Fuck this fucking game.  Fuck.  I can't deal with it anymore.  It's
+  too goddamn hard.  I'm done.  I'm so done.  I can't even right now."]
+
+
 title_array = ["sweet game", "what a disappointment!", "Riot did it better",
 "blizz, pls", "dlc needs work", "I can't believe I paid for this",
 "0 stars", "10/10 would play again", "elbows pointy, would not play"]
 
 reviews = []
 (1...14).each do |user|
-  reviews << {user_id: user, game_id: 1 + rand(5), body: ips, title: title_array.sample}
+  reviews << {user_id: user, game_id: 1 + rand(5), body: review_bodies.sample, title: title_array.sample}
 end
 
 Review.create!(reviews)

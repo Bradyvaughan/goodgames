@@ -13,21 +13,22 @@ class SignUp extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.signUp(this.state);
+    document.getElementById('signUp').classList.toggle('hidden');
   }
 
   linkState(key) {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
-  componentDidUpdate() {
-    this.redirectIfLoggedIn();
-  }
-
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      hashHistory.push("/home");
-    }
-  }
+  // componentDidUpdate() {
+  //   this.redirectIfLoggedIn();
+  // }
+  //
+  // redirectIfLoggedIn() {
+  //   if (this.props.loggedIn) {
+  //     hashHistory.push("/home");
+  //   }
+  // }
 
   renderErrors() {
     let errors = this.props.errors.map((error, i) => (
@@ -42,7 +43,7 @@ class SignUp extends React.Component {
 
   render () {
     return(
-      <div className="big-form form">
+      <div className="big-form form hidden" id="signUp">
           {this.renderErrors()}
         <div>
           <label htmlFor="username">Username:</label>

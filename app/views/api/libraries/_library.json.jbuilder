@@ -1,4 +1,4 @@
-json.extract! library, :name, :description
+json.extract! library, :name
 json.set! :games do
   library.library_links.each do |link|
     json.set! link.game.id do

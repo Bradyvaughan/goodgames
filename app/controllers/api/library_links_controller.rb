@@ -1,9 +1,26 @@
 class Api::LibraryLinksController < ApplicationController
 
   def create
+
+    triple = ["Played", "Currently Playing", "Wanting to Play"]
+
+    triple.map! do |lib_name|
+      Library.find_by({user_id: params[:user_id], name: lib_name})
+    end
+
     @library_link = LibraryLink.new(
     {game_id: library_link_params[:game_id], library_id: params[:library_id]}
     )
+
+    @library = Library.find_by_id(params[:library_id])
+
+    if triple.include?(@library)
+      triple.each do |play_stat|
+        link = LibraryLink.find_by({game_id: library_link_params[:game_id],
+          library_id: play_stat.id})
+        link.destroy if link
+      end
+    end
 
     unless @library_link.save
       render(json: @library_link.errors.full_messages, status: 422)
@@ -21,8 +38,24 @@ class Api::LibraryLinksController < ApplicationController
   end
 
   def spec_create
+
+    triple = ["Played", "Currently Playing", "Wanting to Play"]
+
+    triple.map! do |lib_name|
+      Library.find_by({user_id: params[:user_id], name: lib_name})
+    end
+
+
     @library = Library.find_by({user_id: params[:user_id], name: params[:name]})
     @library_link = LibraryLink.new({game_id: library_link_params[:game_id], library_id: @library.id})
+
+    if triple.include?(@library)
+      triple.each do |play_stat|
+        link = LibraryLink.find_by({game_id: library_link_params[:game_id],
+          library_id: play_stat.id})
+        link.destroy if link
+      end
+    end
 
     unless @library_link.save
       render(json: @library_link.errors.full_messages, status: 422)

@@ -14,8 +14,7 @@ class Api::LibrariesController < ApplicationController
   end
 
   def create
-    @library = Library.new({name: library_params[:name],
-      description: library_params[:description], user_id: params[:user_id]})
+    @library = Library.new({name: library_params[:name], user_id: params[:user_id]})
     if @library.save
       @libraries = User.find_by_id(params[:user_id]).libraries.includes(:games)
       render :index
@@ -38,6 +37,6 @@ class Api::LibrariesController < ApplicationController
   end
 
   def library_params
-    params.require(:library).permit(:name, :description)
+    params.require(:library).permit(:name)
   end
 end

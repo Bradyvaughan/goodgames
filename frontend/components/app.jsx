@@ -10,6 +10,8 @@ class App extends React.Component {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleHome = this.handleHome.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleLogout(e) {
@@ -22,8 +24,28 @@ class App extends React.Component {
     hashHistory.push('/home');
   }
 
-  render(){
+  handleLogin(e) {
+    e.preventDefault();
+    document.getElementById('login').classList.toggle('hidden');
+  }
 
+  handleSignUp(e) {
+    e.preventDefault();
+    document.getElementById('signUp').classList.toggle('hidden');
+  }
+
+  render(){
+    let logoutClass = "button vert-center";
+    let signUpClass = "button vert-center";
+    let loginClass = "button vert-center";
+    let libClass = "";
+    if (this.props.currentUser) {
+      loginClass += " hidden";
+      signUpClass += " hidden";
+    } else {
+      logoutClass += " hidden";
+      libClass += "hidden";
+    }
     return(
       <div className='header'>
         <nav>
@@ -31,18 +53,28 @@ class App extends React.Component {
             <section className="logo">
               <span className="gg">gg</span><span className="wp">wp</span>
             </section>
-            <ul>
-              <li onClick={this.handleHome}><span className="vert-center">Home</span></li>
-              <li><span className="vert-center">My Games</span></li>
+            <ul className={libClass}>
+              <li onClick={this.handleHome}><span className="vert-center">My Libraries</span></li>
             </ul>
             <p className="search-bar">
               <label className="vert-center">Search:</label>
               <input className="vert-center" type="text"/>
             </p>
           </section>
-          <p className="button vert-center" onClick={this.handleLogout}>
-            Sign Out
-          </p>
+
+          <section className="buttons">
+            <p className={logoutClass} onClick={this.handleLogout}>
+              Log Out
+            </p>
+            <p className={loginClass} onClick={this.handleLogin}>
+              Log In
+            </p>
+            <p className={signUpClass} onClick={this.handleSignUp}>
+              Sign Up
+            </p>
+          </section>
+        <LoginContainer />
+        <SignUpContainer />
         </nav>
         {this.props.children}
       </div>

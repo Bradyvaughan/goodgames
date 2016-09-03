@@ -12,17 +12,18 @@ class Login extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.login(this.state);
+    document.getElementById('login').classList.toggle('hidden');
   }
 
-  componentDidUpdate() {
-    this.redirectIfLoggedIn();
-  }
+  // componentDidUpdate() {
+  //   this.redirectIfLoggedIn();
+  // }
 
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      hashHistory.push("/home");
-    }
-  }
+  // redirectIfLoggedIn() {
+  //   if (this.props.loggedIn) {
+  //     hashHistory.push("/home");
+  //   }
+  // }
 
   renderErrors() {
     let errors = this.props.errors.map((error, i) => (
@@ -41,7 +42,7 @@ class Login extends React.Component {
 
   render () {
     return(
-      <div className="big-form form">
+      <div className="big-form form hidden" id="login">
           {this.renderErrors()}
         <div>
           <label htmlFor="username">Username:</label>
