@@ -6,25 +6,50 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# require 'json'
-#
-# seeds = []
-#
-# searches = ["mario", "zelda", "call of duty", "league of legends",
-# "pokemon", "civilization", "metroid", "sonic", "warcarft", "starcraft",
-# "diablo", "doom", "wolfenstein", "castlevania", "fable", "halo"];
-#
-# searches.each do |search|
-#   response = Unirest.get "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name%2Crelease_dates%2Crating%2Ccover%2Cesrb.synopsis&limit=10&offset=0&order=release_dates.date%3Adesc&search=#{search}",
-#     headers:{
-#       "X-Mashape-Key" => "TOlrbRqDvumshllfIs6MngQ5Tm8Fp1VNsu2jsneDxzD33IeIbO",
-#       "Accept" => "application/json"
-#     }
-#
-#   seeds << JSON.parse(response)
-# end
-#
-# p seeds
+
+
+require 'nokogiri'
+require 'net/http'
+require 'byebug'
+
+names = %w(starcraft warcraft diablo league duty mario zelda metriod
+xcom civilization halo tetris minecraft theft scrolls battlefield
+sims sonic fable clancy dota gears tomb persia final
+kong goldeneye)
+
+names.each do |name|
+  url = URI.parse("http://thegamesdb.net/api/GetGamesList.php?name=#{name}")
+  req = Net::HTTP::Get.new(url.to_s)
+  res = Net::HTTP.start(url.host, url.port) {|http|
+    http.request(req)
+  }
+  sleep(1)
+  if  res.is_a?(Net::HTTPSuccess)
+    data = Hash.from_xml(res.body)["Data"]["Game"]
+    if data
+      data.each do |game|
+        id = game["id"]
+        urll = URI.parse("http://thegamesdb.net/api/GetGame.php?id=#{id}")
+        reqq = Net::HTTP::Get.new(urll.to_s)
+        ress = Net::HTTP.start(url.host, url.port) {|http|
+          http.request(reqq)
+        }
+        cover = "http://thegamesdb.net/banners/boxart/thumb/original/front/#{id}-1.jpg"
+
+
+        if ress.is_a?(Net::HTTPSuccess)
+          datum = Hash.from_xml(ress.body)["Data"]["Game"]
+
+          if datum
+            Game.create({title: datum['GameTitle'], release_date: datum['ReleaseDate'],
+              platform: datum["Platform"], description: datum["Overview"],
+              avg_rating: datum["Rating"], cover: cover})
+          end
+        end
+      end
+    end
+  end
+end
 
 User.create!([{username: "SidMeier", email:"sid@firaxis.com", password:"civilization"},
   {username: "BenBrode", email: "Bbrode@blizzard.com", password: "HAHAHAHAHAHAHA"},
@@ -42,16 +67,31 @@ User.create!([{username: "SidMeier", email:"sid@firaxis.com", password:"civiliza
   {username: "SatoshiTajiri", email: "pokemonmaster@gamefreak.com", password: "catchemall"}])
 
 
-Game.create!([{title: "xcom", description:"best ever", published_on: DateTime.current,
-  avg_rating: 4.7, cover: "placeholder"},
-  {title: "Call of Duty", description: "shooty shooterson", published_on: DateTime.current,
-    avg_rating: 3.2, cover: "placeholder"},
-  {title: "Valkyria Chronicles", description: "realtime anime xcom", published_on: DateTime.current,
-    avg_rating: 4.2, cover: "placeholder"},
-  {title: "DC:SS", description:"OG roguelike", published_on: DateTime.current,
-    avg_rating: 4.8, cover: "placeholder"},
-  {title: "No Man's Sky", description: "Disappointment", published_on: DateTime.current,
-    avg_rating: 1.6, cover: "placeholder"}])
+User.create!([{username: "Bjergsen", email: "a", password: "password"},
+{username: "Kibler", email: "a", password: "password"},
+{username: "GrinningGoat", email: "a", password: "password"},
+{username: "Savjz", email: "a", password: "password"},
+{username: "BeagleRush", email: "a", password: "password"},
+{username: "JoeMiller", email: "a", password: "password"},
+{username: "Boxer", email: "a", password: "password"},
+{username: "Grubby", email: "a", password: "password"},
+{username: "TrollMaster", email: "a", password: "password"},
+{username: "XxDragonxX", email: "a", password: "password"},
+{username: "oXXathenaXXo", email: "a", password: "password"},
+{username: "DankLord", email: "a", password: "password"},
+{username: "KushKommander", email: "a", password: "password"},
+{username: "Memester", email: "a", password: "password"},
+{username: "Voldrak", email: "a", password: "password"},
+{username: "Synoche", email: "a", password: "password"},
+{username: "360NoScope", email: "a", password: "password"},
+{username: "Vargas", email: "a", password: "password"},
+{username: "CANTTRUSTHILLARY", email: "a", password: "password"},
+{username: "Unidan", email: "a", password: "password"},
+{username: "DoubleLift", email: "a", password: "password"},
+{username: "NoobCrusher", email: "a", password: "password"}])
+
+games_no = Game.all.length
+users_no = User.all.length
 
 libraries = []
 User.all.each do |user|
@@ -64,9 +104,9 @@ Library.create!(libraries)
 
 links = []
 
-(1..5).each do |game_id|
-  (1..14).each do |user_no|
-    links << {game_id: game_id, library_id: user_no * 3 - rand(3)}
+(1..games_no).each do |game_id|
+  (1..users_no).each do |user_no|
+    links << {game_id: game_id, library_id: user_no * 3 - rand(3)} if rand < 0.2
   end
 end
 
@@ -105,11 +145,13 @@ title_array = ["sweet game", "what a disappointment!", "Riot did it better",
 "0 stars", "10/10 would play again", "elbows pointy, would not play"]
 
 reviews = []
-(1...14).each do |user|
-  reviews << {user_id: user, game_id: 1 + rand(5), body: review_bodies.sample, title: title_array.sample}
+User.all.each do |user|
+  user_id = user.id
+  user.libraries.first.games.each do |game|
+    reviews << {user_id: user_id, game_id: game.id,
+      body: review_bodies.sample, title: title_array.sample}
+  end
 end
 
-Review.create!(reviews)
-    # "6PwCgMNcYumsh9RuphT0EtapJ2Khp1XEa01jsna6rpjcuoGGNL"
 
-    # GiantBomb 5d89fc0c90da501c4033686e21b3bea624fa6a8a
+Review.create!(reviews)

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import gamesIndex from './games_index';
-import {getAllGames} from '../../actions/game_actions';
+import {getAllGames, getGame} from '../../actions/game_actions';
 
 
 const mapStateToProps = state => ({
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllGames: () => dispatch(getAllGames())
+  getAllGames: () => dispatch(getAllGames()),
+  getGame: (gameId) => dispatch(getGame(gameId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(gamesIndex);

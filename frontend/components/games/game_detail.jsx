@@ -51,6 +51,10 @@ class GameDetail extends React.Component {
     let newClass = "button hidden vert-center";
     let editClass = "button hidden vert-center";
     let game = this.props.games;
+
+    if (game[this.props.params.id]) {
+      game = game[this.props.params.id]
+    }
     let ownReviewKey = null;
     if (this.props.currentUser) {
       ownReviewKey = _.findKey(this.props.reviews, {username: this.props.currentUser.username});
@@ -62,8 +66,10 @@ class GameDetail extends React.Component {
     }
 
     if (!game) {
-      game = {img: "", title: "", description: "", avg_rating: "", published_on: "", libraries: []};
+      game = {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []};
     }
+
+    // debugger;
 
     let libList = Object.keys(this.props.libraries).map((key) => (
       <li key={`library-${key}`} onClick={this.handleAdd(key)}>
@@ -87,7 +93,7 @@ class GameDetail extends React.Component {
     return(
       <div className="game-detail">
         <section className="game-sidebar">
-          <img src="http://vignette3.wikia.nocookie.net/wowwiki/images/7/75/Captain_Placeholder.jpg/revision/latest?cb=20070324064719"/>
+          <img src={game.cover}/>
           <span className="button" onClick={this.handleIndex}>
             Back To Index
           </span>
@@ -106,7 +112,7 @@ class GameDetail extends React.Component {
             <div className='summary'>
               <ul>
                 <li><h3>{game.title}</h3></li>
-                <li>Released On: {game.published_on}</li>
+                <li>Released On: {game.release_date}</li>
                 <li>Average Rating:  {game.avg_rating}</li>
               </ul>
 
@@ -121,7 +127,7 @@ class GameDetail extends React.Component {
             <section className="large-block">
               <h4>Description:</h4>
               <p>
-                "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                {game.description}
               </p>
               <div className="bottom-bar">
                 <ul>
@@ -165,7 +171,7 @@ class GameDetail extends React.Component {
     return(
       <div className="game-detail">
         <section className="game-sidebar">
-          <img src="http://vignette3.wikia.nocookie.net/wowwiki/images/7/75/Captain_Placeholder.jpg/revision/latest?cb=20070324064719"/>
+          <img src={game.cover}/>
           <span className="button" onClick={this.handleIndex}>
             Back To Index
           </span>
@@ -175,14 +181,14 @@ class GameDetail extends React.Component {
             <div className='summary'>
               <ul>
                 <li><h3>{game.title}</h3></li>
-                <li>Released On: {game.published_on}</li>
+                <li>Released On: {game.release_date}</li>
                 <li>Average Rating:  {game.avg_rating}</li>
               </ul>
             </div>
             <section className="large-block">
               <h4>Description:</h4>
               <p>
-                "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                {game.description}
               </p>
             </section>
           </div>

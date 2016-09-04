@@ -10,7 +10,12 @@ class GamesIndex extends React.Component {
   render(){
     let games = this.props.games;
     let gameDex = Object.keys(games).map((key) => {
-      return(<GamesIndexItem game={games[key]} gameId={key} key={`game-${key}`}/>);
+      return(<GamesIndexItem
+        game={games[key]}
+        gameId={key}
+        key={`game-${key}`}
+        getGame = {this.props.getGame}
+        cover={games[key].cover}/>);
     });
     return(
       <ul className="index">

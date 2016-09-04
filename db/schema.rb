@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20160902044124) do
 
   create_table "games", force: :cascade do |t|
     t.string   "title",        null: false
-    t.text     "description",  null: false
-    t.datetime "published_on", null: false
+    t.text     "description",  default: "Description not found"
+    t.string   "release_date", null: false
     t.float    "avg_rating",   null: false
-    t.text     "cover",        null: false
+    t.string   "platform",     null: false
+    t.string   "cover",        null: false
+
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

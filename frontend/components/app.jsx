@@ -12,6 +12,7 @@ class App extends React.Component {
     this.handleHome = this.handleHome.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   handleLogout(e) {
@@ -34,14 +35,17 @@ class App extends React.Component {
     document.getElementById('signUp').classList.toggle('hidden');
   }
 
+  handleGuest(e) {
+    e.preventDefault();
+    this.props.login({username: "SidMeier", password: "civilization"});
+  }
+
   render(){
     let logoutClass = "button vert-center";
-    let signUpClass = "button vert-center";
-    let loginClass = "button vert-center";
+    let guestClass = "button vert-center";
     let libClass = "";
     if (this.props.currentUser) {
-      loginClass += " hidden";
-      signUpClass += " hidden";
+      guestClass += " hidden";
     } else {
       logoutClass += " hidden";
       libClass += "hidden";
@@ -63,13 +67,18 @@ class App extends React.Component {
           </section>
 
           <section className="buttons">
+
+            <p className={guestClass} onClick={this.handleGuest}>
+              Guest Log In
+            </p>
+
             <p className={logoutClass} onClick={this.handleLogout}>
               Log Out
             </p>
-            <p className={loginClass} onClick={this.handleLogin}>
+            <p className={guestClass} onClick={this.handleLogin}>
               Log In
             </p>
-            <p className={signUpClass} onClick={this.handleSignUp}>
+            <p className={guestClass} onClick={this.handleSignUp}>
               Sign Up
             </p>
           </section>

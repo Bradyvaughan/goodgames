@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  validates :title, :cover, :published_on, :avg_rating, presence: true
+  validates :title, :release_date, :platform, :avg_rating, :cover, presence: true
 
   has_many :library_links
   has_many :reviews
