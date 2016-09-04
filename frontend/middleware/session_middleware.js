@@ -14,7 +14,8 @@ export const SessionMiddleware = store => next => action => {
     case "LOGIN":
       success = (data) => {
         store.dispatch(receiveCurrentUser(data));
-        document.getElementById('login').classList.toggle('hidden');
+        $("#login").addClass('hidden');
+        $("#signUp").addClass('hidden');
       };
       error = response => store.dispatch(receiveErrors(response.responseJSON));
       login({user: action.user}, success, error);

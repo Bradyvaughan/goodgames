@@ -28,11 +28,13 @@ class App extends React.Component {
   handleLogin(e) {
     e.preventDefault();
     document.getElementById('login').classList.toggle('hidden');
+    $("#signUp").addClass('hidden');
   }
 
   handleSignUp(e) {
     e.preventDefault();
     document.getElementById('signUp').classList.toggle('hidden');
+    $("#login").addClass('hidden');
   }
 
   handleGuest(e) {
@@ -71,7 +73,6 @@ class App extends React.Component {
             <p className={guestClass} onClick={this.handleGuest}>
               Guest Log In
             </p>
-
             <p className={logoutClass} onClick={this.handleLogout}>
               Log Out
             </p>

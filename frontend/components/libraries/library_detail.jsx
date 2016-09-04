@@ -26,7 +26,8 @@ class LibraryDetail extends React.Component {
       return(<li key={`{li-${key}}`}>
         <GamesIndexItem
         game={games[key]}
-        gameId={key}/>
+        gameId={key}
+        cover={games[key].cover}/>
       <span className="icon" onClick={this.handleDelete(linkId, this.props.params.libraryId)}>x</span>
       </li>);
     });
