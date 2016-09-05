@@ -10,7 +10,6 @@
 
 require 'nokogiri'
 require 'net/http'
-require 'byebug'
 
 names = %w(starcraft warcraft diablo league duty mario zelda metriod
 xcom civilization halo tetris minecraft theft scrolls battlefield
