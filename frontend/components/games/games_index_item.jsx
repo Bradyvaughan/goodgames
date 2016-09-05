@@ -10,6 +10,7 @@ class GamesIndexItem extends React.Component {
 
   handleClick(){
     hashHistory.push(`/games/${this.props.gameId}`);
+    document.scrollTop = 0;
     this.props.getGame(this.props.gameId);
   }
 

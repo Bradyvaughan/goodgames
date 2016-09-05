@@ -63,6 +63,7 @@ body {
   z-index: 9999;
   background: #eee;
   opacity: .9;
+  position: absolute;
 }
 
 .side-list {
@@ -269,7 +270,7 @@ nav li {
 }
 
 nav li:hover {
-  background-color: #44f;
+  background-color: #a00;
   color: white;
 }
 
@@ -296,7 +297,7 @@ nav label {
 }
 
 .button:hover {
-  background-color: #44f;
+  background-color: #a00;
   color: white;
 }
 
@@ -451,7 +452,7 @@ nav label {
 }
 
 .bottom-bar a {
-  color: #44f;
+  color: #a00;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -484,7 +485,7 @@ nav label {
 
 
 .home-sidebar li {
-  color: #44f;
+  color: #a00;
   text-decoration: underline;
   padding-left: 10px;
   padding-bottom: 5px;

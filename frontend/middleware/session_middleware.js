@@ -1,8 +1,9 @@
 import {receiveCurrentUser, receiveLogInErrors, receiveSignUpErrors } from '../actions/session_actions';
-import {createLibrary} from '../actions/library_actions';
+import {createLibrary, getAllLibraries} from '../actions/library_actions';
 import {hashHistory} from 'react-router';
 
 import { signUp, login, logout } from '../util/api_util/session_util';
+import { getGamesByUser } from '../actions/game_actions';
 
 
 
@@ -19,6 +20,9 @@ export const SessionMiddleware = store => next => action => {
         $("#login").addClass('hidden');
         $("#signUp").addClass('hidden');
         store.dispatch(receiveLogInErrors([]));
+        hashHistory.push(window.location.hash);
+        store.dispatch(getAllLibraries(data.id));
+        store.dispatch(getGamesByUser(data.id));
       };
       login({user: action.user}, success, error);
       return next(action);

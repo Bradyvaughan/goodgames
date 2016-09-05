@@ -7,10 +7,8 @@ class LibraryIndex extends React.Component {
     let currentId;
     if (this.props.currentUser) {
       currentId = this.props.currentUser.id;
-    } else {
-      currentId = 0;
+      this.props.getAllLibraries(currentId);
     }
-    this.props.getAllLibraries(currentId);
   }
 
   render() {
