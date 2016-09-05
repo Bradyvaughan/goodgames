@@ -10,7 +10,9 @@ class LibraryForm extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.createLibrary(this.props.currentId, this.state);
+    if (this.props.currentUser) {
+      this.props.createLibrary(this.props.currentUser.id, this.state);
+    }
     this.setState({name: ""});
   }
 

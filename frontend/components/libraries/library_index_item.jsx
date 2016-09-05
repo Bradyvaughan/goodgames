@@ -25,7 +25,7 @@ class LibraryIndexItem extends React.Component {
   render () {
     return (
       <li className="lib-item">
-        <span onClick={this.handleClick}>{this.props.library.name}</span>
+        <p onClick={this.handleClick}>{this.props.library.name}</p>
         <span className='icon' onClick={this.handleDelete}>x</span>
       </li>
     );

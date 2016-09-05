@@ -13,6 +13,11 @@ class Api::GamesController < ApplicationController
     @games = Game.all
   end
 
+  def user_index
+    @games = User.find_by_id(params[:user_id]).games
+    render :index
+  end
+
   def show
     @game = Game.find_by_id(params[:id])
     if @game

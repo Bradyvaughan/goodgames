@@ -189,6 +189,7 @@ nav ul {
   flex-direction: column;
   display: none;
   position: absolute;
+  /*top: 36px;*/
 }
 
 .lib-dropdown:hover .lib-index {
@@ -196,11 +197,21 @@ nav ul {
   z-index: 9999;
 }
 
-.lib-item {
-  padding: 10px;
+.lib-dropdown .button {
+  margin-left: 10px;
+}
+
+nav .lib-item {
+  padding: 2px;
   background-color: #eee;
   opacity: .9;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
 
+nav li p {
+  height: auto;
+  width: 200px;
 }
 
 
@@ -210,7 +221,7 @@ nav {
 
 nav li {
   display: flex;
-  height: 100%;
+  height: auto;
   padding-left: 10px;
   padding-right: 10px;
   cursor: pointer;

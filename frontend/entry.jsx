@@ -15,7 +15,8 @@ import { specCreateLink } from './util/api_util/library_link_util';
 
 document.addEventListener("DOMContentLoaded", () =>{
   let preloadedState = {session: {currentUser: null, logInErrors: [], signUpErrors: []},
-    games: {games: {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []}, errors: []}};
+    games: {games: {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []}, errors: []},
+    libraries: {libraries: {}, errors: []}};
   if (window.currentUser) {
     preloadedState.session.currentUser = window.currentUser;
   }

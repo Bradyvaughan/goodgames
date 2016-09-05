@@ -3,6 +3,7 @@ import LoginContainer from './forms/login_container';
 import SignUpContainer from './forms/sign_up_container';
 import { hashHistory } from 'react-router';
 import LibraryIndexContainer from './libraries/library_index_container';
+import LibraryFormContainer from './forms/library_form_container';
 
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
+    this.handleNewLib = this.handleNewLib.bind(this);
   }
 
   handleLogout(e) {
@@ -23,7 +25,7 @@ class App extends React.Component {
 
   handleHome(e) {
     e.preventDefault();
-    hashHistory.push('/home');
+    hashHistory.push('/');
   }
 
   handleLogin(e) {
@@ -41,6 +43,11 @@ class App extends React.Component {
   handleGuest(e) {
     e.preventDefault();
     this.props.login({username: "SidMeier", password: "civilization"});
+  }
+
+  handleNewLib(e) {
+    e.preventDefault();
+    document.querySelector('#new-lib').classList.toggle('hidden');
   }
 
   render(){
@@ -63,6 +70,12 @@ class App extends React.Component {
             <div className={libClass}>
               <span className="vert-center">My Libraries</span>
               <LibraryIndexContainer />
+            </div>
+            <div className={libClass}>
+              <p className="button" onClick={this.handleNewLib}>
+                Add a Library
+              </p>
+              <LibraryFormContainer />
             </div>
             <p className="search-bar">
               <label className="vert-center">Search:</label>

@@ -33,6 +33,14 @@ export const getAllGames = (success, error) => {
   });
 };
 
+export const getGamesByUser = (userId, success, error) => {
+  $.ajax({
+    url: `api/users/${userId}/games`,
+    success,
+    error
+  });
+};
+
 export const updateGame = (id, data, success, error) => {
   $.ajax({
     type: "PATCH",

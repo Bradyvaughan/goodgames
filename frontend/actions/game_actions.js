@@ -36,3 +36,8 @@ export const updateGame = (gameId, game) => ({
   gameId,
   game
 });
+
+export const getGamesByUser = (userId) => ({
+  type: "GET_GAMES_BY_USER",
+  userId
+});

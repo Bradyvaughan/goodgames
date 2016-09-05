@@ -1,7 +1,7 @@
 import {receiveErrors, receiveAllGames, receiveGame }
   from '../actions/game_actions';
 
-import { getAllGames, getGame, createGame, deleteGame, updateGame }
+import { getAllGames, getGame, createGame, deleteGame, updateGame, getGamesByUser }
   from '../util/api_util/game_util';
 
 export const GameMiddleware = ({state, dispatch}) => next => action => {
@@ -11,6 +11,10 @@ export const GameMiddleware = ({state, dispatch}) => next => action => {
     case "GET_ALL_GAMES":
       success = (data) => dispatch(receiveAllGames(data));
       getAllGames(success, error);
+      return next(action);
+    case "GET_GAMES_BY_USER":
+      success = (data) => dispatch(receiveAllGames(data));
+      getGamesByUser(action.userId, success, error);
       return next(action);
     case "GET_GAME":
       success = (data) => dispatch(receiveGame(data));
