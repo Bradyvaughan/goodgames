@@ -100,7 +100,9 @@ class App extends React.Component {
         <LoginContainer />
         <SignUpContainer />
         </nav>
-        {this.props.children}
+        <div className="children">
+          {this.props.children}
+        </div>
       </div>
     );
   }

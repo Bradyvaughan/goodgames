@@ -111,23 +111,58 @@ body {
 
 /************************GamesIndexItems*****************************/
 
-.game-item {
-  background-color: #ccc;
+.home {
   display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.index {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.game-item {
+  width: 18vw;
+  padding: 1vw;
+}
+.game-item-interior {
+  height: 25vw;
+  /*cursor: pointer;*/
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin: 5px;
-  border: 1px solid #000;
-  border-radius: 7px;
-  cursor: pointer;
 }
 
 .game-item img {
-  height: 50px;
-  width: auto;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
 }
 
-.game-item:hover {
-  background-color: #eee;
+.game-item-interior:hover {
+}
+
+.game-item img:hover + .game-sum {
+  color: #a00;
+}
+
+.game-item .title {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.game-item .plat-rate {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.game-sum:hover {
+  color: #a00;
 }
 
 .flex {
@@ -142,8 +177,15 @@ body {
 
 .header nav {
   position: fixed;
+  top: 0;
   z-index: 2;
-  opacity: .9;
+  opacity: 1;
+  background-color: black;
+}
+
+.children {
+  width: 100vw;
+  top: 40px;
 }
 
 .logo {
@@ -151,29 +193,27 @@ body {
   font-size: 36px;
   color: purple;
   font-family: 'Lobster', cursive;
-  margin-right: 40px;
+  margin-right: 60px;
   margin-left: 10px;
   cursor: pointer;
 }
 
 
 .logo .wp {
-  align-self: flex-end;
+  top: 7px;
   color: red;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  width: 900px;
-  height: 50px;
+  width: 100%;
+  height: 60px;
   font-family: sans-serif;
   left: 0;
   right: 0;
   margin: 0 auto;
-
-  border-radius: 5px;
-  border: 1px solid #666;
+  color: #ccc;
 }
 
 nav section, nav ul {
@@ -266,6 +306,7 @@ nav label {
   padding-top: 20px;
   width: 100%;
   margin: 0 auto;
+  left: 5vw;
 }
 
 /************************GameDetail**********************/

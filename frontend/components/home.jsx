@@ -1,7 +1,5 @@
 import React from 'react';
-import LibraryIndexContainer from './libraries/library_index_container';
-import LibraryFormContainer from './forms/library_form_container';
-import GamesIndexContainer from './games/games_index_container';
+import GamesIndexItem from './games/games_index_item';
 
 class Home extends React.Component {
 
@@ -12,9 +10,21 @@ class Home extends React.Component {
   }
 
   render() {
+    let games = this.props.games;
+    if (!games) {
+      games = {};
+    }
+    let gameDex = Object.keys(games).map((key) => {
+      return(<GamesIndexItem
+        game={games[key]}
+        gameId={key}
+        key={`game-${key}`}
+        getGame = {this.props.getGame}
+        cover={games[key].cover}/>);
+    });
     return(
       <div className="home" >
-        <GamesIndexContainer />
+        {gameDex}
       </div>
     );
   }
