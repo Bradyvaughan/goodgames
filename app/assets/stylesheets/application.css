@@ -86,8 +86,9 @@ body {
 }
 
 .big-form {
-  width: 250px;
-  position: absolute;
+  width: 18vw;
+  left: 82vw;
+  top: 60px;
 }
 
 .big-form button {

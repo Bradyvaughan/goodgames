@@ -11,7 +11,7 @@ import LibraryDetailContainer from './libraries/library_detail_container';
 
 export const Root = ({store}) => (
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
       <Route path="/" component={ AppContainer }>
         <IndexRoute component={HomeContainer} />
         <Route path="/games" component={ GamesIndexContainer } />
