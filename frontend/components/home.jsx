@@ -18,17 +18,7 @@ class Home extends React.Component {
   render() {
     return(
       <div className="home" >
-        <div className="home-sidebar">
-          <h1>Libraries</h1>
-          <LibraryIndexContainer />
-          <p className="button" id="add-lib" onClick={this.handleClick}>
-            Add Library
-          </p>
-          <LibraryFormContainer />
-        </div>
-        <div className="home-body">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }

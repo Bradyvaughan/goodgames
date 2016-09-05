@@ -2,6 +2,7 @@ import React from 'react';
 import LoginContainer from './forms/login_container';
 import SignUpContainer from './forms/sign_up_container';
 import { hashHistory } from 'react-router';
+import LibraryIndexContainer from './libraries/library_index_container';
 
 
 class App extends React.Component {
@@ -45,29 +46,29 @@ class App extends React.Component {
   render(){
     let logoutClass = "button vert-center";
     let guestClass = "button vert-center";
-    let libClass = "";
+    let libClass = "lib-dropdown vert-center";
     if (this.props.currentUser) {
       guestClass += " hidden";
     } else {
       logoutClass += " hidden";
-      libClass += "hidden";
+      libClass += " hidden";
     }
     return(
       <div className='header'>
         <nav>
           <section>
-            <section className="logo">
+            <section className="logo" onClick={this.handleHome}>
               <span className="gg">gg</span><span className="wp">wp</span>
             </section>
-            <ul className={libClass}>
-              <li onClick={this.handleHome}><span className="vert-center">My Libraries</span></li>
-            </ul>
+            <div className={libClass}>
+              <span className="vert-center">My Libraries</span>
+              <LibraryIndexContainer />
+            </div>
             <p className="search-bar">
               <label className="vert-center">Search:</label>
               <input className="vert-center" type="text"/>
             </p>
           </section>
-
           <section className="buttons">
 
             <p className={guestClass} onClick={this.handleGuest}>

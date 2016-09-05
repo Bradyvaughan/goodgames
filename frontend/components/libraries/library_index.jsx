@@ -3,9 +3,14 @@ import LibraryIndexItem from './library_index_item';
 import { hashHistory } from 'react-router';
 
 class LibraryIndex extends React.Component {
-
   componentDidMount() {
-    this.props.getAllLibraries(this.props.currentId);
+    let currentId;
+    if (this.props.currentUser) {
+      currentId = this.props.currentUser.id;
+    } else {
+      currentId = 0;
+    }
+    this.props.getAllLibraries(currentId);
   }
 
   render() {

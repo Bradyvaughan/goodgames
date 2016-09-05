@@ -140,6 +140,12 @@ body {
 
 /********************HEADBAR STYLES******************************/
 
+.header nav {
+  position: fixed;
+  z-index: 2;
+  opacity: .9;
+}
+
 .logo {
   display: flex;
   font-size: 36px;
@@ -147,6 +153,7 @@ body {
   font-family: 'Lobster', cursive;
   margin-right: 40px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 
@@ -160,8 +167,10 @@ nav {
   justify-content: space-between;
   width: 900px;
   height: 50px;
-  margin: 0 auto;
   font-family: sans-serif;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 
   border-radius: 5px;
   border: 1px solid #666;
@@ -175,6 +184,25 @@ nav section, nav ul {
 nav ul {
   border-left: 1px solid #666;
 }
+
+.lib-index {
+  flex-direction: column;
+  display: none;
+  position: absolute;
+}
+
+.lib-dropdown:hover .lib-index {
+  display: block;
+  z-index: 9999;
+}
+
+.lib-item {
+  padding: 10px;
+  background-color: #eee;
+  opacity: .9;
+
+}
+
 
 nav {
   background-color: lightblue;
@@ -383,7 +411,7 @@ nav label {
 
 /***************************HOME***********************************/
 
-.home {
+/*.home {
   display: flex;
   justify-content: space-between;
   width: 900px;
@@ -445,13 +473,15 @@ nav label {
 
 
 
-.hidden {
-  display: none;
-}
+
 
 
 .review-list {
   font-size: 14px;
+}*/
+
+.hidden {
+  display: none;
 }
 
 .inline-form {

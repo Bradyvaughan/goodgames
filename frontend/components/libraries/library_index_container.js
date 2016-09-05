@@ -5,7 +5,7 @@ import { getAllLibraries, getLibrary, deleteLibrary }
 
 const mapStateToProps = state => ({
   libraries: state.libraries.libraries,
-  currentId: state.session.currentUser.id
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
