@@ -1,5 +1,6 @@
-import {receiveCurrentUser, receiveErrors } from '../actions/session_actions';
+import {receiveCurrentUser, receiveLogInErrors, receiveSignUpErrors } from '../actions/session_actions';
 import {createLibrary} from '../actions/library_actions';
+import {hashHistory} from 'react-router';
 
 import { signUp, login, logout } from '../util/api_util/session_util';
 
@@ -12,29 +13,34 @@ export const SessionMiddleware = store => next => action => {
   let error;
   switch (action.type) {
     case "LOGIN":
+    error = response => store.dispatch(receiveLogInErrors(response.responseJSON));
       success = (data) => {
         store.dispatch(receiveCurrentUser(data));
         $("#login").addClass('hidden');
         $("#signUp").addClass('hidden');
+        store.dispatch(receiveLogInErrors([]));
       };
-      error = response => store.dispatch(receiveErrors(response.responseJSON));
       login({user: action.user}, success, error);
       return next(action);
     case "SIGN_UP":
+    error = response => store.dispatch(receiveSignUpErrors(response.responseJSON));
       success = (data) => {
         store.dispatch(receiveCurrentUser(data));
         store.dispatch(createLibrary(data.id, {name: "Played"}));
         store.dispatch(createLibrary(data.id, {name: "Currently Playing"}));
         store.dispatch(createLibrary(data.id, {name: "Wanting to Play"}));
         document.getElementById('signUp').classList.toggle('hidden');
-        // store.dispatch(receiveErrors({errors: []}));
+        store.dispatch(receiveSignUpErrors([]));
       };
-      error = response => store.dispatch(receiveErrors(response.responseJSON));
       signUp({user: action.user}, success, error);
       return next(action);
     case "LOGOUT":
-      success = () => next(action);
-      error = response => store.dispatch(receiveErrors(response.responseJSON));
+      success = () => {
+        if (window.location.hash.match(new RegExp("/home/"))) {
+          hashHistory.push("/");
+        }
+        next(action);
+      };
       logout(success, error);
       break;
     default:

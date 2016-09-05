@@ -16,7 +16,11 @@ export const receiveCurrentUser = (user) => ({
   user
 });
 
-export const receiveErrors = (errors) => ({
-  type: "RECEIVE_ERRORS",
+export const receiveSignUpErrors = (errors) => ({
+  type: "RECEIVE_SIGN_UP_ERRORS",
+  errors
+});
+export const receiveLogInErrors = (errors) => ({
+  type: "RECEIVE_LOG_IN_ERRORS",
   errors
 });

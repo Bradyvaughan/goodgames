@@ -11,20 +11,27 @@ class NewReviewForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.createReview(this.props.gameId, this.state);
-    this.setState({title: "", body: ""});
-    document.querySelector('#add-review').classList.toggle('hidden');
-    document.querySelector('#new-review').classList.toggle('hidden');
-    document.querySelector('#title').value = "";
-    document.querySelector('#body').value = "";
   }
 
   linkState(key) {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
+  renderErrors() {
+    let errors = this.props.errors.map((error, i) => (
+      <li key={`error-${i}`}>{error}</li>
+    ));
+    return(
+      <ul className="side-list">
+        {errors}
+      </ul>
+    );
+  }
+
   render () {
     return(
-      <div className="inline-form hidden form" id="new-review">
+      <div className="inline-form form hidden" id="new-review">
+        {this.renderErrors()}
         <label htmlFor="title">title</label>
         <input type="text" id="title"
           onChange={this.linkState("title")}/>

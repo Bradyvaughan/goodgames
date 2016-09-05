@@ -12,6 +12,9 @@ class Login extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.login(this.state);
+    if (window.location.hash.match(new RegExp("games\/[0-9]"))) {
+      this.props.getGame(this.props.params.id);
+    }
   }
 
   renderErrors() {

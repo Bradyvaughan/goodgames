@@ -14,7 +14,7 @@ import { specCreateLink } from './util/api_util/library_link_util';
 
 
 document.addEventListener("DOMContentLoaded", () =>{
-  let preloadedState = {session: {currentUser: null, errors: []},
+  let preloadedState = {session: {currentUser: null, logInErrors: [], signUpErrors: []},
     games: {games: {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []}, errors: []}};
   if (window.currentUser) {
     preloadedState.session.currentUser = window.currentUser;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.getReview = getReview;
   window.createReview = createReview;
   window.deleteReview = deleteReview;
-  window.updateReview = updateReview
+  window.updateReview = updateReview;
 
 
   ReactDOM.render(<Root store={store}/>,document.getElementById("root"));

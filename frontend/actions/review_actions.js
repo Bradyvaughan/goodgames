@@ -23,12 +23,18 @@ export const deleteReview = (gameId, reviewId) => ({
 
 export const updateReview = (gameId, reviewId, data) => ({
   type: "UPDATE_REVIEW",
+  gameId,
   reviewId,
   data
 });
 
-export const receiveErrors = (errors) => ({
-  type: "RECEIVE_ERRORS",
+export const receiveEditErrors = (errors) => ({
+  type: "RECEIVE_EDIT_ERRORS",
+  errors
+});
+
+export const receiveNewErrors = (errors) => ({
+  type: "RECEIVE_NEW_ERRORS",
   errors
 });
 

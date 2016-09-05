@@ -3,7 +3,8 @@ import LibraryForm from './library_form';
 import { createLibrary, getAllLibraries } from '../../actions/library_actions';
 
 const mapStateToProps = state => ({
-  currentId: state.session.currentUser.id
+  currentId: state.session.currentUser.id,
+  errors: state.libraries.errors
 });
 
 const mapDispatchToProps = dispatch => ({

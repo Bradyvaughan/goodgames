@@ -32,7 +32,7 @@ class GameDetail extends React.Component {
   handleNewReview(e) {
     e.preventDefault();
     document.querySelector('#add-review').classList.toggle('hidden');
-    document.querySelector('#new-review').classList.toggle('hidden');
+    $('#new-review').removeClass('hidden');
   }
 
   handleEditReview(e) {
@@ -43,7 +43,9 @@ class GameDetail extends React.Component {
 
   componentDidMount() {
     this.props.getGame(this.props.params.id);
-    this.props.getAllLibraries(this.props.currentUser.id);
+    if (this.props.currentUser) {
+      this.props.getAllLibraries(this.props.currentUser.id);
+    }
     this.props.getAllReviews(this.props.params.id);
   }
 
@@ -53,7 +55,7 @@ class GameDetail extends React.Component {
     let game = this.props.games;
 
     if (game[this.props.params.id]) {
-      game = game[this.props.params.id]
+      game = game[this.props.params.id];
     }
     let ownReviewKey = null;
     if (this.props.currentUser) {
@@ -68,8 +70,6 @@ class GameDetail extends React.Component {
     if (!game) {
       game = {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []};
     }
-
-    // debugger;
 
     let libList = Object.keys(this.props.libraries).map((key) => (
       <li key={`library-${key}`} onClick={this.handleAdd(key)}>
@@ -145,6 +145,7 @@ class GameDetail extends React.Component {
                 <NewReviewForm
                   gameId={this.props.params.id}
                   createReview={this.props.createReview}
+                  errors={this.props.newErrors}
                 />
 
               <EditReviewForm
@@ -152,6 +153,7 @@ class GameDetail extends React.Component {
                   updateReview={this.props.updateReview}
                   reviewId={ownReviewKey}
                   review={this.props.reviews[ownReviewKey]}
+                  errors={this.props.editErrors}
                 />
 
               </div>

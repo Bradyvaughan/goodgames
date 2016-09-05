@@ -9,7 +9,9 @@ const mapStateToProps = state => ({
   games: state.games.games,
   currentUser: state.session.currentUser,
   libraries: state.libraries.libraries,
-  reviews: state.reviews.reviews
+  reviews: state.reviews.reviews,
+  editErrors: state.reviews.editErrors,
+  newErrors: state.reviews.newErrors
 });
 
 const mapDispatchToProps = dispatch => ({

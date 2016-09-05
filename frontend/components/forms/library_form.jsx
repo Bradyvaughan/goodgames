@@ -12,18 +12,27 @@ class LibraryForm extends React.Component {
     e.preventDefault();
     this.props.createLibrary(this.props.currentId, this.state);
     this.setState({name: ""});
-    document.querySelector('#add-lib').classList.toggle('hidden');
-    document.querySelector('#new-lib').classList.toggle('hidden');
-    document.querySelector('#name').value = "";
   }
 
   linkState(key) {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
+  renderErrors() {
+    let errors = this.props.errors.map((error, i) => (
+      <li key={`error-${i}`}>{error}</li>
+    ));
+    return(
+      <ul className="side-list">
+        {errors}
+      </ul>
+    );
+  }
+
   render () {
     return(
       <div className="inline-form hidden form" id="new-lib">
+        {this.renderErrors()}
         <div>
           <label htmlFor="name"></label>
           <input type="text" id="name"

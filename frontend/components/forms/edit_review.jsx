@@ -16,17 +16,27 @@ class EditReviewForm extends React.Component {
     e.preventDefault();
     this.props.updateReview(this.props.gameId, this.props.reviewId, this.state);
     this.setState({title: "", body: ""});
-    document.querySelector('#edit-review').classList.toggle('hidden');
-    document.querySelector('#change-review').classList.toggle('hidden');
   }
 
   linkState(key) {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
+  renderErrors() {
+    let errors = this.props.errors.map((error, i) => (
+      <li key={`error-${i}`}>{error}</li>
+    ));
+    return(
+      <ul className="side-list">
+        {errors}
+      </ul>
+    );
+  }
+
   render () {
     return(
       <div className="inline-form hidden form" id="change-review">
+        {this.renderErrors()}
         <label htmlFor="title">Title</label>
         <input type="text" id="title"
           onChange={this.linkState("title")}/>
