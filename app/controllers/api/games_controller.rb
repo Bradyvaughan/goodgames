@@ -10,7 +10,7 @@ class Api::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    @games = Game.page(2)
   end
 
   def user_index

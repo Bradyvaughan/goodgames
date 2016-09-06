@@ -63,7 +63,7 @@ class App extends React.Component {
     }
 
     let finalBit = this.props.children;
-    if (!this.props.currentUser) {
+    if (!this.props.currentUser && !window.location.hash.match(new RegExp("/games"))) {
       finalBit = <GamesIndexContainer/>;
     }
     return(

@@ -5,7 +5,7 @@ import {getAllLibraries}
 
 export const LibrariesMiddleware = ({state, dispatch}) => next => action => {
   let success;
-  let error = (response) => dispatch(receiveErrors(response));
+  let error = (response) => dispatch(receiveErrors(response.responseJSON));
   switch (action.type) {
     case "GET_ALL_LIBRARIES":
       success = (data) => dispatch(receiveAllLibraries(data));

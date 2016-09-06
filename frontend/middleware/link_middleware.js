@@ -15,7 +15,6 @@ export const LinkMiddleware = ({state, dispatch}) => next => action => {
       return next(action);
     case "SPEC_CREATE_LINK":
       success = (data) => {
-        debugger;
         if (window.location.hash.match(new RegExp("#/games/[0-9]"))) {
           dispatch(getGame(action.gameId));
         } else if (window.location.hash.match(new RegExp("#/games"))) {
