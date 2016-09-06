@@ -7,14 +7,15 @@ class GamesIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleClick(){
     hashHistory.push(`/games/${this.props.gameId}`);
   }
 
-  handleDelete(linkId, libraryId) {
-    return (() => (this.props.deleteLink(linkId, libraryId)));
+  handleDelete() {
+    this.props.deleteLink(this.props.gameId, this.props.libId);
   }
 
   render() {
@@ -22,23 +23,15 @@ class GamesIndexItem extends React.Component {
     if (this.props.libId) {
       x = "x";
     }
-
-    let desc = "";
-    if (this.props.game.description) {
-      desc = this.props.game.description.substring(0,200) + "...";
-    }
     return(
       <div className="game-item">
         <div className="game-item-interior">
           <div className="top-bar">
-            <PlayedStatusContainer
-              game={this.props.game}
-              gameId={this.props.gameId}
-              libId={this.props.libId}
-              />
-          <p className="x-but" onClick={this.handleDelete(this.props.linkId, this.props.libId)}>{x}</p>
+          <p className="x-but" onClick={this.handleDelete}>{x}</p>
           </div>
-          <img src={this.props.cover}  onClick={this.handleClick}/>
+          <figure>
+            <img src={this.props.cover}  onClick={this.handleClick}/>
+          </figure>
           <div className="game-sum">
             <p className="title"  onClick={this.handleClick}>{this.props.game.title}</p>
             <div className="plat-rate"  onClick={this.handleClick}>

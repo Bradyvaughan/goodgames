@@ -17,7 +17,7 @@ class PlayedStatus extends React.Component {
 
     let played = "Played?";
 
-    const libs = ["Currently Playing", "Played", "Wanting to Play"];
+    const libs = ["Currently Playing", "Played", "To Play"];
     if (this.props.game.libraries && this.props.currentUser) {
       this.props.game.libraries.forEach((library) => {
         if (libs.indexOf(library.name) > -1) {
@@ -30,7 +30,7 @@ class PlayedStatus extends React.Component {
           <ul className = "menu">
             <li onClick={this.addToLib("Played")}>Played</li>
             <li onClick={this.addToLib("Currently Playing")}>Currently Playing</li>
-            <li onClick={this.addToLib("Wanting to Play")}>Wanting to Play</li>
+            <li onClick={this.addToLib("To Play")}>To Play</li>
           </ul>
         </section>
       );

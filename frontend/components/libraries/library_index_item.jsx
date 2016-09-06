@@ -25,7 +25,7 @@ class LibraryIndexItem extends React.Component {
   render () {
     let name = this.props.library.name;
     let x = "x";
-    if (["Played", "Wanting to Play", "Currently Playing"].indexOf(name) > -1) {
+    if (["Played", "To Play", "Currently Playing"].indexOf(name) > -1) {
       x = null;
     }
     return (

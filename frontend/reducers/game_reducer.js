@@ -11,6 +11,9 @@ export const GameReducer = (
     case "RECEIVE_GAME":
       newState.games = action.data;
       return newState;
+    case "RECEIVE_SOME_GAMES":
+      merge(newState.games, action.data);
+      return newState;
     case "RECEIVE_ERRORS":
       newState.gameErrors = action.errors;
       return newState;

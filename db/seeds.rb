@@ -101,7 +101,7 @@ users_no = User.all.length
 libraries = []
 User.all.each do |user|
   libraries += [{name: "Played", user_id: user.id},
-    {name: "Wanting to Play", user_id: user.id},
+    {name: "To Play", user_id: user.id},
     {name: "Currently Playing", user_id: user.id}]
 end
 

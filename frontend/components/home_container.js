@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
   games: state.games.games
 });
 const mapDispatchToProps = dispatch => ({
-  getGamesByUser: userId => dispatch(getGamesByUser(userId))
+  getGamesByUser: (userId, page) => dispatch(getGamesByUser(userId, page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

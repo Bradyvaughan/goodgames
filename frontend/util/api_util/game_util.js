@@ -33,9 +33,25 @@ export const getAllGames = (success, error) => {
   });
 };
 
-export const getGamesByUser = (userId, success, error) => {
+export const getGamesByUser = (userId, page, success, error) => {
   $.ajax({
-    url: `api/users/${userId}/games`,
+    url: `api/users/${userId}/games/pages/${page}`,
+    success,
+    error
+  });
+};
+
+export const getGamesByPage = (page, success, error) => {
+  $.ajax({
+    url: `api/games/pages/${page}`,
+    success,
+    error
+  });
+};
+
+export const getGamesByLibrary = (libraryId, page, success, error) => {
+  $.ajax({
+    url: `api/libraries/${libraryId}/pages/${page}`,
     success,
     error
   });

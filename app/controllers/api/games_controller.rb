@@ -10,11 +10,22 @@ class Api::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.page(2)
+    @games = Game.all
   end
 
   def user_index
-    @games = User.find_by_id(params[:user_id]).games
+    @games = User.find_by_id(params[:user_id]).games.page(params[:page])
+    render :index
+  end
+
+  def page_index
+    @games = Game.page(params[:page])
+    render :index
+  end
+
+  def library_index
+    @library  = Library.find_by_id(params[:library_id])
+    @games = @library.games.page(params[:page])
     render :index
   end
 

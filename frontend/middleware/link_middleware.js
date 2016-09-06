@@ -22,14 +22,14 @@ export const LinkMiddleware = ({state, dispatch}) => next => action => {
         } else if (window.location.hash.match(new RegExp("#/home"))) {
           dispatch(getLibrary(action.libId));
         } else {
-          dispatch(getGamesByUser(action.userId));
+          dispatch(getGamesByUser(action.userId, 1));
         }
       };
       specCreateLink(action.userId, action.libraryName, action.gameId, success, error);
       return next(action);
     case "DELETE_LINK":
       success = () => (dispatch(getLibrary(action.libraryId)));
-      destroyLibraryLink(action.linkId, success, error);
+      destroyLibraryLink(action.gameId, action.libId, success, error);
       return next(action);
     default:
       return next(action);

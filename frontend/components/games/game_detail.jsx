@@ -68,7 +68,7 @@ class GameDetail extends React.Component {
 
     let libList = Object.keys(this.props.libraries).map((key) => {
       let name = this.props.libraries[key].name;
-      if (["Played", "Wanting to Play", "Currently Playing"].indexOf(name) === -1) {
+      if (["Played", "To Play", "Currently Playing"].indexOf(name) === -1) {
         return(
           <li key={`library-${key}`} onClick={this.handleAdd(key)}>
             {name}

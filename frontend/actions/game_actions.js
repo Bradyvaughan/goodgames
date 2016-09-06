@@ -6,6 +6,10 @@ export const receiveAllGames = (data) => ({
   type: "RECEIVE_ALL_GAMES",
   data
 });
+export const receiveSomeGames = (data) => ({
+  type: "RECEIVE_SOME_GAMES",
+  data
+});
 
 export const receiveGame = (data) => ({
   type: "RECEIVE_GAME",
@@ -37,7 +41,19 @@ export const updateGame = (gameId, game) => ({
   game
 });
 
-export const getGamesByUser = (userId) => ({
+export const getGamesByUser = (userId, page) => ({
   type: "GET_GAMES_BY_USER",
-  userId
+  userId,
+  page
+});
+
+export const getGamesByPage = (page) => ({
+  type: "GET_GAMES_BY_PAGE",
+  page
+});
+
+export const getGamesByLibrary = (libraryId, page) => ({
+  type: "GET_GAMES_BY_LIBRARY",
+  libraryId,
+  page
 });

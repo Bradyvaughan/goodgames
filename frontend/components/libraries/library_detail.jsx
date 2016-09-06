@@ -5,20 +5,34 @@ class LibraryDetail extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.handleDelete = this.handleDelete.bind(this);
+    this.state = {page: 1};
+    this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    this.props.getLibrary(this.props.params.libraryId);
+    this.props.getGamesByLibrary(this.props.params.libraryId, this.state.page);
+    window.addEventListener('scroll', _.throttle(this.handleScroll, 500));
+  }
+
+  handleScroll(e) {
+    let knownPos = window.scrollY;
+    if (knownPos > document.body.clientHeight - 2 * window.innerHeight) {
+      this.handleInfiniteLoad();
+    }
+  }
+
+  handleInfiniteLoad() {
+    this.setState({page: this.state.page + 1});
+    this.props.getGamesByLibrary(this.props.params.libraryId, this.state.page);
   }
 
   render(){
-    let games = this.props.library.games;
+    let games = this.props.games;
     if (!games) {
       games = {};
     }
     let gameDex = Object.keys(games).map((key) => {
-      let linkId = games[key].link_id;
       return(<li key={`{li-${key}}`}>
         <GamesIndexItem
         game={games[key]}

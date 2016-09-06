@@ -17,7 +17,7 @@
 
  html, head, body, header,
 nav, h1, a, ul, li, main,
-section, p, footer, small, h3, h4 {
+section, p, footer, small, h3, h4, figure {
   margin: 0;
   padding: 0;
   border: 0;
@@ -138,13 +138,16 @@ body {
   padding: 1vw;
 }
 .game-item-interior {
-  height: 27vw;
-  /*cursor: pointer;*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.game-item figure {
+  height: 25vw;
+  width: 100%;
+  display: flex;
+}
 
 .x-but {
   font-size: 30;
@@ -157,6 +160,7 @@ body {
   width: 100%;
   height: auto;
   cursor: pointer;
+  align-self: center;
 }
 
 .game-item-interior:hover {

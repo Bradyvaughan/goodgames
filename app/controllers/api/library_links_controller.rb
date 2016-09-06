@@ -2,7 +2,7 @@ class Api::LibraryLinksController < ApplicationController
 
   def create
 
-    triple = ["Played", "Currently Playing", "Wanting to Play"]
+    triple = ["Played", "Currently Playing", "To Play"]
 
     triple.map! do |lib_name|
       Library.find_by({user_id: params[:user_id], name: lib_name})
@@ -37,9 +37,18 @@ class Api::LibraryLinksController < ApplicationController
     end
   end
 
+  def spec_delete
+    @library_link = LibraryLink.find_by({game_id: params[:game_id], library_id: params[:library_id]})
+    if @library_link
+      @library_link.destroy
+    else
+      render(json: "Game not in library!", status: 404)
+    end
+  end
+
   def spec_create
 
-    triple = ["Played", "Currently Playing", "Wanting to Play"]
+    triple = ["Played", "Currently Playing", "To Play"]
 
     triple.map! do |lib_name|
       Library.find_by({user_id: params[:user_id], name: lib_name})

@@ -22,9 +22,9 @@ export const getAllLibraries = (userId, success, error) => {
     error
   });
 };
-export const getLibrary = (id, success, error) => {
+export const getLibrary = (libId, page, success, error) => {
   $.ajax({
-    url: `api/libraries/${id}`,
+    url: `api/libraries/${libId}/pages/${page}`,
     success,
     error
   });

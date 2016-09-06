@@ -9,10 +9,10 @@ export const createLibraryLink =
   });
 };
 
-export const destroyLibraryLink = (id, success, error) => {
+export const destroyLibraryLink = (gameId, libId, success, error) => {
   $.ajax({
     type: "DELETE",
-    url: `api/library_links/${id}`,
+    url: `api/libraries/${libId}/games/${gameId}`,
     success,
     error,
   });
