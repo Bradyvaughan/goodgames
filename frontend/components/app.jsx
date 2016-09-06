@@ -4,6 +4,7 @@ import SignUpContainer from './forms/sign_up_container';
 import { hashHistory } from 'react-router';
 import LibraryIndexContainer from './libraries/library_index_container';
 import LibraryFormContainer from './forms/library_form_container';
+import GamesIndexContainer from './games/games_index_container';
 
 
 class App extends React.Component {
@@ -60,6 +61,11 @@ class App extends React.Component {
       logoutClass += " hidden";
       libClass += " hidden";
     }
+
+    let finalBit = this.props.children;
+    if (!this.props.currentUser) {
+      finalBit = <GamesIndexContainer/>;
+    }
     return(
       <div className='header'>
         <nav>
@@ -101,7 +107,7 @@ class App extends React.Component {
         <SignUpContainer />
         </nav>
         <div className="children">
-          {this.props.children}
+          {finalBit}
         </div>
       </div>
     );

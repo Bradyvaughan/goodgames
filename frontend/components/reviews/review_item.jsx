@@ -7,12 +7,14 @@ class ReviewItem extends React.Component {
   render() {
 
     return(
-      <div>
-        <ul>
-          <li>{this.props.review.username}</li>
-          <li>{this.props.review.title}</li>
-          <li>{this.props.review.body}</li>
-        </ul>
+      <div className="review">
+        <section className="review-header">
+          <p className="r-title">{this.props.review.title}</p>
+          <p className="u-name">{this.props.review.username}</p>
+        </section>
+        <section className="review-body">
+          <p>{this.props.review.body}</p>
+        </section>
       </div>
     );
   }

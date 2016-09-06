@@ -87,6 +87,12 @@ User.create!([{username: "Bjergsen", email: "a", password: "password"},
 {username: "CANTTRUSTHILLARY", email: "a", password: "password"},
 {username: "Unidan", email: "a", password: "password"},
 {username: "DoubleLift", email: "a", password: "password"},
+{username: "OgrimsHammer", email: "a", password: "password"},
+{username: "ThisIsJimmy", email: "a", password: "password"},
+{username: "Swagnaros", email: "a", password: "password"},
+{username: "TrumpsHairpiece", email: "a", password: "password"},
+{username: "sTRUMPet", email: "a", password: "password"},
+{username: "SexyElf", email: "a", password: "password"},
 {username: "NoobCrusher", email: "a", password: "password"}])
 
 games_no = Game.all.length
@@ -136,12 +142,27 @@ review_bodies = ["This game is an ambitious offering, but it falls
   "I love this game, but it's a shame that the multiplayer is full of
   13-year-olds that have held sexual congress with my mother.",
   "Fuck this fucking game.  Fuck.  I can't deal with it anymore.  It's
-  too goddamn hard.  I'm done.  I'm so done.  I can't even right now."]
+  too goddamn hard.  I'm done.  I'm so done.  I can't even right now.",
+  "Calling this game a kiddy-game for casual scrubs is simplistic, maybe,
+  but undeniably accurate.  I cannot believe how soft this entire
+  industry has gotten.  I remember when even having lives was a luxury.
+  Now, games are virtually impossible to lose.  There is no skill
+  involved at all when the game may be retried indefinitely.  Anyone
+  who has played the original x-com, or, hell, even the original classics
+  such as mario or megaman knows how rewarding a brutally difficult
+  experience can be.  It saddens me that the triple-A gaming industry
+  keeps vomitting out shitty, unlosable care-bear games to cater to
+  casual cowards.  You all make me sick.",
+  "Not even one solid waifu.  Awful.",
+  "Oh my god, guys.  I'm so goddamn tired of your memes.  Can you guys
+  just fucking stop already?  Jesus, I haven't read an original thought
+  since I've been on this site!"]
 
 
 title_array = ["sweet game", "what a disappointment!", "Riot did it better",
 "blizz, pls", "dlc needs work", "I can't believe I paid for this",
-"0 stars", "10/10 would play again", "elbows pointy, would not play"]
+"0 stars", "10/10 would play again", "elbows pointy, would not play",
+"Too Casual", "Community is full of tryhards", "Meh", "P2W garbage"]
 
 reviews = []
 User.all.each do |user|

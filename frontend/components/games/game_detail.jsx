@@ -83,12 +83,10 @@ class GameDetail extends React.Component {
 
     if (this.props.currentUser) {
     return(
+    <div className="det-body">
       <div className="game-detail">
         <section className="game-sidebar">
           <img src={game.cover}/>
-          <span className="button" onClick={this.handleIndex}>
-            Back To Index
-          </span>
           <PlayedStatusContainer
             game={game}
             gameId={this.props.params.id}
@@ -101,15 +99,21 @@ class GameDetail extends React.Component {
                 <li><h3>{game.title}</h3></li>
                 <li>Released On: {game.release_date}</li>
                 <li>Average Rating:  {game.avg_rating}</li>
+                <li>Platform: {game.platform}</li>
               </ul>
+              <div className="vert-center but-list">
+                <span className="button" onClick={this.handleIndex}>
+                  Back To Index
+                </span>
 
-              <section className="lib-list">
-                <div className="button">Add to Library
-                </div>
-                <ul className = "menu">
-                  {libList}
-                </ul>
+                <section className="lib-list">
+                  <div className="button">Add to Library
+                  </div>
+                  <ul className = "menu">
+                    {libList}
+                  </ul>
               </section>
+              </div>
             </div>
             <section className="large-block">
               <h4>Description:</h4>
@@ -149,12 +153,14 @@ class GameDetail extends React.Component {
 
           </div>
           <section className="review-list">
+            <p className="announcer">Community Reviews</p>
             <ReviewIndex
               reviews={this.props.reviews}
               />
           </section>
         </section>
       </div>
+    </div>
     );
   } else {
     return(

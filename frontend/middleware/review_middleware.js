@@ -24,7 +24,7 @@ export const ReviewMiddleware = ({state, dispatch}) => next => action => {
       createReview(action.gameId, action.review, success, error);
       return next(action);
     case "DELETE_REVIEW":
-      success = (data) => dispatch(subtractReview(action.gameId));
+      success = (data) => dispatch(subtractReview(action.reviewId));
       deleteReview(action.gameId, action.reviewId, success, error);
       return next(action);
     case "UPDATE_REVIEW":

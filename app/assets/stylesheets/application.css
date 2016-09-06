@@ -48,6 +48,7 @@ ul {
 
 body {
   background-color: #eee;
+  font-size: 16px;
 }
 
 /**********************Form*****************************/
@@ -162,7 +163,7 @@ body {
 }
 
 .game-item img:hover + .game-sum {
-  color: #a00;
+  color: #a22;
 }
 
 .game-item .title {
@@ -177,7 +178,7 @@ body {
 }
 
 .game-sum:hover {
-  color: #a00;
+  color: #a22;
 }
 
 .flex {
@@ -200,7 +201,7 @@ body {
 
 .children {
   width: 100vw;
-  top: 40px;
+  top: 50px;
 }
 
 .logo {
@@ -261,7 +262,7 @@ nav .lib-item {
   opacity: .9;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
-  background-color: #333;
+  background-color: #555;
   color: #eee;
 }
 
@@ -285,7 +286,7 @@ nav li {
 }
 
 nav li:hover {
-  background-color: #a00;
+  background-color: #a22;
   color: white;
 }
 
@@ -305,15 +306,16 @@ nav label {
 
 .button {
   border: 1px solid #666;
+  color: white;
   cursor: pointer;
   padding: 3px;
   border-radius: 5px;
   margin-right: 10px;
+  background-color: #a22;
 }
 
 .button:hover {
   background-color: #a00;
-  color: white;
 }
 
 /**************GameIndex*******************************************/
@@ -327,29 +329,41 @@ nav label {
 
 /************************GameDetail**********************/
 
+.det-body {
+  background-color: #aaa;
+  height: 100%;
+}
+
 .game-detail {
-  width: 900px;
+  width: 70vw;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
 .game-sidebar {
-  width: 25%;
-  border: 1px solid #ccc;
+  width: 20vw;
+  border-radius: 1px;
   margin-top: 20px;
+  position: fixed;
+  background-color: #eee;
+  top: 5vw;
+  left: 5vw;
 }
 
 .game-sidebar img {
   width: 100%;
   height: auto;
-  padding: 20px;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 .game-sidebar span {
   display: block;
   text-align: center;
-  margin: 20 auto;
+  background-color: #a22;
 }
 
 .drop-down ul {
@@ -373,24 +387,26 @@ nav label {
 }
 
 .drop-down li:hover {
-  background-color: #a00;
+  background-color: #a22;
   color: white;
 }
 
 .drop-down:hover ul {
   display: block;
   z-index: 20;
-  background-color: #333;
+  background-color: #555;
 }
 
 .game-body {
-  width: 73%;
+  width: 90%;
+  left: 12vw;
 }
 
 .game-info {
   margin-top: 20px;
   border: 1px solid #ccc;
   width: 100%;
+  background-color: #eee;
 }
 
 .game-info ul {
@@ -422,9 +438,16 @@ nav label {
 .summary .menu li {
   border-top: 1px solid #ccc;
 }
+
+.menu {
+  background-color: #555;
+}
+.menu li {
+  background-color: #555;
+}
 .summary .menu li:hover {
   border-top: 1px solid #ccc;
-  background-color: #eee;
+  background-color: #a22;
 }
 
 .lib-list:hover .menu, .menu:hover {
@@ -475,14 +498,14 @@ nav label {
 }
 
 .bottom-bar a {
-  color: #a00;
+  color: #a22;
   text-decoration: underline;
   cursor: pointer;
 }
 
 .review-list {
   margin-top: 25px;
-  font-size: 50px;
+  background-color: #eee;
 }
 
 /***************************HOME***********************************/
@@ -508,7 +531,7 @@ nav label {
 
 
 .home-sidebar li {
-  color: #a00;
+  color: #a22;
   text-decoration: underline;
   padding-left: 10px;
   padding-bottom: 5px;
@@ -563,6 +586,53 @@ nav label {
 .inline-form {
   position: absolute;
 }
+
+
+
+
+/***********************REVIEWSTYLES***********************************/
+
+.review-header {
+  /*border-bottom: 1px solid #666;*/
+}
+.review {
+  margin-left: 1vw;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  margin-top: .5vw;
+  border: 1px solid #ccc;
+}
+
+.review-list .r-title {
+  font-size: 24px;
+  padding: .3vw;
+}
+
+.review-list {
+
+  margin-bottom: 70vh;
+}
+.u-name {
+  padding-left: 2vw;
+  padding-top: .2vw;
+}
+
+.review-body {
+  padding: .5vw;
+  padding-top: 1vw;
+}
+
+.review-body p {
+  text-indent: 2em;
+}
+
+.announcer {
+  /*border-bottom: 1px solid #bbb;*/
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 1vw;
+}
+
 
 /* Clearfix */
 

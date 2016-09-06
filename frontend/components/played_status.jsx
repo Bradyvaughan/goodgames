@@ -18,7 +18,7 @@ class PlayedStatus extends React.Component {
     let played = "Played?";
 
     const libs = ["Currently Playing", "Played", "Wanting to Play"];
-    if (this.props.game.libraries) {
+    if (this.props.game.libraries && this.props.currentUser) {
       this.props.game.libraries.forEach((library) => {
         if (libs.indexOf(library.name) > -1) {
           played = library.name;

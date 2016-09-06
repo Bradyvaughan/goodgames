@@ -20,9 +20,10 @@ export const SessionMiddleware = store => next => action => {
         $("#login").addClass('hidden');
         $("#signUp").addClass('hidden');
         store.dispatch(receiveLogInErrors([]));
-        hashHistory.push(window.location.hash);
         store.dispatch(getAllLibraries(data.id));
-        store.dispatch(getGamesByUser(data.id));
+        if (window.hash.location !== "/games"){
+          store.dispatch(getGamesByUser(data.id));
+        }
       };
       login({user: action.user}, success, error);
       return next(action);

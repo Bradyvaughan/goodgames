@@ -4,7 +4,8 @@ import {getAllGames, getGame} from '../../actions/game_actions';
 
 
 const mapStateToProps = state => ({
-  games: state.games.games
+  games: state.games.games,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

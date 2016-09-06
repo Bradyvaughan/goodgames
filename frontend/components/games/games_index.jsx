@@ -15,7 +15,8 @@ class GamesIndex extends React.Component {
         gameId={key}
         key={`game-${key}`}
         getGame = {this.props.getGame}
-        cover={games[key].cover}/>);
+        cover={games[key].cover}
+        currentUser={this.props.currentUser}/>);
     });
     return(
       <ul className="index">

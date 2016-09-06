@@ -23,10 +23,15 @@ class LibraryIndexItem extends React.Component {
   }
 
   render () {
+    let name = this.props.library.name;
+    let x = "x";
+    if (["Played", "Wanting to Play", "Currently Playing"].indexOf(name) > -1) {
+      x = null;
+    }
     return (
       <li className="lib-item">
-        <p onClick={this.handleClick}>{this.props.library.name}</p>
-        <span className='icon' onClick={this.handleDelete}>x</span>
+        <p onClick={this.handleClick}>{name}</p>
+        <span className='icon' onClick={this.handleDelete}>{x}</span>
       </li>
     );
   }
