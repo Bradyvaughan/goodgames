@@ -113,6 +113,11 @@ body {
 
 /************************GamesIndexItems*****************************/
 
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
 .home {
   display: flex;
   flex-wrap: wrap;
@@ -132,13 +137,21 @@ body {
   padding: 1vw;
 }
 .game-item-interior {
-  height: 25vw;
+  height: 27vw;
   /*cursor: pointer;*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+
+.x-but {
+  font-size: 30;
+  align-self: flex-end;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+}
 .game-item img {
   width: 100%;
   height: auto;
@@ -245,10 +258,11 @@ nav ul {
 
 nav .lib-item {
   padding: 2px;
-  background-color: #eee;
   opacity: .9;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
+  background-color: #333;
+  color: #eee;
 }
 
 nav li p {
@@ -353,12 +367,20 @@ nav label {
   cursor: pointer;
   text-align: center;
 }
-.drop-down li:hover {
-  background-color: #ccc;
+
+.home .drop-down {
+  position: relative;
 }
 
-.game-sidebar .drop-down:hover ul {
+.drop-down li:hover {
+  background-color: #a00;
+  color: white;
+}
+
+.drop-down:hover ul {
   display: block;
+  z-index: 20;
+  background-color: #333;
 }
 
 .game-body {

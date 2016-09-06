@@ -4,13 +4,13 @@ import ReviewIndex from '../reviews/review_index';
 import NewReviewForm from '../forms/new_review';
 import { findKey } from 'lodash';
 import EditReviewForm from '../forms/edit_review';
+import PlayedStatusContainer from '../played_status_container';
 
 class GameDetail extends React.Component {
 
   constructor(props) {
     super(props);
     this.handleAdd = this.handleAdd.bind(this);
-    this.addToLib = this.addToLib.bind(this);
     this.handleNewReview = this.handleNewReview.bind(this);
     this.handleEditReview = this.handleEditReview.bind(this);
   }
@@ -22,11 +22,6 @@ class GameDetail extends React.Component {
   handleAdd(key) {
     return(() => (this.props.createLink(this.props.currentUser.id,
       key, this.props.params.id)));
-  }
-
-  addToLib(libName) {
-    return () => this.props.specCreate(this.props.currentUser.id,
-    libName, this.props.params.id);
   }
 
   handleNewReview(e) {
@@ -71,23 +66,20 @@ class GameDetail extends React.Component {
       game = {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []};
     }
 
-    let libList = Object.keys(this.props.libraries).map((key) => (
-      <li key={`library-${key}`} onClick={this.handleAdd(key)}>
-        {this.props.libraries[key].name}
-      </li>
-    ));
+    let libList = Object.keys(this.props.libraries).map((key) => {
+      let name = this.props.libraries[key].name;
+      if (["Played", "Wanting to Play", "Currently Playing"].indexOf(name) === -1) {
+        return(
+          <li key={`library-${key}`} onClick={this.handleAdd(key)}>
+            {name}
+          </li>
+        );
+      }
+
+    });
     let libz = game.libraries.map((library) => (
       <li key={`lib-${library.name}`}>{library.name}</li>
     ));
-
-    let played = "Played?";
-
-    const libs = ["Currently Playing", "Played", "Wanting to Play"];
-    game.libraries.forEach((library) => {
-      if (libs.indexOf(library.name) > -1) {
-        played = library.name;
-      }
-    });
 
     if (this.props.currentUser) {
     return(
@@ -97,15 +89,10 @@ class GameDetail extends React.Component {
           <span className="button" onClick={this.handleIndex}>
             Back To Index
           </span>
-          <section className = "drop-down">
-            <span className="button">{played}</span>
-            <ul className = "menu">
-              <li onClick={this.addToLib("Played")}>Played</li>
-              <li onClick={this.addToLib("Currently Playing")}>Currently Playing</li>
-              <li onClick={this.addToLib("Wanting to Play")}>Wanting to Play</li>
-            </ul>
-
-          </section>
+          <PlayedStatusContainer
+            game={game}
+            gameId={this.props.params.id}
+            />
         </section>
         <section className="game-body">
           <div className='game-info'>

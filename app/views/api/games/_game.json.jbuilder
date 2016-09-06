@@ -1,4 +1,4 @@
-json.extract! game, :title, :platform, :description, :avg_rating, :release_date, :cover
+json.extract! game, :title, :platform, :description, :avg_rating, :release_date, :cover, :id
 
 json.set! :libraries do
   json.array! game.libraries do |library|

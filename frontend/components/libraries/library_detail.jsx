@@ -12,10 +12,6 @@ class LibraryDetail extends React.Component {
     this.props.getLibrary(this.props.params.libraryId);
   }
 
-  handleDelete(linkId, libraryId) {
-    return (() => (this.props.deleteLink(linkId, libraryId)));
-  }
-
   render(){
     let games = this.props.library.games;
     if (!games) {
@@ -27,8 +23,11 @@ class LibraryDetail extends React.Component {
         <GamesIndexItem
         game={games[key]}
         gameId={key}
-        cover={games[key].cover}/>
-      <span className="icon" onClick={this.handleDelete(linkId, this.props.params.libraryId)}>x</span>
+        cover={games[key].cover}
+        getGame={this.props.getGame}
+        libId={this.props.params.libraryId}
+        linkId={games[key].link_id}
+        deleteLink={this.props.deleteLink}/>
       </li>);
     });
     return(

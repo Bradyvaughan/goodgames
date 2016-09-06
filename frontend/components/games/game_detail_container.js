@@ -19,8 +19,6 @@ const mapDispatchToProps = dispatch => ({
   getAllLibraries: (id) => dispatch(getAllLibraries(id)),
   createLink: (userId, libId, gameId) =>
     dispatch(createLink(userId, libId, gameId)),
-  specCreate: (userId, libName, gameId) =>
-    dispatch(specCreate(userId, libName, gameId)),
   getAllReviews: (gameId) => dispatch(getAllReviews(gameId)),
   createReview: (gameId, review) => dispatch(createReview(gameId, review)),
   updateReview: (gameId, reviewId, review) =>

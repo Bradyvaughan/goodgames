@@ -41,7 +41,7 @@ export const SessionMiddleware = store => next => action => {
     case "LOGOUT":
       success = () => {
         if (window.location.hash.match(new RegExp("/home/"))) {
-          hashHistory.push("/");
+          hashHistory.push("/games");
         }
         next(action);
       };

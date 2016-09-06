@@ -4,7 +4,7 @@ import { createLibrary, getAllLibraries } from '../../actions/library_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  errors: state.libraries.errors
+  errors: state.libraries.errors || []
 });
 
 const mapDispatchToProps = dispatch => ({
