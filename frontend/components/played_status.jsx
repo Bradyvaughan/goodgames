@@ -10,7 +10,7 @@ class PlayedStatus extends React.Component {
 
   addToLib(libName) {
     return () => this.props.specCreate(this.props.currentUser.id,
-    libName, this.props.gameId);
+    libName, this.props.gameId, this.props.libId);
   }
 
   render() {

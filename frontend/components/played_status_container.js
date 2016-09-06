@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  specCreate: (userId, libName, gameId) => dispatch(specCreate(userId, libName, gameId))
+  specCreate: (userId, libName, gameId, libId) => dispatch(specCreate(userId, libName, gameId, libId))
 });
 
 

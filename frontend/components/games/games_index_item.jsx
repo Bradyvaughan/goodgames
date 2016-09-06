@@ -34,6 +34,7 @@ class GamesIndexItem extends React.Component {
             <PlayedStatusContainer
               game={this.props.game}
               gameId={this.props.gameId}
+              libId={this.props.libId}
               />
           <p className="x-but" onClick={this.handleDelete(this.props.linkId, this.props.libId)}>{x}</p>
           </div>
