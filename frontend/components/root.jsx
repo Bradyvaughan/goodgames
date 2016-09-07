@@ -18,7 +18,7 @@ class Root extends React.Component{
   }
 
 
-  libDetailEnter(nextState, replace, callback) {
+  libDetailEnter(nextState) {
     this.props.store.dispatch(clearGames());
     this.props.store.dispatch(getGamesByLibrary(nextState.params.libraryId, 1));
   }
@@ -44,3 +44,4 @@ class Root extends React.Component{
 
 
 export default Root;
+//
