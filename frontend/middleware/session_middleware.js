@@ -21,7 +21,7 @@ export const SessionMiddleware = store => next => action => {
         $("#signUp").addClass('hidden');
         store.dispatch(receiveLogInErrors([]));
         store.dispatch(getAllLibraries(data.id));
-        if (window.hash.location !== "/games"){
+        if (window.location.hash !== "/games"){
           store.dispatch(getGamesByUser(data.id, 1));
         }
       };
@@ -31,16 +31,19 @@ export const SessionMiddleware = store => next => action => {
     error = response => store.dispatch(receiveSignUpErrors(response.responseJSON));
       success = (data) => {
         store.dispatch(receiveCurrentUser(data));
+        $("#login").addClass('hidden');
+        $("#signUp").addClass('hidden');
         store.dispatch(createLibrary(data.id, {name: "Played"}));
         store.dispatch(createLibrary(data.id, {name: "Currently Playing"}));
         store.dispatch(createLibrary(data.id, {name: "To Play"}));
-        document.getElementById('signUp').classList.toggle('hidden');
         store.dispatch(receiveSignUpErrors([]));
       };
       signUp({user: action.user}, success, error);
       return next(action);
     case "LOGOUT":
       success = () => {
+        $("#login").removeClass('hidden');
+        $("#signUp").removeClass('hidden');
         if (window.location.hash.match(new RegExp("/home/"))) {
           hashHistory.push("/games");
         }

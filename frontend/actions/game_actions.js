@@ -57,3 +57,12 @@ export const getGamesByLibrary = (libraryId, page) => ({
   libraryId,
   page
 });
+
+export const subtractGame = (gameId) => ({
+  type: "SUBTRACT_GAME",
+  gameId
+});
+
+export const clearGames = () => ({
+  type: "CLEAR_GAMES"
+});

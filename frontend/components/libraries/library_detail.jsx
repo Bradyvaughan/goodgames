@@ -1,18 +1,23 @@
 import React from 'react';
 import GamesIndexItem from '../games/games_index_item';
+import { throttle } from 'lodash';
 
 class LibraryDetail extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {page: 1};
+    this.state = {page: 1, fn: _.throttle(this.handleScroll.bind(this), 1000)};
     this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
     this.props.getGamesByLibrary(this.props.params.libraryId, this.state.page);
-    window.addEventListener('scroll', _.throttle(this.handleScroll, 500));
+    window.addEventListener('scroll', this.state.fn);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.state.fn);
+    this.props.clearGames();
   }
 
   handleScroll(e) {

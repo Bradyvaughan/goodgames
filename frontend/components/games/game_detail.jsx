@@ -15,6 +15,10 @@ class GameDetail extends React.Component {
     this.handleEditReview = this.handleEditReview.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearGames();
+  }
+
   handleIndex(){
     hashHistory.push("/games");
   }
@@ -47,19 +51,10 @@ class GameDetail extends React.Component {
   render() {
     let newClass = "button hidden vert-center";
     let editClass = "button hidden vert-center";
-    let game = this.props.games;
-
-    if (game[this.props.params.id]) {
-      game = game[this.props.params.id];
-    }
+    let game = this.props.games[this.props.params.id];
     let ownReviewKey = null;
     if (this.props.currentUser) {
       ownReviewKey = _.findKey(this.props.reviews, {username: this.props.currentUser.username});
-    }
-    if (ownReviewKey) {
-      editClass = "button vert-center";
-    } else {
-      newClass = "button vert-center";
     }
 
     if (!game) {
@@ -125,18 +120,11 @@ class GameDetail extends React.Component {
                   {libz}
                 </ul>
 
-                <p className={newClass} id="add-review" onClick={this.handleNewReview}>
-                  Write Review
-                </p>
-
-                <p className={editClass} id="edit-review" onClick={this.handleEditReview}>
-                  Edit Review
-                </p>
-
                 <NewReviewForm
                   gameId={this.props.params.id}
                   createReview={this.props.createReview}
                   errors={this.props.newErrors}
+                  reviewId={ownReviewKey}
                 />
 
               <EditReviewForm

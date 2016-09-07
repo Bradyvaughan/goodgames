@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
+::-webkit-input-placeholder { font-size: 24px; }
+::-moz-placeholder { font-size: 24px; }
+:-ms-input-placeholder { font-size: 24px; }
+input: -moz-placeholder { font-size: 24px; }
 
  html, head, body, header,
 nav, h1, a, ul, li, main,
@@ -55,16 +58,18 @@ body {
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: 1px solid black;
+  justify-content: space-between;
   border-radius: 7px;
-  color: #266ce3;
+  color: #22f;
   font-family: sans-serif;
-  padding: 5px;
-  z-index: 9999;
   background: #eee;
-  opacity: .9;
-  position: absolute;
+  color: white;
+  background: transparent;
+  font-size: 24px;
+  width: 40vw;
+  height: 35vh;
+  top: 10vh;
+  margin: 0 auto;
 }
 
 .side-list {
@@ -80,36 +85,35 @@ body {
 .form input {
   border-radius: 4px;
   box-shadow: none;
+  line-height: 24px;
+  font-size: 24px;
   border: 1px solid #999;
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: #eee;
+  width: 100%;
 }
 
-.big-form {
-  width: 18vw;
-  left: 82vw;
-  top: 60px;
+.form textarea {
+  line-height: 24px;
+  font-size: 24px;
 }
 
-.big-form button {
+.form button {
   width: 70px;
   margin-top: 10px;
   border-radius: 5px;
   background-color: #eee;
 }
 
-.big-form label {
-  display: block;
-}
-
-.big-form div {
+.form div {
   width: 100%;
   align-self: center;
 }
 
-.big-form input {
-  width: 100%;
+.small-form {
+  height: 15vh;
+  justify-content: space-around;
 }
 
 /************************GamesIndexItems*****************************/
@@ -191,6 +195,7 @@ body {
 
 .vert-center {
   align-self: center;
+  vertical-align: center;
 }
 
 /********************HEADBAR STYLES******************************/

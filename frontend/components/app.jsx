@@ -59,7 +59,6 @@ class App extends React.Component {
       guestClass += " hidden";
     } else {
       logoutClass += " hidden";
-      libClass += " hidden";
     }
 
     let finalBit = this.props.children;
@@ -77,12 +76,7 @@ class App extends React.Component {
               <span className="vert-center">My Libraries</span>
               <LibraryIndexContainer />
             </div>
-            <div className={libClass}>
-              <p className="button" onClick={this.handleNewLib}>
-                Add a Library
-              </p>
-              <LibraryFormContainer />
-            </div>
+            <LibraryFormContainer />
             <p className="search-bar">
               <label className="vert-center">Search:</label>
               <input className="vert-center" type="text"/>
@@ -96,15 +90,9 @@ class App extends React.Component {
             <p className={logoutClass} onClick={this.handleLogout}>
               Log Out
             </p>
-            <p className={guestClass} onClick={this.handleLogin}>
-              Log In
-            </p>
-            <p className={guestClass} onClick={this.handleSignUp}>
-              Sign Up
-            </p>
+            <LoginContainer />
+            <SignUpContainer />
           </section>
-        <LoginContainer />
-        <SignUpContainer />
         </nav>
         <div className="children">
           {finalBit}

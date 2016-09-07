@@ -14,9 +14,9 @@ export const LibraryMiddleware = ({state, dispatch}) => next => action => {
     case "CREATE_LIBRARY":
       success = (data) => {
         dispatch(receiveAllLibraries(data));
-        $('#add-lib').addClass('hidden');
-        document.querySelector('#new-lib').classList.toggle('hidden');
-        document.querySelector('#name').value = "";
+        // $('#add-lib').addClass('hidden');
+        // document.querySelector('#new-lib').classList.toggle('hidden');
+        // document.querySelector('#name').value = "";
       };
       createLibrary(action.userId, action.library, success, error);
       return next(action);

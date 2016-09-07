@@ -1,21 +1,29 @@
 import React from 'react';
+import Modal from 'react-modal';
 
 class EditReviewForm extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {title: "", body: ""};
+  constructor() {
+    super();
+    this.state = {title: "", body: "", modalIsOpen: false};
     this.handleClick = this.handleClick.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  componentDidMount() {
-    this.setState(this.props.review);
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   handleClick(e) {
     e.preventDefault();
-    this.props.updateReview(this.props.gameId, this.props.reviewId, this.state);
-    this.setState({title: "", body: ""});
+    this.props.updateReview(this.props.gameId, this.props.reviewId, {title: this.state.title, body: this.state.body});
+    this.closeModal();
   }
 
   linkState(key) {
@@ -34,16 +42,48 @@ class EditReviewForm extends React.Component {
   }
 
   render () {
+    let editClass = "vert-center";
+    if (!this.props.reviewId) {
+      editClass += ' hidden';
+    }
+    const customStyles = {
+      overlay : {
+        position: 'fixed',
+        top : 0,
+        bottom : 0,
+        right : 0,
+        left : 0,
+        backgroundColor : 'rgba(0, 0, 0, .7)',
+        zIndex : 9998
+      },
+
+      content : {
+        zIndex : 9999,
+        backgroundColor : 'rgba(10, 10, 60, 1)',
+        top: '20vh',
+        bottom: '20vh',
+        left: '20vw',
+        right: '20vw',
+
+
+      }
+    };
     return(
-      <div className="inline-form hidden form" id="change-review">
-        {this.renderErrors()}
-        <label htmlFor="title">Title</label>
-        <input type="text" id="title"
-          onChange={this.linkState("title")}/>
-        <label htmlFor="body">Body</label>
-        <textarea id="body"
-          onChange={this.linkState("body")}/>
-        <button onClick={this.handleClick}>Save Changes</button>
+      <div className={editClass}  id="edit-review">
+        <p className="button" onClick={this.openModal}>Edit Review</p>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          style = {customStyles} >
+          <div className="form">
+            {this.renderErrors()}
+            <input type="text" placeholder="Review Title"
+              onChange={this.linkState("title")}/>
+            <textarea placeholder="Review Body"
+              onChange={this.linkState("body")}/>
+            <button onClick={this.handleClick}>Save Changes</button>
+          </div>
+        </Modal>
       </div>
     );
   }
