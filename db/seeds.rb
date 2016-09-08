@@ -33,7 +33,7 @@ names.each do |name|
         ress = Net::HTTP.start(url.host, url.port) {|http|
           http.request(reqq)
         }
-        cover = "http://thegamesdb.net/banners/boxart/thumb/original/front/#{id}-1.jpg"
+        cover = "https://thegamesdb.net/banners/boxart/thumb/original/front/#{id}-1.jpg"
 
 
         if ress.is_a?(Net::HTTPSuccess)
@@ -77,10 +77,8 @@ User.create!([{username: "Bjergsen", email: "a", password: "password"},
 {username: "TrollMaster", email: "a", password: "password"},
 {username: "XxDragonxX", email: "a", password: "password"},
 {username: "oXXathenaXXo", email: "a", password: "password"},
-{username: "TitsOrGTFO", email: "a", password: "password"},
 {username: "/b/tard", email: "a", password: "password"},
 {username: "GetOutOfMySwamp", email: "a", password: "password"},
-{username: "AIDS", email: "a", password: "password"},
 {username: "CantMeltDankMemes", email: "a", password: "password"},
 {username: "JohnSmith112", email: "a", password: "password"},
 {username: "CurvyBoom", email: "a", password: "password"},
@@ -162,8 +160,6 @@ review_bodies = ["This game is an ambitious offering, but it falls
   executed pretty well.  Stop expecting the Mona Lisa, people.  This
   is pretty good.",
   "This game is such a casual clown fiesta.  L2P a real game, n00bs.",
-  "I love this game, but it's a shame that the multiplayer is full of
-  13-year-olds that have held sexual congress with my mother.",
   "Fuck this fucking game.  Fuck.  I can't deal with it anymore.  It's
   too goddamn hard.  I'm done.  I'm so done.  I can't even right now.",
   "Calling this game a kiddy-game for casual scrubs is simplistic, maybe,
@@ -179,7 +175,12 @@ review_bodies = ["This game is an ambitious offering, but it falls
   "Not even one solid waifu.  Awful.",
   "Oh my god, guys.  I'm so goddamn tired of your memes.  Can you guys
   just fucking stop already?  Jesus, I haven't read an original thought
-  since I've been on this site!"]
+  since I've been on this site!",
+  "Everyone shitting on this game in the comments section is just a
+  no-life fanboy.  Get the fuck out.",
+  "I haven't had this much fun in years.  I rate it 8/8 m8.",
+  "I'm too high for this website.  How do I get back to the search bar?",
+  "why in the world are u usig san serif it looks terrible.  Comic sans, pls"]
 
 
 title_array = ["sweet game", "what a disappointment!", "Riot did it better",

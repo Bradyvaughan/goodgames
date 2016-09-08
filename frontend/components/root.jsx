@@ -30,7 +30,6 @@ class Root extends React.Component{
   }
 
   searchEnter(nextState) {
-    console.log("hello!");
     this.props.store.dispatch(clearGames());
     this.props.store.dispatch(getSearch(nextState.location.query.q, 1));
   }
