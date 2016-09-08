@@ -263,7 +263,8 @@ nav ul {
   flex-direction: column;
   display: none;
   position: absolute;
-  /*top: 36px;*/
+  top: 24px;
+  left: 10px;
 }
 
 .lib-dropdown:hover .lib-index {
@@ -303,8 +304,16 @@ nav li {
   border-right: 1px solid #666;
 }
 
+nav li p {
+  color: black;
+}
+
 nav li:hover {
   background-color: #22a;
+  color: white;
+}
+
+nav li:hover p {
   color: white;
 }
 
