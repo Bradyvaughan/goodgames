@@ -223,3 +223,52 @@ User.all.each do |user|
 end
 
 Rating.create(ratings)
+
+Library.create([{name: "Totally Sweet Games", user_id: 1},
+  {name: "Recommended By Friends", user_id: 1},
+  {name: "Mindless Fun", user_id: 1},
+  {name: "Watchlist", user_id: 1},
+  {name: "Obnoxious Games", user_id: 1},
+  ])
+
+  n = Library.find_by({user_id: 1, name: "Totally Sweet Games"}).id
+  LibraryLinks.create([
+    {game_id: Game.find_by({title: "Starcraft"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Starcraft II: Wings of Liberty"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Starcraft: Brood War"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Rocket League"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Super Mario 64"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Super Mario World"}).id, library_id: n},
+    {game_id: Game.find_by({title: "The Legend of Zelda: Ocarina of Time"}).id, library_id: n},
+    {game_id: Game.find_by({title: "XCOM: Enemy Unknown"}).id, library_id: n},
+    {game_id: Game.find_by({title: "XCOM: Enemy Within"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Sid Meier's Civilization II"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Sid Meier's Civilization II"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Sid Meier's Civilization V: Gold Edition"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Sid Meier's Civilization IV: the Complete Edition"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Grand Theft Auto: Vice City"}).id, library_id: n},
+    {game_id: Game.find_by({title: "The Elder Scrolls IV: Oblivion"}).id, library_id: n},
+    {game_id: Game.find_by({title: "The Elder Scrolls II: Morrowind"}).id, library_id: n},
+    {game_id: Game.find_by({title: "The Elder Scrolls V: Skyrim"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Sonic the Hedgehog 2"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Fable"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Prince of Persia: The Sands of Time"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Final Fantasy VII"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Final Fantasy X"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Donkey Kong Country"}).id, library_id: n},
+    {game_id: Game.find_by({title: "World of Warcraft"}).id, library_id: n},
+    {game_id: Game.find_by({title: "The Legend fo Zelda: Majora's Mask"}).id, library_id: n},
+    {game_id: Game.find_by({title: "XCOM 2"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Halo: Combat Evolved"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Tetris"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Minecraft"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Battlefield 3"}).id, library_id: n},
+    {game_id: Game.find_by({title: "Gears of War"}).id, library_id: n}
+    ])
+
+    links = []
+    [1..4].each do |m|
+      30.times { |_| links << {library_id: n + m, game_id: rand(games_no)}}
+    end
+
+    LibraryLink.create(links)

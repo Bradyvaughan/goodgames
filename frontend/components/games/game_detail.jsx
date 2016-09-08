@@ -115,8 +115,7 @@ class GameDetail extends React.Component {
                 </span>
 
                 <section className="lib-list">
-                  <div className="button">Add to Library
-                  </div>
+                  <span className="button">Add to Library</span>
                   <ul className = "menu">
                     {libList}
                   </ul>

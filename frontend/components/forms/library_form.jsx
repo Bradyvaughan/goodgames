@@ -59,13 +59,13 @@ class LibraryForm extends React.Component {
         bottom : 0,
         right : 0,
         left : 0,
-        backgroundColor : 'rgba(0, 0, 0, .7)',
+        backgroundColor : 'rgba(0, 0, 0, .5)',
         zIndex : 9998
       },
 
       content : {
         zIndex : 9999,
-        backgroundColor : 'rgba(10, 10, 60, 1)',
+        backgroundColor : 'rgba(20, 20, 120, 1)',
         top: '15vh',
         bottom: '45vh',
         left: '20vw',

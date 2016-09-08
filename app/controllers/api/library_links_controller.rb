@@ -32,8 +32,6 @@ class Api::LibraryLinksController < ApplicationController
 
     if @library_link
       @library_link.destroy
-    else
-      render(json: "Game not in library!", status: 404)
     end
   end
 
