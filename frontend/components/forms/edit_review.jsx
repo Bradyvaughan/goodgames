@@ -24,6 +24,9 @@ class EditReviewForm extends React.Component {
     if (nextProps.errors && nextProps.errors.length === 0) {
       this.closeModal();
     }
+    if (this.props.review) {
+      this.setState({title: this.props.review.title, body: this.props.review.body});
+    }
   }
 
   handleClick(e) {
@@ -87,9 +90,10 @@ class EditReviewForm extends React.Component {
             <h1>Edit Your Review</h1>
             </div>
             <input type="text" placeholder="Review Title"
-              onChange={this.linkState("title")}/>
+              onChange={this.linkState("title")} value={this.state.title}/>
             <textarea placeholder="Review Body"
               rows="6"
+              value={this.state.body}
               onChange={this.linkState("body")}/>
             <button onClick={this.handleClick}>Save Changes</button>
           </div>

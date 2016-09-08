@@ -159,7 +159,7 @@ body {
 }
 
 .x-but {
-  font-size: 30;
+  font-size: 30px;
   align-self: flex-end;
   font-weight: 700;
   color: #666;
@@ -312,9 +312,12 @@ nav .search-bar {
   display: flex;
   height: 100%;
   margin-left: 10px;
+  justify-content: space-between;
+  width: 260px;
 }
 
-.search-bar input {
+
+.search-bar .bar {
   height: 18px;
 }
 
@@ -347,11 +350,11 @@ nav label {
   left: 5vw;
 }
 
-.down {
+.down, .home {
   top: 30px;
 }
 
-.down h1 {
+.down h1, .home h1 {
   font-size: 32px;
   text-align: center;
 }
@@ -439,26 +442,26 @@ nav label {
   background-color: #eee;
 }
 
-.game-info ul {
-  padding-bottom: 10px;
-}
-
 .summary {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
+  margin: 20px;
+}
+
+.game-info .summary li {
+  padding-left: 0px;
 }
 
 .lib-list {
   display: flex;
-  height: 26px;
 }
 
 .but-list {
   display: flex;
   flex-direction: column;
   height: 80px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 
@@ -516,25 +519,31 @@ nav label {
   margin-top: 10px;
 }
 
-.large-block .bottom-bar {
+.bottom-bar {
   display: flex;
   justify-content: space-between;
-}
-
-.bottom-bar {
-  width: 100%;
   font-size: 14px;
   border-top: 1px solid #ccc;
+  margin-left: 20px;
+  margin-right: 20px;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .bottom-bar ul {
   display: flex;
   border-bottom: 0px solid black;
   padding-bottom: 0px;
+  flex-wrap: wrap;
 }
 
 .bottom-bar li {
   align-self: center;
+  padding: 0;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .bottom-bar a {
@@ -620,7 +629,7 @@ nav label {
 }*/
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .inline-form {
@@ -667,10 +676,9 @@ nav label {
 }
 
 .announcer {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   padding-left: 1vw;
-  padding-top: .2vw;
 }
 
 .star-list {
@@ -698,7 +706,51 @@ nav label {
   margin: 0px;
 }
 
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
 
+.review-list ul {
+  padding-bottom: .1px;
+}
+
+.form .form-button {
+  cursor: pointer;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.form-button:hover {
+  background-color: lightblue;
+}
+
+.form h1 {
+  text-align: center;
+}
+
+.xz {
+  display: flex;
+  align-items: center;
+}
+
+.drop-down {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.bottom-bar ul li {
+  color: #00a;
+  cursor: pointer;
+}
+
+.bottom-bar ul li:hover {
+  color: #00f;
+}
 /* Clearfix */
 
 .group:after {

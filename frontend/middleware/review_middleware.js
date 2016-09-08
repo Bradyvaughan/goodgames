@@ -19,6 +19,7 @@ export const ReviewMiddleware = ({state, dispatch}) => next => action => {
       error = (response) => dispatch(receiveNewErrors(response.responseJSON));
       success = (data) => {
         dispatch(mergeReview(data));
+        dispatch(receiveNewErrors([]));
         $('#new-review').addClass('hidden');
       };
       createReview(action.gameId, action.review, success, error);
@@ -31,6 +32,7 @@ export const ReviewMiddleware = ({state, dispatch}) => next => action => {
       error = (response) => dispatch(receiveEditErrors(response.responseJSON));
       success = (data) => {
         dispatch(mergeReview(data));
+        dispatch(receiveEditErrors([]));
         $('#change-review').addClass('hidden');
         $('#edit-review').removeClass('hidden');
       };

@@ -15,14 +15,15 @@ class GameDetail extends React.Component {
     this.handleNewReview = this.handleNewReview.bind(this);
     this.handleEditReview = this.handleEditReview.bind(this);
     this.handleRate = this.handleRate.bind(this);
+    this.handleLib = this.handleLib.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearGames();
   }
 
-  handleIndex(){
-    hashHistory.push("/games");
+  handleLib(key) {
+    return(() => (hashHistory.push(`/home/${key}`)));
   }
 
   handleAdd(key) {
@@ -79,7 +80,9 @@ class GameDetail extends React.Component {
 
     });
     let libz = game.libraries.map((library) => (
-      <li key={`lib-${library.name}`}>{library.name}</li>
+      <li key={`lib-${library.name}`} onClick={this.handleLib(library.id)}>
+        {library.name}
+      </li>
     ));
     if (this.props.currentUser) {
     return(
@@ -110,12 +113,8 @@ class GameDetail extends React.Component {
                 <li>Platform: {game.platform}</li>
               </ul>
               <div className="vert-center but-list">
-                <span className="button" onClick={this.handleIndex}>
-                  Back To Index
-                </span>
-
                 <section className="lib-list">
-                  <span className="button">Add to Library</span>
+                  <p className="button">Add to Library</p>
                   <ul className = "menu">
                     {libList}
                   </ul>
@@ -127,10 +126,20 @@ class GameDetail extends React.Component {
               <p>
                 {game.description}
               </p>
+            </section>
               <div className="bottom-bar">
+                <span>Categories:</span>
                 <ul>
                   {libz}
                 </ul>
+
+              </div>
+
+
+          </div>
+          <section className="review-list">
+            <div className="review-top">
+              <p className="announcer">Community Reviews</p>
 
                 <NewReviewForm
                   gameId={this.props.params.id}
@@ -146,14 +155,7 @@ class GameDetail extends React.Component {
                   review={this.props.reviews[ownReviewKey]}
                   errors={this.props.editErrors}
                 />
-
-              </div>
-
-            </section>
-
-          </div>
-          <section className="review-list">
-            <p className="announcer">Community Reviews</p>
+            </div>
             <ReviewIndex
               reviews={this.props.reviews}
               />
@@ -167,9 +169,6 @@ class GameDetail extends React.Component {
       <div className="game-detail">
         <section className="game-sidebar">
           <img src={game.cover}/>
-          <span className="button" onClick={this.handleIndex}>
-            Back To Index
-          </span>
         </section>
         <section className="game-body">
           <div className='game-info'>

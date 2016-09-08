@@ -33,3 +33,8 @@ export const receiveErrors = (errors) => ({
   type: "RECEIVE_ERRORS",
   errors
 });
+
+export const subtractLibrary = (library) => ({
+  type: "SUBTRACT_LIBRARY",
+  library
+});

@@ -82,7 +82,7 @@ class LibraryForm extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style = {customStyles} >
-            <div className ="form small-form">
+            <form className ="form small-form" onSubmit={this.handleClick}>
 
               <div>
                 <h1>Create a New Games Library</h1>
@@ -91,8 +91,8 @@ class LibraryForm extends React.Component {
 
               <input type="text" placeholder="Library Name" id="name"
                 onChange={this.linkState("name")}/>
-              <button onClick={this.handleClick}>New Library</button>
-            </div>
+              <input className="form-button" type="submit" value="New Library" />
+            </form>
         </Modal>
       </div>
     );

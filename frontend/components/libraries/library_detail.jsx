@@ -39,7 +39,7 @@ class LibraryDetail extends React.Component {
     }
     let libraries = this.props.libraries;
     let name = "";
-    if (Object.keys(libraries)[0]) {
+    if (Object.keys(libraries)[0] && libraries[this.props.params.libraryId]) {
       name = libraries[this.props.params.libraryId].name;
     }
     let gameDex = Object.keys(games).map((key) => {
@@ -54,6 +54,9 @@ class LibraryDetail extends React.Component {
         deleteLink={this.props.deleteLink}/>
       </li>);
     });
+    if (gameDex.length === 0) {
+      gameDex = <h1>You Have No Games In This Library!</h1>;
+    }
     return(
       <div className="down">
         <h1>Viewing: {name}</h1>

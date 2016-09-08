@@ -71,11 +71,14 @@ class App extends React.Component {
   render(){
     let logoutClass = "button vert-center";
     let guestClass = "button vert-center";
-    let libClass = "lib-dropdown vert-center";
+    let libClass = "xz vert-center";
+    let welcome = "";
     if (this.props.currentUser) {
       guestClass += " hidden";
+      welcome = `Welcome, ${this.props.currentUser.username}`;
     } else {
       logoutClass += " hidden";
+      libClass += " hidden";
     }
 
     let finalBit = this.props.children;
@@ -90,16 +93,24 @@ class App extends React.Component {
               <span className="gg">gg</span><span className="wp">wp</span>
             </section>
             <div className={libClass}>
-              <span className="vert-center">My Libraries</span>
-              <LibraryIndexContainer />
+              <div className="lib-dropdown">
+                <span className="vert-center button">My Categories</span>
+                <LibraryIndexContainer />
+              </div>
+              <LibraryFormContainer />
             </div>
-            <LibraryFormContainer />
             <form className="search-bar" onSubmit={this.handleSubmit}>
               <label className="vert-center">Search:</label>
-              <input className="vert-center" type="text" onChange={this.handleChange}/>
-              <input type="submit" className="vert-center" value="Search!"/>
+              <input className="bar vert-center" type="text" onChange={this.handleChange}/>
+              <input type="submit" className="vert-center button" value="Search!"/>
             </form>
           </section>
+
+          <span className="vert-center">
+            {welcome}
+          </span>
+
+
           <section className="buttons">
 
             <p className={guestClass} onClick={this.handleGuest}>

@@ -1,7 +1,8 @@
-import {receiveErrors, receiveLibrary, removeLibrary, receiveAllLibraries}
+import {receiveErrors, receiveLibrary, removeLibrary, receiveAllLibraries, subtractLibrary}
   from '../actions/library_actions';
 import {getLibrary, createLibrary, destroyLibrary}
   from '../util/api_util/library_util';
+import { hashHistory } from 'react-router';
 
 export const LibraryMiddleware = ({state, dispatch}) => next => action => {
   let success;
@@ -13,15 +14,21 @@ export const LibraryMiddleware = ({state, dispatch}) => next => action => {
       return next(action);
     case "CREATE_LIBRARY":
       success = (data) => {
-        dispatch(receiveAllLibraries(data));
-        // $('#add-lib').addClass('hidden');
-        // document.querySelector('#new-lib').classList.toggle('hidden');
-        // document.querySelector('#name').value = "";
+        dispatch(receiveLibrary(data));
+        dispatch(receiveErrors([]));
+        let keys = Object.keys(data);
+        let id = keys[keys.length - 1];
+        hashHistory.push(`/home/${id}`);
       };
       createLibrary(action.userId, action.library, success, error);
       return next(action);
     case "DELETE_LIBRARY":
-      success = (data) => dispatch(receiveAllLibraries(data));
+      success = (data) => {
+        dispatch(subtractLibrary(data));
+        if (window.location.hash.includes(`/${action.id}?`)) {
+          hashHistory.push('/');
+        }
+      };
       destroyLibrary(action.id, success, error);
       return next(action);
     default:

@@ -1,7 +1,7 @@
 class Api::LibrariesController < ApplicationController
 
   def index
-    @libraries = User.find_by_id(params[:user_id]).libraries.includes(:games)
+    @libraries = User.find_by_id(params[:user_id]).libraries.includes(:library_links)
   end
 
   def show
@@ -16,7 +16,7 @@ class Api::LibrariesController < ApplicationController
   def create
     @library = Library.new({name: library_params[:name], user_id: params[:user_id]})
     if @library.save
-      @libraries = User.find_by_id(params[:user_id]).libraries.includes(:games)
+      @libraries = [@library]
       render :index
     else
       render(json: @library.errors.full_messages, status: 422)
@@ -29,7 +29,7 @@ class Api::LibrariesController < ApplicationController
 
     if @library
       @library.destroy
-      @libraries = @user.libraries.includes(:games)
+      @libraries = [@library]
       render :index
     else
       render(json: "Library not found", status: 404)

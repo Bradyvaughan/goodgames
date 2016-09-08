@@ -85,7 +85,7 @@ class Login extends React.Component {
           onRequestClose={this.closeModal}
           style = {customStyles} >
 
-            <div className ="big-form form">
+            <form onSubmit={this.handleClick} className ="big-form form">
               <div>
                 <h1>Log In!</h1>
                 {this.renderErrors()}
@@ -99,8 +99,8 @@ class Login extends React.Component {
                 <input type="password" placeholder="Password" id="password"
                   onChange={this.linkState("password")}/>
               </div>
-              <button onClick={this.handleClick}>Log In</button>
-            </div>
+              <input className="form-button" type="submit" value="Log In" />
+            </form>
         </Modal>
       </div>
     );

@@ -21,7 +21,7 @@ json.user_rating u_rating
 json.set! :libraries do
   json.array! game.libraries do |library|
     if library.user == current_user
-      json.extract! library, :name, :user_id
+      json.extract! library, :name, :user_id, :id
     end
   end
 end

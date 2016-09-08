@@ -10,22 +10,22 @@ class Api::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    @games = Game.all.includes(:libraries, :ratings)
   end
 
   def user_index
-    @games = User.find_by_id(params[:user_id]).games.page(params[:page])
+    @games = User.find_by_id(params[:user_id]).games.page(params[:page]).includes(:libraries, :ratings)
     render :index
   end
 
   def page_index
-    @games = Game.page(params[:page])
+    @games = Game.page(params[:page]).includes(:games, :ratings)
     render :index
   end
 
   def library_index
     @library  = Library.find_by_id(params[:library_id])
-    @games = @library.games.page(params[:page])
+    @games = @library.games.page(params[:page]).includes(:libraries, :ratings)
     render :index
   end
 

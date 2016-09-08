@@ -83,7 +83,7 @@ class SignUp extends React.Component {
           onRequestClose={this.closeModal}
           style = {customStyles} >
 
-            <div className ="big-form form">
+            <form className ="big-form form" onSubmit={this.handleClick}>
 
               <div>
                 <h1>Create a New Account!</h1>
@@ -103,8 +103,8 @@ class SignUp extends React.Component {
                 <input type="password" placeholder="Password" id="password"
                   onChange={this.linkState("password")}/>
               </div>
-              <button onClick={this.handleClick}>Sign Up</button>
-            </div>
+              <input className="form-button" type="submit" value="Sign Up" />
+            </form>
         </Modal>
       </div>
     );

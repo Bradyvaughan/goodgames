@@ -50,8 +50,11 @@ class Home extends React.Component {
         cover={games[key].cover}/>);
     });
     return(
-      <div className="home" >
-        {gameDex}
+      <div className="down">
+        <h1>Welcome, {this.props.currentUser.username}.  Your Games:</h1>
+        <ul className="index">
+          {gameDex}
+        </ul>
       </div>
     );
   }
