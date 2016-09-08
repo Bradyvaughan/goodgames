@@ -19,7 +19,7 @@ class Api::GamesController < ApplicationController
   end
 
   def page_index
-    @games = Game.page(params[:page]).includes(:games, :ratings)
+    @games = Game.page(params[:page])
     render :index
   end
 
