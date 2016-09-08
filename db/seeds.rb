@@ -1,13 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-
 require 'nokogiri'
 require 'net/http'
 
@@ -129,24 +119,32 @@ end
 
 Library.create!(libraries)
 
+Library.create([{name: "Totally Sweet Games", user_id: 1},
+  {name: "Recommended By Friends", user_id: 1},
+  {name: "Mindless Fun", user_id: 1},
+  {name: "Watchlist", user_id: 1},
+  {name: "Obnoxious Games", user_id: 1}
+  ])
+
 links = []
 
-(1..games_no).each do |game_id|
-  (1..users_no).each do |user_no|
-    links << {game_id: game_id, library_id: user_no * 3 - rand(3)} if rand < 0.2
-  end
+(1..3).each do |lib|
+  8.times { |_| links << {game_id: 1 + rand(games_no), library_id: lib} }
 end
 
-LibraryLink.create!(links)
+n = Library.find_by({user_id: 1, name: "Totally Sweet Games"}).id
 
+(0..4).each do |m|
+  12.times { |_| links << {library_id: n + m, game_id: 1 + rand(games_no)} }
+end
 
-ips = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+LibraryLink.create(links)
 
 review_bodies = ["This game is an ambitious offering, but it falls
   well short of the classics of the genre.  More polish and fewer
   features could have gone a long way towards creating an overall more
   fun experience.
-    I hope that future efforts come together more, but I can't reccomend
+    I hope that future efforts come together more, but I can't recommend
   this game.",
   "This is likely the worst game that has ever been made.  Why was this
   created?  Why did I buy it?",
@@ -181,25 +179,30 @@ review_bodies = ["This game is an ambitious offering, but it falls
   no-life fanboy.  Get the fuck out.",
   "I haven't had this much fun in years.  I rate it 8/8 m8.",
   "I'm too high for this website.  How do I get back to the search bar?",
-  "why in the world are u usig san serif it looks terrible.  Comic sans, pls"]
+  "why in the world r u usig san serif it looks terrible.  comic sans, pls",
+  "Uninspired garbage, retreading the same ground as countless better games.
+  This piece of formulaic garbage fits in all too well in today's oversaturated
+  market.  Cannot recommend to anyone.", "This is one of the best games
+  I've played this year.  Everyone should check it out.  For real.",
+  "This is a solid game.  I'm not completely satisfied, but it was worth
+  what I paid for it.  I'd recommend it to anyone who is a fan of the
+  genre, but general audiences may want to pass.", "What even is this game?
+  It's just so bad.  0/10." ]
 
 
 title_array = ["sweet game", "what a disappointment!", "Riot did it better",
 "blizz, pls", "dlc needs work", "I can't believe I paid for this",
 "0 stars", "10/10 would play again", "elbows pointy, would not play",
-"Too Casual", "Community is full of tryhards", "Meh", "P2W garbage"]
+"Too Casual", "Community is full of tryhards", "Meh", "P2W garbage",
+"Worth the money", "amazing", "dank", "awful", "Rito, pls", "great community!"]
 
 reviews = []
 User.all.each do |user|
-  user_id = user.id
-  user.libraries.first.games.each do |game|
-    reviews << {user_id: user_id, game_id: game.id,
-      body: review_bodies.sample, title: title_array.sample}
-  end
+  100.times { reviews << {user_id: user.id, game_id: rand(games_no), body: review_bodies.sample, title: title_array.sample} }
 end
 
 
-Review.create!(reviews)
+Review.create(reviews)
 
 ratings = []
 
@@ -218,26 +221,9 @@ def rounder(num)
 end
 
 User.all.each do |user|
-  user_id = user.id
   Game.all.each do |game|
-    ratings << {user_id: user_id, game_id: game.id, num: rounder(rand())} if rand() < 0.2
+    ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())} if rand() < 0.2
   end
 end
 
 Rating.create(ratings)
-
-Library.create([{name: "Totally Sweet Games", user_id: 1},
-  {name: "Recommended By Friends", user_id: 1},
-  {name: "Mindless Fun", user_id: 1},
-  {name: "Watchlist", user_id: 1},
-  {name: "Obnoxious Games", user_id: 1},
-  ])
-
-  n = Library.find_by({user_id: 1, name: "Totally Sweet Games"}).id
-
-    links = []
-    [0, 1, 2, 3, 4].each do |m|
-      30.times { |_| links << {library_id: n + m, game_id: rand(games_no)}}
-    end
-
-    LibraryLink.create(links)
