@@ -21,10 +21,15 @@ class Login extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors && nextProps.errors.length === 0) {
+      this.closeModal();
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.props.login({username: this.state.username, password: this.state.password});
-    this.closeModal();
   }
 
   linkState(key) {
@@ -81,7 +86,10 @@ class Login extends React.Component {
           style = {customStyles} >
 
             <div className ="big-form form">
+              <div>
+                <h1>Log In!</h1>
                 {this.renderErrors()}
+              </div>
               <div>
                 <input type="text" placeholder="Username" id="username"
                   onChange={this.linkState("username")}/>

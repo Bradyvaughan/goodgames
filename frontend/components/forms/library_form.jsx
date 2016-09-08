@@ -67,7 +67,7 @@ class LibraryForm extends React.Component {
         zIndex : 9999,
         backgroundColor : 'rgba(10, 10, 60, 1)',
         top: '15vh',
-        bottom: '55vh',
+        bottom: '45vh',
         left: '20vw',
         right: '20vw',
 
@@ -83,6 +83,12 @@ class LibraryForm extends React.Component {
           onRequestClose={this.closeModal}
           style = {customStyles} >
             <div className ="form small-form">
+
+              <div>
+                <h1>Create a New Games Library</h1>
+              </div>
+
+
               <input type="text" placeholder="Library Name" id="name"
                 onChange={this.linkState("name")}/>
               <button onClick={this.handleClick}>New Library</button>

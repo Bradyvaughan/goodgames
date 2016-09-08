@@ -112,8 +112,14 @@ body {
 }
 
 .small-form {
-  height: 15vh;
-  justify-content: space-around;
+  top: 5vh;
+  height: 25vh;
+  justify-content: space-between;
+}
+
+.review-form {
+  top: 5vh;
+  height: 45vh;
 }
 
 /************************GamesIndexItems*****************************/

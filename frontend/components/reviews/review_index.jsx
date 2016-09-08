@@ -5,7 +5,7 @@ class ReviewIndex extends React.Component {
 
 
   render() {
-    let reviewList = Object.keys(this.props.reviews).map((key) => (
+    let reviewList = Object.keys(this.props.reviews).reverse().map((key) => (
       <ReviewItem review={this.props.reviews[key]} key={`review-${key}`}/>
     ));
     return(

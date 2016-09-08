@@ -20,10 +20,15 @@ class EditReviewForm extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors && nextProps.errors.length === 0) {
+      this.closeModal();
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.props.updateReview(this.props.gameId, this.props.reviewId, {title: this.state.title, body: this.state.body});
-    this.closeModal();
   }
 
   linkState(key) {
@@ -75,11 +80,16 @@ class EditReviewForm extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style = {customStyles} >
-          <div className="form">
+          <div className="form review-form">
+
+            <div>
             {this.renderErrors()}
+            <h1>Edit Your Review</h1>
+            </div>
             <input type="text" placeholder="Review Title"
               onChange={this.linkState("title")}/>
             <textarea placeholder="Review Body"
+              rows="6"
               onChange={this.linkState("body")}/>
             <button onClick={this.handleClick}>Save Changes</button>
           </div>
