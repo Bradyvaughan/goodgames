@@ -24,14 +24,14 @@ class LibraryIndexItem extends React.Component {
 
   render () {
     let name = this.props.library.name;
-    let x = "x";
+    let x = <i className="fa fa-trash" aria-hidden="true" onClick={this.handleDelete}></i>;
     if (["Played", "To Play", "Currently Playing"].indexOf(name) > -1) {
       x = null;
     }
     return (
       <li className="lib-item">
         <p onClick={this.handleClick}>{name}</p>
-        <span className='icon' onClick={this.handleDelete}>{x}</span>
+        {x}
       </li>
     );
   }

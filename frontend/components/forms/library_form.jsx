@@ -20,31 +20,36 @@ class LibraryForm extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors && nextProps.errors.length === 0) {
+      this.closeModal();
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
     if (this.props.currentUser) {
       this.props.createLibrary(this.props.currentUser.id, this.state);
     }
     this.setState({name: ""});
-    this.closeModal();
   }
 
   linkState(key) {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
-  // renderErrors() {
-  //   let errors = this.props.errors.map((error, i) => (
-  //     <li key={`error-${i}`}>{error}</li>
-  //   ));
-  //   if (errors[0]) {
-  //     return(
-  //       <ul className="side-list">
-  //         {errors}
-  //       </ul>
-  //     );
-  //   }
-  // }
+  renderErrors() {
+    let errors = this.props.errors.map((error, i) => (
+      <li key={`error-${i}`}>{error}</li>
+    ));
+    if (errors[0]) {
+      return(
+        <ul className="side-list">
+          {errors}
+        </ul>
+      );
+    }
+  }
 
   render () {
 
@@ -74,7 +79,6 @@ class LibraryForm extends React.Component {
 
       }
     };
-    // {this.renderErrors()}
     return(
       <div className={className} id="new-lib">
         <p className="button" onClick={this.openModal}>Add Library</p>
@@ -86,6 +90,7 @@ class LibraryForm extends React.Component {
 
               <div>
                 <h1>Create a New Games Library</h1>
+                {this.renderErrors()}
               </div>
 
 

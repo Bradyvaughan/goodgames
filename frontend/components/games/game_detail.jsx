@@ -106,7 +106,7 @@ class GameDetail extends React.Component {
         <section className="game-body">
           <div className='game-info'>
             <div className='summary'>
-              <ul>
+              <ul className='sum-list'>
                 <li><h3>{game.title}</h3></li>
                 <li>Released On: {game.release_date}</li>
                 <li>Average Rating:  {game.avg_rating}</li>
@@ -114,7 +114,7 @@ class GameDetail extends React.Component {
               </ul>
               <div className="vert-center but-list">
                 <section className="lib-list">
-                  <p className="button">Add to Library</p>
+                  <p className="button" id="no-right">Add to Library</p>
                   <ul className = "menu">
                     {libList}
                   </ul>

@@ -6,7 +6,7 @@ class Api::ReviewsController < ApplicationController
     @review[:game_id] = params[:game_id]
     if @review.save
 
-      @reviews = [@review.includes(:user)]
+      @reviews = [@review]
       render :index
     else
       render(json: @review.errors.full_messages, status: 422)
