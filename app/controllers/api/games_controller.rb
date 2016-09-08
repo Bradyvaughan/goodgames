@@ -58,8 +58,14 @@ class Api::GamesController < ApplicationController
     end
   end
 
+  def search
+    @games = Game.where("title ILIKE :query", query: "%#{params[:name]}%")
+    @games = @games.page(params[:page])
+    render :index
+  end
+
   def game_params
     params.require(:game).permit(:release_date, :title, :platform,
-      :description, :avg_rating, :cover)
+      :description, :cover)
   end
 end

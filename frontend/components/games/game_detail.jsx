@@ -5,6 +5,7 @@ import NewReviewForm from '../forms/new_review';
 import { findKey } from 'lodash';
 import EditReviewForm from '../forms/edit_review';
 import PlayedStatusContainer from '../played_status_container';
+import StarRating from '../star_rating';
 
 class GameDetail extends React.Component {
 
@@ -13,6 +14,7 @@ class GameDetail extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleNewReview = this.handleNewReview.bind(this);
     this.handleEditReview = this.handleEditReview.bind(this);
+    this.handleRate = this.handleRate.bind(this);
   }
 
   componentWillUnmount() {
@@ -40,8 +42,12 @@ class GameDetail extends React.Component {
     document.querySelector('#edit-review').classList.toggle('hidden');
   }
 
+  handleRate(e, stuff) {
+    e.preventDefault();
+    this.props.submitRating(this.props.currentUser.id, this.props.params.id, stuff.rating);
+  }
+
   componentDidMount() {
-    this.props.getGame(this.props.params.id);
     if (this.props.currentUser) {
       this.props.getAllLibraries(this.props.currentUser.id);
     }
@@ -58,7 +64,7 @@ class GameDetail extends React.Component {
     }
 
     if (!game) {
-      game = {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []};
+      game = {img: "", title: "", description: "", avg_rating: 0, release_date: "", libraries: []};
     }
 
     let libList = Object.keys(this.props.libraries).map((key) => {
@@ -75,13 +81,20 @@ class GameDetail extends React.Component {
     let libz = game.libraries.map((library) => (
       <li key={`lib-${library.name}`}>{library.name}</li>
     ));
-
     if (this.props.currentUser) {
     return(
     <div className="det-body">
       <div className="game-detail">
         <section className="game-sidebar">
           <img src={game.cover}/>
+
+          <p>Your Rating:</p>
+          <StarRating
+            submitRating={this.props.submitRating}
+            userId={this.props.currentUser.id}
+            gameId={game.id}
+            rating={game.user_rating}
+            />
           <PlayedStatusContainer
             game={game}
             gameId={this.props.params.id}

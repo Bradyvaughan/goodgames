@@ -66,3 +66,16 @@ export const subtractGame = (gameId) => ({
 export const clearGames = () => ({
   type: "CLEAR_GAMES"
 });
+
+export const getSearch = (query, page) => ({
+  type: "GET_SEARCH",
+  query,
+  page
+});
+
+export const submitRating = (userId, gameId, num) => ({
+  type: "SUBMIT_RATING",
+  userId,
+  gameId,
+  num
+});

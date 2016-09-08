@@ -39,7 +39,7 @@ class GamesIndexItem extends React.Component {
                 Platform: {this.props.game.platform}
               </p>
               <p>
-                Rating: {this.props.game.avg_rating}/10
+                Rating: {this.props.game.avg_rating}/5
               </p>
             </div>
           </div>

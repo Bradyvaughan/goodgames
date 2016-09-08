@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginContainer from './forms/login_container';
 import SignUpContainer from './forms/sign_up_container';
-import { hashHistory } from 'react-router';
+import { hashHistory, withRouter } from 'react-router';
 import LibraryIndexContainer from './libraries/library_index_container';
 import LibraryFormContainer from './forms/library_form_container';
 import GamesIndexContainer from './games/games_index_container';
@@ -17,6 +17,23 @@ class App extends React.Component {
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
     this.handleNewLib = this.handleNewLib.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {q: ""};
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.clearGames();
+    this.props.router.push({
+      pathname: "/search",
+      query: this.state
+    });
+    this.props.getSearch(this.state.q, 1);
+  }
+
+  handleChange(e) {
+    this.setState({q: e.currentTarget.value});
   }
 
   handleLogout(e) {
@@ -77,10 +94,11 @@ class App extends React.Component {
               <LibraryIndexContainer />
             </div>
             <LibraryFormContainer />
-            <p className="search-bar">
+            <form className="search-bar" onSubmit={this.handleSubmit}>
               <label className="vert-center">Search:</label>
-              <input className="vert-center" type="text"/>
-            </p>
+              <input className="vert-center" type="text" onChange={this.handleChange}/>
+              <input type="submit" className="vert-center" value="Search!"/>
+            </form>
           </section>
           <section className="buttons">
 
@@ -102,4 +120,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

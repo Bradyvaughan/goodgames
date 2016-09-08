@@ -37,6 +37,11 @@ class LibraryDetail extends React.Component {
     if (!games) {
       games = {};
     }
+    let libraries = this.props.libraries;
+    let name = "";
+    if (Object.keys(libraries)[0]) {
+      name = libraries[this.props.params.libraryId].name;
+    }
     let gameDex = Object.keys(games).map((key) => {
       return(<li key={`{li-${key}}`}>
         <GamesIndexItem
@@ -50,9 +55,12 @@ class LibraryDetail extends React.Component {
       </li>);
     });
     return(
-      <ul className="index">
-        {gameDex}
-      </ul>
+      <div className="down">
+        <h1>Viewing: {name}</h1>
+        <ul className="index">
+          {gameDex}
+        </ul>
+      </div>
     );
   }
 }

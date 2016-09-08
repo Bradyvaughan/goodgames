@@ -4,7 +4,6 @@ class CreateGames < ActiveRecord::Migration[5.0]
       t.string :title, null: false
       t.text :description, default: "Description not found"
       t.string :release_date, null: false
-      t.float :avg_rating, null: false
       t.string :platform, null: false
       t.string :cover, null: false
 

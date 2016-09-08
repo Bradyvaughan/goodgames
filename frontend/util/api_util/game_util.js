@@ -17,7 +17,7 @@ export const deleteGame = (id, success, error) => {
   });
 };
 
-export const getGame = (id, success, error) => {
+export const getsGame = (id, success, error) => {
   $.ajax({
     url: `api/games/${id}`,
     success,
@@ -62,6 +62,25 @@ export const updateGame = (id, data, success, error) => {
     type: "PATCH",
     url: `api/games/${id}`,
     data: {game: data},
+    success,
+    error
+  });
+};
+
+export const getSearch = (query, page, success, error) => {
+  $.ajax({
+    type: "GET",
+    url: `api/games/search/pages/${page}/?name=${query}`,
+    success,
+    error
+  });
+};
+
+export const submitRating = (userId, gameId, num, success, error) => {
+  $.ajax({
+    type: "POST",
+    url: `api/games/${gameId}/ratings`,
+    data: {rating: {user_id: userId, num: num}},
     success,
     error
   });

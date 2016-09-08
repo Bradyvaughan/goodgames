@@ -42,7 +42,7 @@ names.each do |name|
           if datum
             Game.create({title: datum['GameTitle'], release_date: datum['ReleaseDate'],
               platform: datum["Platform"], description: datum["Overview"],
-              avg_rating: datum["Rating"], cover: cover})
+              cover: cover})
           end
         end
       end
@@ -198,3 +198,28 @@ end
 
 
 Review.create!(reviews)
+
+ratings = []
+
+def rounder(num)
+  if num < 0.2
+    1
+  elsif num < 0.3
+    2
+  elsif num < 0.45
+    3
+  elsif num < 0.75
+    4
+  else
+    5
+  end
+end
+
+User.all.each do |user|
+  user_id = user.id
+  Game.all.each do |game|
+    ratings << {user_id: user_id, game_id: game.id, num: rounder(rand())} if rand() < 0.2
+  end
+end
+
+Rating.create(ratings)

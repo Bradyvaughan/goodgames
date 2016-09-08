@@ -342,6 +342,15 @@ nav label {
   left: 5vw;
 }
 
+.down {
+  top: 30px;
+}
+
+.down h1 {
+  font-size: 32px;
+  text-align: center;
+}
+
 /************************GameDetail**********************/
 
 .det-body {
@@ -375,6 +384,8 @@ nav label {
   padding-right: 1vw;
 }
 
+
+
 .game-sidebar span {
   display: block;
   text-align: center;
@@ -387,8 +398,7 @@ nav label {
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  width: 70%;
-  left: 15%;
+  width: 100%;
 }
 
 .drop-down li {
@@ -468,9 +478,11 @@ nav label {
 
 .menu {
   background-color: #aaa;
+  width: 100%;
 }
 .menu li {
   background-color: #aaa;
+  width: 100%;
 }
 .summary .menu li:hover {
   border-top: 1px solid #ccc;
@@ -654,11 +666,35 @@ nav label {
 }
 
 .announcer {
-  /*border-bottom: 1px solid #bbb;*/
   font-size: 20px;
   font-weight: 700;
   padding-left: 1vw;
   padding-top: .2vw;
+}
+
+.star-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.star-list span {
+  background-color: #eee;
+  cursor: pointer;
+  font-size: 24px;
+  padding-bottom: 2px;
+}
+
+.gold {
+  color: orange;
+}
+
+.game-sidebar p {
+  text-align: center;
+}
+
+.game-sidebar .button {
+  margin: 0px;
 }
 
 

@@ -7,7 +7,8 @@ import { getGame, getGamesByLibrary, clearGames } from '../../actions/game_actio
 
 const mapStateToProps = state => ({
   games: state.games.games,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  libraries: state.libraries.libraries
 });
 
 const mapDispatchToProps = dispatch => ({

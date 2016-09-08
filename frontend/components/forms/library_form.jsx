@@ -7,7 +7,7 @@ class LibraryForm extends React.Component {
     super(props);
     this.state = {name: "", modalIsOpen: false};
     this.handleClick = this.handleClick.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+    // this.renderErrors = this.renderErrors.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -33,18 +33,18 @@ class LibraryForm extends React.Component {
     return (event => this.setState({[key]: event.currentTarget.value}));
   }
 
-  renderErrors() {
-    let errors = this.props.errors.map((error, i) => (
-      <li key={`error-${i}`}>{error}</li>
-    ));
-    if (errors[0]) {
-      return(
-        <ul className="side-list">
-          {errors}
-        </ul>
-      );
-    }
-  }
+  // renderErrors() {
+  //   let errors = this.props.errors.map((error, i) => (
+  //     <li key={`error-${i}`}>{error}</li>
+  //   ));
+  //   if (errors[0]) {
+  //     return(
+  //       <ul className="side-list">
+  //         {errors}
+  //       </ul>
+  //     );
+  //   }
+  // }
 
   render () {
 
@@ -74,6 +74,7 @@ class LibraryForm extends React.Component {
 
       }
     };
+    // {this.renderErrors()}
     return(
       <div className={className} id="new-lib">
         <p className="button" onClick={this.openModal}>Add Library</p>
@@ -81,7 +82,6 @@ class LibraryForm extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style = {customStyles} >
-          {this.renderErrors()}
             <div className ="form small-form">
               <input type="text" placeholder="Library Name" id="name"
                 onChange={this.linkState("name")}/>

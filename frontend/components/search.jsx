@@ -1,8 +1,8 @@
 import React from 'react';
-import GamesIndexItem from './games_index_item';
+import GamesIndexItem from './games/games_index_item';
 import { throttle } from 'lodash';
 
-class GamesIndex extends React.Component {
+class Search extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,7 +11,7 @@ class GamesIndex extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getGamesByPage(1);
+    this.props.getSearch(this.props.location.query.q, 1);
     window.addEventListener('scroll', this.state.fn);
     this.handleInfiniteLoad();
   }
@@ -30,7 +30,7 @@ class GamesIndex extends React.Component {
 
   handleInfiniteLoad() {
     this.setState({page: this.state.page + 1});
-    this.props.getGamesByPage(this.state.page);
+    this.props.getSearch(this.props.location.query.q, this.state.page);
   }
 
   render(){
@@ -52,4 +52,4 @@ class GamesIndex extends React.Component {
   }
 }
 
-export default GamesIndex;
+export default Search;

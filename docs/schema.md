@@ -18,7 +18,6 @@ description | text      | not null
 developer_id| integer   | not null, foreign key (references developers), indexed
 library_id  | integer   | not null, foreign key (references libraries), indexed
 release_date| datetime  | not null, default: false
-avg_rating  | float     | not null
 
 ## libraries
 column name | data type | details

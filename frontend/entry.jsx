@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { configureStore } from './store/store';
 import Root from './components/root';
 import { signUp, login, logout } from './actions/session_actions';
-// import { getAllGames, getGame, deleteGame, createGame, updateGame }
-//   from './actions/game_actions';
+import { getSearch, submitRating }
+  from './actions/game_actions';
 import { getAllLibraries, getLibrary, createLibrary, deleteLibrary }
   from './actions/library_actions';
 import { createLink, deleteLink } from './actions/link_actions';
@@ -24,17 +24,8 @@ document.addEventListener("DOMContentLoaded", () =>{
   const store = configureStore(preloadedState);
   window.store = store;
   window.login = login;
-  window.getAllLibraries = getAllLibraries;
-  window.getLibrary = getLibrary;
-  window.createLibrary = createLibrary;
-  window.createLink = createLink;
-  window.deleteLink = deleteLink;
-  window.specCreateLink = specCreateLink;
-  window.getAllReviews = getAllReviews;
-  window.getReview = getReview;
-  window.createReview = createReview;
-  window.deleteReview = deleteReview;
-  window.updateReview = updateReview;
+  window.getSearch = getSearch;
+  window.submitRating = submitRating;
 
   Modal.setAppElement(document.body);
 

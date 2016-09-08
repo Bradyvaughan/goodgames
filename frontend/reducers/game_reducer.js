@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 export const GameReducer = (
-  state={games: {img: "", title: "", description: "", avg_rating: "", release_date: "", libraries: []},
+  state={games: {img: "", title: "", description: "", avg_rating: 0, release_date: "", libraries: []},
    gameErrors: []}, action) => {
   let newState = merge({},state);
   switch (action.type) {

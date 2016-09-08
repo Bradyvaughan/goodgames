@@ -10,21 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902044124) do
+ActiveRecord::Schema.define(version: 20160907203738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "title",        null: false
+    t.string   "title",                                          null: false
     t.text     "description",  default: "Description not found"
-    t.string   "release_date", null: false
-    t.float    "avg_rating",   null: false
-    t.string   "platform",     null: false
-    t.string   "cover",        null: false
-
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "release_date",                                   null: false
+    t.string   "platform",                                       null: false
+    t.string   "cover",                                          null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -41,6 +39,16 @@ ActiveRecord::Schema.define(version: 20160902044124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id", "library_id"], name: "index_library_links_on_game_id_and_library_id", unique: true, using: :btree
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "game_id",    null: false
+    t.integer  "num",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_ratings_on_game_id", using: :btree
+    t.index ["user_id", "game_id"], name: "index_ratings_on_user_id_and_game_id", unique: true, using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
