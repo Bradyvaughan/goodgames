@@ -80,7 +80,7 @@ class NewReviewForm extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style = {customStyles} >
-          <div className="form review-form">
+          <form className="form review-form">
             <div>
               <h1>Write a New Review!</h1>
               {this.renderErrors()}
@@ -90,8 +90,8 @@ class NewReviewForm extends React.Component {
             <textarea placeholder="Review Body"
               rows="6"
               onChange={this.linkState("body")}/>
-            <button onClick={this.handleClick}>Submit Review</button>
-          </div>
+            <input className="form-button" type="submit" onClick={this.handleClick} value="Submit Review"/>
+          </form>
         </Modal>
       </div>
     );

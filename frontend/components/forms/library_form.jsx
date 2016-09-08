@@ -7,7 +7,7 @@ class LibraryForm extends React.Component {
     super(props);
     this.state = {name: "", modalIsOpen: false};
     this.handleClick = this.handleClick.bind(this);
-    // this.renderErrors = this.renderErrors.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }

@@ -83,7 +83,7 @@ class EditReviewForm extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style = {customStyles} >
-          <div className="form review-form">
+          <form className="form review-form">
 
             <div>
             {this.renderErrors()}
@@ -95,8 +95,8 @@ class EditReviewForm extends React.Component {
               rows="6"
               value={this.state.body}
               onChange={this.linkState("body")}/>
-            <button onClick={this.handleClick}>Save Changes</button>
-          </div>
+            <input className="form-button" type="submit" onClick={this.handleClick} value="Save Changes"/>
+          </form>
         </Modal>
       </div>
     );
