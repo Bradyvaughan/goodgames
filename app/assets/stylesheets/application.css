@@ -477,25 +477,26 @@ nav label {
 .summary .menu {
   display: none;
   position: absolute;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-left: 1px solid #ccc;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
   cursor: pointer;
   opacity: .9;
-  /*top: 24px;*/
+  top: 28px;
+  right: 0px;
 }
 
 .summary .menu li {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid black;
 }
 
 .menu {
   background-color: #aaa;
-  width: 100%;
 }
-.menu li {
+.game-info .menu li {
   background-color: #aaa;
-  width: 100%;
+  padding: 5px;
+  padding-top: 5px;
 }
 .summary .menu li:hover {
   border-top: 1px solid #ccc;

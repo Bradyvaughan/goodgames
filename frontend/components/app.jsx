@@ -102,7 +102,7 @@ class App extends React.Component {
             <form className="search-bar" onSubmit={this.handleSubmit}>
               <label className="vert-center">Search:</label>
               <input className="bar vert-center" type="text" onChange={this.handleChange}/>
-              <input type="submit" className="vert-center button" value="Search!"/>
+              <input type="submit" className="vert-center button" value="Search"/>
             </form>
           </section>
 

@@ -1,7 +1,7 @@
 class Api::LibrariesController < ApplicationController
 
   def index
-    @libraries = User.find_by_id(params[:user_id]).libraries.includes(:library_links)
+    @libraries = User.find_by_id(params[:user_id]).libraries.includes(library_links: [game: [ratings: [:user], libraries: [:user]]])
   end
 
   def show

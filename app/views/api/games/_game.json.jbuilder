@@ -7,7 +7,7 @@ rates.each { |rating| rate += rating.num.to_f / rates.length }
 
 json.avg_rating rate.round(1)
 
-
+# user_rating = Game.ratings.where("")
 user_rating = Rating.find_by({game_id: game.id, user_id: current_user.id}) if current_user
 
 if user_rating
