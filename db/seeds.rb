@@ -47,7 +47,7 @@ del_list = [15, 16, 47, 50, 63, 107, 54, 90, 91, 68, 112, 113, 114, 182,
 806, 250, 854, 880, 885, 859, 869, 871, 889, 737, 741, 759, 787, 808,
 797, 804, 805, 809, 826, 834, 899, 900, 901, 166, 176, 233, 430, 497,
 561, 632, 745, 769, 818, 855, 236, 265, 293, 676, 714, 907, 914, 919,
-418, 619];
+418, 619, 324];
 
 del_list.each do |num|
   g = Game.find_by_id(num)
@@ -216,7 +216,7 @@ Library.create([{name: "Totally Sweet Games", user_id: 1},
   {name: "Recommended By Friends", user_id: 1},
   {name: "Mindless Fun", user_id: 1},
   {name: "Watchlist", user_id: 1},
-  {name: "Obnoxious Games", user_id: 1}
+  {name: "Favorites", user_id: 1}
   ])
 
 links = []
@@ -226,79 +226,76 @@ links = []
 end
 
 n = Library.find_by({user_id: 1, name: "Totally Sweet Games"}).id
-
-(0..4).each do |m|
+(0..3).each do |m|
   games.sample(12).each { |g| links << {game_id: g.id, library_id: n + m} }
+end
+
+[313, 314, 315, 316, 317, 319, 320, 322, 325, 326, 321, 323].each do |g|
+  links << {game_id: g, library_id: n + 4}
 end
 
 LibraryLink.create(links)
 
-review_bodies = ["This game is an ambitious offering, but it falls
-  well short of the classics of the genre.  More polish and fewer
-  features could have gone a long way towards creating an overall more
-  fun experience.
-    I hope that future efforts come together more, but I can't recommend
-  this game.",
-  "This is likely the worst game that has ever been made.  Why was this
-  created?  Why did I buy it?",
-  "I love this game.  I play it at least 3 hours a day.",
-  "Halp, I can't stop playing!  I haven't been to work in four days. I'm
-  not sure I care any more.  Game is love, game is life.",
-  "This game is great, except that the controls are super annoying!  If
-  they just fixed that, it would be the best game ever.",
-  "6.5 / 10, no comeback mechanics.", "I hear a lot of people hating on
-  this game right now, but I think it's great.  Sure, the mechanics are
-  a bit weird, but it's a super unique and original idea that was
-  executed pretty well.  Stop expecting the Mona Lisa, people.  This
-  is pretty good.",
-  "This game is such a casual clown fiesta.  L2P a real game, n00bs.",
-  "Fuck this fucking game.  Fuck.  I can't deal with it anymore.  It's
-  too goddamn hard.  I'm done.  I'm so done.  I can't even right now.",
-  "Calling this game a kiddy-game for casual scrubs is simplistic, maybe,
-  but undeniably accurate.  I cannot believe how soft this entire
-  industry has gotten.  I remember when even having lives was a luxury.
-  Now, games are virtually impossible to lose.  There is no skill
-  involved at all when the game may be retried indefinitely.  Anyone
-  who has played the original x-com, or, hell, even the original classics
-  such as mario or megaman knows how rewarding a brutally difficult
-  experience can be.  It saddens me that the triple-A gaming industry
-  keeps vomitting out shitty, unlosable care-bear games to cater to
-  casual cowards.  You all make me sick.",
-  "Not even one solid waifu.  Awful.",
-  "Oh my god, guys.  I'm so goddamn tired of your memes.  Can you guys
-  just fucking stop already?  Jesus, I haven't read an original thought
-  since I've been on this site!",
-  "Everyone shitting on this game in the comments section is just a
-  no-life fanboy.  Get the fuck out.",
-  "I haven't had this much fun in years.  I r8 it 8/8, m8.",
-  "I'm too high for this website.  How do I get back to the search bar?",
-  "why in the world r u usig san serif it looks terrible.  comic sans, pls",
-  "Uninspired trash, retreading the same ground as countless better games.
-  This piece of formulaic garbage fits in all too well in today's oversaturated
-  market.  Cannot recommend to anyone.", "This is one of the best games
-  I've played this year.  Everyone should check it out.  For real.",
-  "This is a solid game.  I'm not completely satisfied, but it was worth
-  what I paid for it.  I'd recommend it to anyone who is a fan of the
-  genre, but general audiences may want to pass.", "What even is this game?
-  It's just so bad.  0/10.",
-  "I always love these kind of games and this one is no exception!",
-  "Meh, get it when it's on the summer sale, otherwise, pass.",
-  "I hate this game.  I hate it so much.  I hate you for reading about
-  it.", "This game has a steep learning curve, but it's so worth it.
-  Stick through the beginning, and you'll thank me.  Would recommend.",
-  "this gme is to hard.  they shud make it ezier, cuz now its just
-  dumb.", "5/7.  Perfect."]
-
-
-title_array = ["sweet game", "what a disappointment!", "Riot did it better",
-"blizz, pls", "dlc needs work", "I can't believe I paid for this",
-"0 stars", "10/10 would play again", "elbows pointy, would not play",
-"Too Casual", "Community is full of tryhards", "Meh", "P2W garbage",
-"Worth the money", "amazing", "dank", "awful", "Rito, pls", "great community!"]
+review_array = [
+  {title: "Pretty good", body: "This game is an ambitious offering, but it falls well short of the classics of the genre.  More polish and fewer features could have gone a long way towards creating an overall more fun experience. I hope that future efforts come together more, but I can't recommend this game."},
+  {title: "amazing", body: "GotY for sure!"},
+  {title: "Balance is Weird", body: "The difficulty curve is way off on this one.  It's super hard to start off with, but just gets easier and easier so it's unsatisfying to finish."},
+  {title: "Finish too easy", body: "The beginning is really rough and I wish they'd spent more time on it.  That said, the overall game is great and well worth sticking with it."},
+  {title: "0 stars", body: "This is a terrible game.  Don't waste your time playing it, don't waste your time learning about it"},
+  {title: "disappointing", body: "LOL, wait for a sale."},
+  {title: "Worth the money", body: "As a big fan of the genre, I'm always excited to see a solid release. The game absolutely delivers, and I would recommend it to anyone."},
+  {title: "awful", body: "GAME IS A FUCKING JOKE."},
+  {title: "Fine, I guess", body:   "The game is pretty good.  I wish I could say its better than that, but balance issues really kill it for me."},
+  {title: "My GOTY", body: "This game is excellent.  Everyone should play it.  If anyone doesn't believe me, go watch some let's plays.  It's seriously great."},
+  {title: "Rito, pls", body: "There was no need for this game to be made.  It's unoriginal, it's unpolished, it's overall worthless.  No one would notice if it didn't exist, which it should not."},
+  {title: "The game you need, you fat loser", body: "If this game can't get you through your crippling loneliness, nothing will."},
+  {title: "keep calm", body: "lol, y'all are so harsh.  Chill out dudes, it's going to be okay."},
+  {title: "sweet game", body: "I haven't had this much fun in years.  I r8 it 8/8, m8."},
+  {title: "git gud", body: "if u dont like this game ur stupid.  its good and ur bad."},
+  {title: "Please Read", body: "Bush did 9/11 guys.  Open your eyes and go to loosechange911.com. Wake up sheeple!"},
+  {title: "I require more waifus", body: "Girls not hot enough."},
+  {title: "Too Casual", body: "I'm so tired of AAA-gaming catering to scrubs.  Give us something deep and challenging for fucking once!"},
+  {title: "Too hard!", body: "Jesus, this game is just way too hard.  Tone it down, pls."},
+  {title: "Chill out, it's fine.", body: "Game was overhyped.  Only idiots would believe what the developer published.  That said, the game is pretty good. Well short of what was advertised, but who cares?  It's fun anyway."},
+  {title: "L2P", body: "Lol, rage harder n00bs.  You guys just can't handle a real challenge. You've just got to git gud."},
+  {title: "dank", body: "Like Skyrim, but without Skyrim."},
+  {title: "Incomprehensible", body: "Story needs work.  I love this game, but the writing makes me cringe. If you can't write a decent story, don't try."},
+  {title: "Incredible", body: "This game has taken over my life, and I'm better for it.  I'd write a longer review, but I need to get back to playing."},
+  {title: "great community!", body: "I have over 2000 hours on this game.  Need I say more?"},
+  {title: "I can't believe I paid for this", body: "This game is actually impressively awful.  Maybe you should buy it ironically?  Other than that, don't."},
+  {title: "10/10 would play again", body: "Love it."},
+  {title: "Thumbs Up", body: "5/7.  Perfect."},
+  {title: "way too hard", body: "this gme is to hard.  they shud make it ezier, cuz now its just dumb."},
+  {title: "Hang in there", body: "This game has a steep learning curve, but it's so worth it.  Stick through the beginning, and you'll thank me.  Would recommend."},
+  {title: "P2W garbage", body: "I hate this game.  I hate it so much.  I hate you for reading about it."},
+  {title: "Not worth the money", body: "Meh, get it when it's on the summer sale, otherwise, pass."},
+  {title: "what a disappointment!", body: "What even is this game?  It's just so bad.  0/10."},
+  {title: "It's okay", body: "This is a solid game.  I'm not completely satisfied, but it was worth what I paid for it.  I'd recommend it to anyone who is a fan of the genre, but general audiences may want to pass."},
+  {title: "Excellent", body: "This is one of the best games I've played this year.  Everyone should check it out.  For real."},
+  {title: "Unnecessary", body: "Uninspired trash, retreading the same ground as countless better games. This piece of formulaic garbage fits in all too well in today's oversaturated market.  Cannot recommend to anyone."},
+  {title: "site sux", body: "why in the world r u usig san serif it looks terrible.  comic sans, pls"},
+  {title: "halp", body: "I'm too high for this website.  How do I get back to the search bar?"},
+  {title: "dank", body: "I haven't had this much fun in years.  I r8 it 8/8, m8."},
+  {title: "You Guys Suck", body: "Everyone shitting on this game in the comments section is just a no-life fanboy.  Get the fuck out."},
+  {title: "memes", body: "Oh my god, guys.  I'm so goddamn tired of your memes.  Can you guys just fucking stop already?  Jesus, I haven't read an original thought since I've been on this site!"},
+  {title: "elbows pointy, would not play", body: "Not even one solid waifu.  Awful."},
+  {title: "scrubs, all of you", body: "Calling this game a kiddy-game for casual scrubs is simplistic, maybe, but undeniably accurate.  I cannot believe how soft this entire industry has gotten.  I remember when even having lives was a luxury. Now, games are virtually impossible to lose.  There is no skill involved at all when the game may be retried indefinitely.  Anyone who has played the original x-com, or, hell, even the original classics such as mario or megaman knows how rewarding a brutally difficult experience can be.  It saddens me that the triple-A gaming industry keeps vomitting out shitty, unlosable care-bear games to cater to casual cowards.  You all make me sick."},
+  {title: "Fuck", body: "Fuck this fucking game.  Fuck.  I can't deal with it anymore.  It's too goddamn hard.  I'm done.  I'm so done.  I can't even right now."},
+  {title: "Riot did it better", body: "This game is such a casual clown fiesta.  L2P a real game, n00bs."},
+  {title: "Be Reasonable", body: "I hear a lot of people hating on this game right now, but I think it's great.  Sure, the mechanics are a bit weird, but it's a super unique and original idea that was executed pretty well.  Stop expecting the Mona Lisa, people.  This is pretty good."},
+  {title: "blizz pls", body: "6.5 / 10, no comeback mechanics."},
+  {title: "Good game, janky controls", body: "This game is great, except that the controls are super annoying!  If they just fixed that, it would be the best game ever."},
+  {title: "Keep forgetting to eat", body: "Halp, I can't stop playing!  I haven't been to work in four days. I'm not sure I care any more.  Game is love, game is life."},
+  {title: "Terrific", body: "I love this game.  I play it at least 3 hours a day."},
+  {title: "Waste of Money", body: "This is likely the worst game that has ever been made.  Why was this created?  Why did I buy it?"}
+]
 
 reviews = []
 User.all.each do |user|
-  games.sample(50).each { |g| reviews << {user_id: user.id, game_id: g.id, body: review_bodies.sample, title: title_array.sample} }
+  games.sample(50).each do |g|
+    review = review_array.sample
+    reviews << {user_id: user.id, game_id: g.id, body: review[:body], title: review[:title]}
+  end
 end
 
 
