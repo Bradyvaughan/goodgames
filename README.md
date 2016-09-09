@@ -76,16 +76,26 @@ Each user can rate a game with 1-5 stars. When a user rates a game a row is adde
 
 ### Search
 
+Users may search the database for games that they are interested in or that they want to add to their libraries.  Currently, users may only search by name, and a game's title must include the query exactly in order to match.  
+
 
 
 ## Future Directions for the Project
 
-In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
+In addition to my current work, there are a number of possible improvements that I see for my project.
 
-### Search
+### Developers/Publishers
 
-Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.js library to create a fuzzy search of notes and notebooks.  This search will look go through tags, note titles, notebook titles, and note content.  
+I would like to add a table for developers and/or publishers.  This would allow viewers to look at other games made by the same companies, as well as allowing me to display more information about my games.
 
-### Direct Messaging
+### Genres
 
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
+I would also like to add a table for genres and associated join table in order to categorize games into genres.  With this architecture, it wouldn't be that great a leap to add other kinds of tags to the games.
+
+### Better Search
+
+Currently, searches may only be done by game title, and are simply displayed by the order that they were entered into the database.  Ideally, the user would be able to search by any combination of name, genre/tag, platform, or publisher.  Once searched, the user should be able to order their results by alphabet, release date, average rating, platform, or a combination of theses with a user selected priority.
+
+### Related Games
+
+It would be neat if the site kept track of which games have the highest statistical correlation between their ratings and let users known which games were related in this way.
