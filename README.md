@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-# FresherNote
+# Good Games
 
 [Good Games live][heroku] **NB:** This should be a link to your production site
 
@@ -34,19 +34,19 @@ Good Games is a full-stack web application loosely inspired by Goodreads.  The b
 ## Features & Implementation
 
 Good Games has 5 primary features:
-Games
-Libraries
-Reviews
-Ratings
-Search
+- Games
+- Libraries
+- Reviews
+- Ratings
+- Search
 
 ### Games
 
-Games are stored in the database with columns for `title`, `description`, `release_date`, `cover`, and `platform`.  Games can be displayed in one of two primary ways.  The fist is as a `Games Index Item` component which only displays cover art, title, average rating (to be discussed later), and platform.  If a user wants to know more about a game or otherwise interact with it, they can click on the index item to be taken to the game's second view, the `Game Detail` component, which displays all of the database information on the game, as well as user reviews.
+Games are stored in the database with columns for `id`, `title`, `description`, `release_date`, `cover`, and `platform`.  Games can be displayed in one of two primary ways.  The fist is as a `Games Index Item` component which only displays cover art, title, average rating (to be discussed later), and platform.  If a user wants to know more about a game or otherwise interact with it, they can click on the index item to be taken to the game's second view, the `Game Detail` component, which displays all of the database information on the game, as well as user reviews.
 
 Image of Detail page
 
-There are four kinds types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.
+There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.
 
 Image of Index
 
@@ -54,28 +54,29 @@ Users may not add or edit games to the database, this privilege is reserved for 
 
 ### Libraries
 
-Implementing Notebooks started with a notebook table in the database.  The `Notebook` table contains two columns: `title` and `id`.  Additionally, a `notebook_id` column was added to the `Note` table.  
+Libraries are a way for users to organize the games in the database into certain categories based on the users' relationship with the game or opinion about them.  Each library has `id`, `user_id`, and `name` columns.  On user creation, three default libraries (`Played`, `To Play`, `Currently Playing`) are made for the user.  These libraries (unlike others) are mutually exclusive and cannot be destroyed.  The user may add games to libraries through the game's detail page.  Games are related to libraries through a `library_links` join table which holds only `id`, `game_id`, and `library_id`.
 
-The React component structure for notebooks mirrored that of notes: the `NotebookIndex` component renders a list of `CondensedNotebook`s as subcomponents, along with one `ExpandedNotebook`, kept track of by `NotebookStore.selectedNotebook()`.  
+The user may delete or create new libraries at will using buttons located in the nav bar.  Particular libraries are displayed through a `Library Detail` component which lists all games that have been added to that library.
 
-`NotebookIndex` render method:
+Picture of library dropdowns
 
-```javascript
-render: function () {
-  return ({this.state.notebooks.map(function (notebook) {
-    return <CondensedNotebook notebook={notebook} />
-  }
-  <ExpandedNotebook notebook={this.state.selectedNotebook} />)
-}
-```
+Some more Words.
 
-### Tags
+### Reviews
 
-As with notebooks, tags are stored in the database through a `tag` table and a join table.  The `tag` table contains the columns `id` and `tag_name`.  The `tagged_notes` table is the associated join table, which contains three columns: `id`, `tag_id`, and `note_id`.  
+Reviews are stored in the database with columns for `id`, `user_id`, `game_id`, `title`, and `body`.  Reviews are displayed after the game description on the game detail page reverse order of creation.  Each review displays the name of the user that created it, the title of the review, and the body of the review.
 
-Tags are maintained on the frontend in the `TagStore`.  Because creating, editing, and destroying notes can potentially affect `Tag` objects, the `NoteIndex` and the `NotebookIndex` both listen to the `TagStore`.  It was not necessary to create a `Tag` component, as tags are simply rendered as part of the individual `Note` components.  
+Picture of reviews
 
-![tag screenshot](tagScreenshot.png)
+Users can write at most one review of a game, but may edit that review as often as they please.  However, editing a review does not move it up in the index, they remain ordered by newest created.
+
+### Ratings
+
+Each user can rate a game with 1-5 stars. When a user rates a game a row is added to the ratings table, which holds columns for `id`, `user_id`, `game_id`, and `num` which is the actual numerical rating.  A user can only have one rating for a game, but may update it as often as they like.  Whenever the website fetches data for games, it will also fetch all of the ratings information and calculate an average in order to display to the user.  Games may be rated from their detail pages.
+
+### Search
+
+
 
 ## Future Directions for the Project
 
