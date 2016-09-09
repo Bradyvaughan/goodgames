@@ -23,7 +23,7 @@ Image of Detail page
 
 There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.  All index pages feature infinite scroll.
 
-Image of Index
+![Image of Index](index_view.png)
 
 Users may not add or edit games to the database, this privilege is reserved for admins.  However they can review games, rate them, or add them to any of their libraries.
 
