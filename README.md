@@ -25,11 +25,11 @@ Things you may want to cover:
 
 # Good Games
 
-[Good Games live][heroku] **NB:** This should be a link to your production site
+[Good Games live][heroku]
 
 [heroku]: http://www.goodgameswp.us
 
-Good Games is a full-stack web application loosely inspired by Goodreads.  The backend is set upw ith Ruby on Rails and a PostgreSQL database.  The frontend is handled with React.js using the Redux framework.
+Good Games is a full-stack web application loosely inspired by Goodreads.  The backend is set up with Ruby on Rails and a PostgreSQL database.  The frontend is handled with React.js using the Redux framework.
 
 ## Features & Implementation
 
