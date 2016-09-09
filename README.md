@@ -19,7 +19,7 @@ Good Games has 5 primary features:
 
 Games are stored in the database with columns for `id`, `title`, `description`, `release_date`, `cover`, and `platform`.  Games can be displayed in one of two primary ways.  The fist is as a `Games Index Item` component which only displays cover art, title, average rating (to be discussed later), and platform.  If a user wants to know more about a game or otherwise interact with it, they can click on the index item to be taken to the game's second view, the `Game Detail` component, which displays all of the database information on the game, as well as user reviews.
 
-Image of Detail page
+![Image of Game Detail](/Users/appacademy/Desktop/goodgames/app/assets/images/game_detail.png)
 
 There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.  All index pages feature infinite scroll.
 
