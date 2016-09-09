@@ -41,7 +41,7 @@ Some more Words.
 
 Reviews are stored in the database with columns for `id`, `user_id`, `game_id`, `title`, and `body`.  Reviews are displayed after the game description on the game detail page reverse order of creation.  Each review displays the name of the user that created it, the title of the review, and the body of the review.
 
-1[Image of Reviews](app/assets/images/reviews.png)
+![Image of Reviews](app/assets/images/reviews.png)
 
 Users can write at most one review of a game, but may edit that review as often as they please.  However, editing a review does not move it up in the index, they remain ordered by newest created.
 
