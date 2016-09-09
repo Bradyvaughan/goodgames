@@ -41,7 +41,7 @@ Some more Words.
 
 Reviews are stored in the database with columns for `id`, `user_id`, `game_id`, `title`, and `body`.  Reviews are displayed after the game description on the game detail page reverse order of creation.  Each review displays the name of the user that created it, the title of the review, and the body of the review.
 
-Picture of reviews
+1[Image of Reviews](app/assets/images/reviews.png)
 
 Users can write at most one review of a game, but may edit that review as often as they please.  However, editing a review does not move it up in the index, they remain ordered by newest created.
 
@@ -49,7 +49,7 @@ Users can write at most one review of a game, but may edit that review as often 
 
 Each user can rate a game with 1-5 stars. When a user rates a game a row is added to the ratings table, which holds columns for `id`, `user_id`, `game_id`, and `num` which is the actual numerical rating.  A user can only have one rating for a game, but may update it as often as they like.  Whenever the website fetches data for games, it will also fetch all of the ratings information and calculate an average in order to display to the user.  Games may be rated from their detail pages.
 
-closeup of star rating
+![Ratings Closeup](app/assets/images/ratings.png)
 
 ### Search
 

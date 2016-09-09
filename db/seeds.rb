@@ -270,7 +270,7 @@ review_bodies = ["This game is an ambitious offering, but it falls
   since I've been on this site!",
   "Everyone shitting on this game in the comments section is just a
   no-life fanboy.  Get the fuck out.",
-  "I haven't had this much fun in years.  I rate it 8/8 m8.",
+  "I haven't had this much fun in years.  I r8 it 8/8, m8.",
   "I'm too high for this website.  How do I get back to the search bar?",
   "why in the world r u usig san serif it looks terrible.  comic sans, pls",
   "Uninspired trash, retreading the same ground as countless better games.
