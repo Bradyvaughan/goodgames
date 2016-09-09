@@ -1,28 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 # Good Games
 
 [Good Games live][heroku]
@@ -46,7 +21,7 @@ Games are stored in the database with columns for `id`, `title`, `description`, 
 
 Image of Detail page
 
-There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.
+There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.  All index pages feature infinite scroll.
 
 Image of Index
 
@@ -77,8 +52,6 @@ Each user can rate a game with 1-5 stars. When a user rates a game a row is adde
 ### Search
 
 Users may search the database for games that they are interested in or that they want to add to their libraries.  Currently, users may only search by name, and a game's title must include the query exactly in order to match.  
-
-
 
 ## Future Directions for the Project
 
