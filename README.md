@@ -21,7 +21,7 @@ Games are stored in the database with columns for `id`, `title`, `description`, 
 
 ![Image of Game Detail](app/assets/images/game_detail.png)
 
-There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.  All index pages feature infinite scroll.
+There are four types of game indices that users may view.  There is a full index which lists all of the games in the site's database, a user index view which displays all of the games that are in any of the user's libraries, a library detail page which displays all games in the particular library, and a search page which displays all games that match a user inputted query.  All index pages feature hand-rolled **infinite scroll**.
 
 ![Image of Index](app/assets/images/index_view.png)
 
@@ -50,6 +50,8 @@ Users can write at most one review of a game, but may edit that review as often 
 Each user can rate a game with 1-5 stars. When a user rates a game a row is added to the ratings table, which holds columns for `id`, `user_id`, `game_id`, and `num` which is the actual numerical rating.  A user can only have one rating for a game, but may update it as often as they like.  Whenever the website fetches data for games, it will also fetch all of the ratings information and calculate an average in order to display to the user.  Games may be rated from their detail pages.
 
 ![Ratings Closeup](app/assets/images/ratings.png)
+
+The ratings component displayed above was custom made.
 
 ### Search
 
