@@ -239,14 +239,21 @@ review_bodies = ["This game is an ambitious offering, but it falls
   "I haven't had this much fun in years.  I rate it 8/8 m8.",
   "I'm too high for this website.  How do I get back to the search bar?",
   "why in the world r u usig san serif it looks terrible.  comic sans, pls",
-  "Uninspired garbage, retreading the same ground as countless better games.
+  "Uninspired trash, retreading the same ground as countless better games.
   This piece of formulaic garbage fits in all too well in today's oversaturated
   market.  Cannot recommend to anyone.", "This is one of the best games
   I've played this year.  Everyone should check it out.  For real.",
   "This is a solid game.  I'm not completely satisfied, but it was worth
   what I paid for it.  I'd recommend it to anyone who is a fan of the
   genre, but general audiences may want to pass.", "What even is this game?
-  It's just so bad.  0/10." ]
+  It's just so bad.  0/10.",
+  "I always love these kind of games and this one is no exception!",
+  "Meh, get it when it's on the summer sale, otherwise, pass.",
+  "I hate this game.  I hate it so much.  I hate you for reading about
+  it.", "This game has a steep learning curve, but it's so worth it.
+  Stick through the beginning, and you'll thank me.  Would recommend.",
+  "this gme is to hard.  they shud make it ezier, cuz now its just
+  dumb.", "5/7.  Perfect."]
 
 
 title_array = ["sweet game", "what a disappointment!", "Riot did it better",

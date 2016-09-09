@@ -11,7 +11,8 @@ class LibraryDetail extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getGamesByLibrary(this.props.params.libraryId, this.state.page);
+    this.props.getGamesByLibrary(this.props.params.libraryId, 1);
+    this.props.getGamesByLibrary(this.props.params.libraryId, 2);
     window.addEventListener('scroll', this.state.fn);
   }
 

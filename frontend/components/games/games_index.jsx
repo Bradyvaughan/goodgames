@@ -12,6 +12,7 @@ class GamesIndex extends React.Component {
 
   componentDidMount(){
     this.props.getGamesByPage(1);
+    this.props.getGamesByPage(2);
     window.addEventListener('scroll', this.state.fn);
     this.handleInfiniteLoad();
   }

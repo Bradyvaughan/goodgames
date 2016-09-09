@@ -13,6 +13,7 @@ class Home extends React.Component {
   componentDidMount() {
     if (this.props.currentUser) {
       this.props.getGamesByUser(this.props.currentUser.id, 1);
+      this.props.getGamesByUser(this.props.currentUser.id, 2);
       window.addEventListener('scroll', this.state.fn);
       this.handleInfiniteLoad();
     }

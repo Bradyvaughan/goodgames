@@ -12,8 +12,8 @@ class Search extends React.Component {
 
   componentDidMount(){
     this.props.getSearch(this.props.location.query.q, 1);
+    this.props.getSearch(this.props.location.query.q, 2);
     window.addEventListener('scroll', this.state.fn);
-    this.handleInfiniteLoad();
   }
 
   componentWillUnmount() {
