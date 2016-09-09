@@ -1,10 +1,10 @@
 require 'nokogiri'
 require 'net/http'
 
-names = %w(starcraft warcraft diablo league duty mario zelda metriod
+names = %w(starcraft warcraft diablo league duty mario zelda
 xcom civilization halo tetris minecraft theft scrolls battlefield
 sims sonic fable clancy dota gears tomb persia final
-kong goldeneye)
+kong goldeneye metroid)
 
 names.each do |name|
   url = URI.parse("http://thegamesdb.net/api/GetGamesList.php?name=#{name}")
@@ -38,6 +38,64 @@ names.each do |name|
       end
     end
   end
+end
+
+del_list = [15, 16, 47, 50, 63, 107, 54, 90, 91, 68, 112, 113, 114, 182,
+259, 206, 215, 217, 232, 235, 197, 268, 270, 272, 275, 352, 353, 371,
+382, 377, 395, 396, 445, 448, 493, 507, 522, 523, 534, 562, 566, 569,
+582, 587, 591, 592, 607, 652, 628, 673, 695, 699, 707, 711, 730, 734,
+806, 250, 854, 880, 885, 859, 869, 871, 889, 737, 741, 759, 787, 808,
+797, 804, 805, 809, 826, 834, 899, 900, 901, 166, 176, 233, 430, 497,
+561, 632, 745, 769, 818, 855, 236, 265, 293, 676, 714, 907, 914, 919,
+418, 619];
+
+del_list.each do |num|
+  g = Game.find_by_id(num)
+  g.destroy
+end
+
+cover_hash = {8 => "https://upload.wikimedia.org/wikipedia/en/7/77/StarCraft_II_-_Legacy_of_the_Void_cover.jpg",
+133 => "http://game2dl.net/308-thickbox_default/call-of-duty-ghosts-xbox-one.jpg",
+134 => "http://vignette2.wikia.nocookie.net/callofduty/images/3/37/Call_of_Duty_Cover.jpg/revision/latest?cb=20120407220943",
+140 => "https://assets.vg247.com/current//2016/06/call_of_duty_infinite_warfare_possible_new_art_1.jpg",
+143 => "https://assets.vg247.com/current//2016/06/call_of_duty_infinite_warfare_possible_new_art_1.jpg",
+147 => "https://assets.vg247.com/current//2016/06/call_of_duty_infinite_warfare_possible_new_art_1.jpg",
+148 => "http://vignette2.wikia.nocookie.net/callofduty/images/d/db/Modern_Warfare_2_cover.PNG/revision/20090810181300",
+157 => "http://firsthour.net/screenshots/call-of-duty-4-modern-warfare/call-of-duty-4-modern-warfare-cover.jpg",
+160 => "http://i1097.photobucket.com/albums/g354/kevin3seven/BlackOps2cover.png",
+178 => "https://upload.wikimedia.org/wikipedia/en/1/19/Call_of_Duty_World_at_War_cover.png",
+204 => "http://ocremix.org/files/images/games/gb/5/super-mario-land-gb-cover-front-26011.jpg",
+239 => "http://firsthour.net/screenshots/super-mario-galaxy-2/super-mario-galaxy-2-cover.jpg",
+242 => "https://upload.wikimedia.org/wikipedia/en/a/a5/Super_Mario_Bros._3_coverart.png",
+262 => "https://upload.wikimedia.org/wikipedia/en/5/5e/Super_Mario_3D_World_box_art.jpg",
+266 => "https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png",
+319 => "http://www.mobygames.com/images/covers/l/1-sid-meier-s-civilization-ii-windows-front-cover.jpg",
+328 => "https://www.pixeldynamo.com/wp-content/uploads/2015/04/1100262092-00.jpg",
+350 => "https://upload.wikimedia.org/wikipedia/en/8/8d/NES_Tetris_Box_Front.jpg",
+366 => "http://static.giantbomb.com/uploads/original/9/93770/2362304-nes_tetris2_2.jpg",
+400 => "http://screenshots.en.sftcdn.net/en/scrn/3333000/3333269/minecraft-pocket-edition-13-700x393.jpg",
+413 => "http://img1.game-oldies.com/sites/default/files/packshots/nintendo-game-boy-advance/grand-theft-auto-advance-usa.png",
+484 => "https://upload.wikimedia.org/wikipedia/en/2/29/Battlefield_Vietnam_Coverart.png",
+560 => "https://upload.wikimedia.org/wikipedia/en/6/6c/Sonic_Spinball_Box.jpeg",
+605 => "http://www.mobygames.com/images/covers/l/119133-sonic-the-hedgehog-3-genesis-front-cover.jpg",
+28 => "https://upload.wikimedia.org/wikipedia/en/8/80/Diablo_III_cover.png",
+856 => "https://i.ytimg.com/vi/5_LSByp8IWI/maxresdefault.jpg",
+843 => "http://vgboxart.com/boxes/CD-I/46372-donkey-kong.png",
+775 => "http://files.bloodedbythought.org/cgp/main.php?g2_view=core.DownloadItem&g2_itemId=142&g2_serialNumber=2",
+772 => "http://s.emuparadise.org/GBA/boxart/2564.jpg",
+791 => "http://ocremix.org/files/images/games/ps2/5/final-fantasy-xii-ps2-cover-front-50464.jpg",
+679 => "http://1.bp.blogspot.com/-ka6Rd27Zc3Y/VXjUaktfFhI/AAAAAAAADCc/bhLBum5IKcM/s1600/Tomb-Raider-Underworld-Download-Game-Cover.jpg",
+668 => "https://upload.wikimedia.org/wikipedia/en/6/69/Tomb_Raider_(1996).png",
+638 => "https://upload.wikimedia.org/wikipedia/en/5/5b/Fablebox.jpg",
+637 => "https://upload.wikimedia.org/wikipedia/en/5/5b/Fablebox.jpg",
+641 => "http://firsthour.net/screenshots/fable-2/fable-2-cover.jpg",
+913 => "http://vgboxart.com/boxes/SNES/35116-super-metroid.png",
+916 => "http://vignette3.wikia.nocookie.net/metroid/images/7/7a/ZM_guide_cover.JPG/revision/latest?cb=20140531013249",
+642 => "http://officialrtv.com/wp-content/uploads/2014/02/Cover001.png",
+}
+
+cover_hash.keys.each do |key|
+  Game.find_by_id(key).update(cover: cover_hash[key])
 end
 
 User.create!([{username: "SidMeier", email:"sid@firaxis.com", password:"civilization"},
@@ -107,7 +165,8 @@ User.create!([{username: "Bjergsen", email: "a", password: "password"},
 {username: "SexyElf", email: "a", password: "password"},
 {username: "NoobCrusher", email: "a", password: "password"}])
 
-games_no = Game.all.length
+games = Game.all
+games_no = games.length
 users_no = User.all.length
 
 libraries = []
@@ -128,14 +187,14 @@ Library.create([{name: "Totally Sweet Games", user_id: 1},
 
 links = []
 
-(1..3).each do |lib|
-  8.times { |_| links << {game_id: 1 + rand(games_no), library_id: lib} }
+(1..3).each do |l|
+  games.sample(8).each { |g| links << {game_id: g.id, library_id: l} }
 end
 
 n = Library.find_by({user_id: 1, name: "Totally Sweet Games"}).id
 
 (0..4).each do |m|
-  12.times { |_| links << {library_id: n + m, game_id: 1 + rand(games_no)} }
+  games.sample(12).each { |g| links << {game_id: g.id, library_id: n + m} }
 end
 
 LibraryLink.create(links)
@@ -198,7 +257,7 @@ title_array = ["sweet game", "what a disappointment!", "Riot did it better",
 
 reviews = []
 User.all.each do |user|
-  100.times { reviews << {user_id: user.id, game_id: rand(games_no), body: review_bodies.sample, title: title_array.sample} }
+  games.sample(100).each { |g| reviews << {user_id: user.id, game_id: g.id, body: review_bodies.sample, title: title_array.sample} }
 end
 
 
