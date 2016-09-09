@@ -49,6 +49,8 @@ Users can write at most one review of a game, but may edit that review as often 
 
 Each user can rate a game with 1-5 stars. When a user rates a game a row is added to the ratings table, which holds columns for `id`, `user_id`, `game_id`, and `num` which is the actual numerical rating.  A user can only have one rating for a game, but may update it as often as they like.  Whenever the website fetches data for games, it will also fetch all of the ratings information and calculate an average in order to display to the user.  Games may be rated from their detail pages.
 
+closeup of star rating
+
 ### Search
 
 Users may search the database for games that they are interested in or that they want to add to their libraries.  Currently, users may only search by name, and a game's title must include the query exactly in order to match.  
