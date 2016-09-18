@@ -51,7 +51,7 @@ del_list = [15, 16, 47, 50, 63, 107, 54, 90, 91, 68, 112, 113, 114, 182,
 
 del_list.each do |num|
   g = Game.find_by_id(num)
-  g.destroy
+  g.destroy if g
 end
 
 cover_hash = {8 => "https://upload.wikimedia.org/wikipedia/en/7/77/StarCraft_II_-_Legacy_of_the_Void_cover.jpg",
@@ -95,7 +95,8 @@ cover_hash = {8 => "https://upload.wikimedia.org/wikipedia/en/7/77/StarCraft_II_
 }
 
 cover_hash.keys.each do |key|
-  Game.find_by_id(key).update(cover: cover_hash[key])
+  g = Game.find_by_id(key)
+  g.update(cover: cover_hash[key]) if g
 end
 
 User.create!([{username: "SidMeier", email:"sid@firaxis.com", password:"civilization"},
