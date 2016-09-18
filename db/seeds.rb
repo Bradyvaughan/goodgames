@@ -3,7 +3,7 @@ require 'net/http'
 
 names = %w(starcraft warcraft diablo league duty mario zelda
 xcom civilization halo tetris minecraft theft scrolls battlefield
-sims sonic fable clancy dota gears tomb persia final
+sims sonic clancy dota gears tomb persia final
 kong goldeneye metroid)
 
 names.each do |name|
@@ -17,8 +17,7 @@ names.each do |name|
     data = Hash.from_xml(res.body)["Data"]["Game"]
     if data
       data.each do |game|
-        id=""
-        id = game["id"] if game.class == 'Hash'
+        id = game["id"]
         urll = URI.parse("http://thegamesdb.net/api/GetGame.php?id=#{id}")
         reqq = Net::HTTP::Get.new(urll.to_s)
         ress = Net::HTTP.start(url.host, url.port) {|http|
@@ -28,10 +27,7 @@ names.each do |name|
 
 
         if ress.is_a?(Net::HTTPSuccess)
-          datum = nil
-          sqy = Hash.from_xml(ress.body)
-          datum = Hash.from_xml(ress.body)["Data"]["Game"] if sqy["Data"]
-
+          datum = Hash.from_xml(ress.body)["Data"]["Game"]
 
           if datum
             Game.create({title: datum['GameTitle'], release_date: datum['ReleaseDate'],
