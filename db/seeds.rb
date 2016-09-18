@@ -3,7 +3,7 @@ require 'net/http'
 
 names = %w(starcraft warcraft diablo league duty mario zelda
 xcom civilization halo tetris minecraft theft scrolls battlefield
-sims sonic fable clancy dota gears tomb persia final
+sims sonic clancy dota gears tomb persia final
 kong goldeneye metroid)
 
 names.each do |name|
