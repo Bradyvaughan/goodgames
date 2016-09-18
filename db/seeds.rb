@@ -123,76 +123,56 @@ User.create!([{username: "SidMeier", email:"sid@firaxis.com", password:"civiliza
   {username: "TrollMaster", email: "a", password: "password"},
   {username: "XxDragonxX", email: "a", password: "password"},
   {username: "oXXathenaXXo", email: "a", password: "password"},
-  {username: "/b/tard", email: "a", password: "password"},
-  {username: "GetOutOfMySwamp", email: "a", password: "password"},
-  {username: "CantMeltDankMemes", email: "a", password: "password"},
   {username: "JohnSmith112", email: "a", password: "password"},
-  {username: "CurvyBoom", email: "a", password: "password"},
   {username: "DankLord", email: "a", password: "password"},
   {username: "KushKommander", email: "a", password: "password"},
   {username: "Memester", email: "a", password: "password"},
   {username: "Voldrak", email: "a", password: "password"},
   {username: "Synoche", email: "a", password: "password"},
   {username: "360NoScope", email: "a", password: "password"},
-  {username: "Vargas", email: "a", password: "password"},
-  {username: "CANTTRUSTHILLARY", email: "a", password: "password"},
   {username: "Unidan", email: "a", password: "password"},
   {username: "DoubleLift", email: "a", password: "password"},
   {username: "OgrimsHammer", email: "a", password: "password"},
   {username: "Brony", email: "a", password: "password"},
   {username: "RainbowHash", email: "a", password: "password"},
-  {username: "40cakes", email: "a", password: "password"},
   {username: "ThisIsJimmy", email: "a", password: "password"},
   {username: "Swagnaros", email: "a", password: "password"},
   {username: "TrumpsHairpiece", email: "a", password: "password"},
   {username: "sTRUMPet", email: "a", password: "password"},
   {username: "ArrowToTheKnee", email: "a", password: "password"},
   {username: "RarestPepe", email: "a", password: "password"},
-  {username: "BackSoreTeamTooHeavy", email: "a", password: "password"},
   {username: "MidOrFeed", email: "a", password: "password"},
   {username: "Heteroskedasticity6969", email: "a", password: "password"},
   {username: "NerfTracer", email: "a", password: "password"},
-  {username: "WOLOLOLOLOLO", email: "a", password: "password"},
   {username: "NuclearGandhi", email: "a", password: "password"},
   {username: "6Pool", email: "a", password: "password"},
-  {username: "MLGeVe", email: "a", password: "password"},
   {username: "AssassinsWeed", email: "a", password: "password"},
   {username: "420Blazeit", email: "a", password: "password"},
   {username: "ShyGuyToFlyGuy", email: "a", password: "password"},
   {username: "Sargeth", email: "a", password: "password"},
   {username: "Khazrandir", email: "a", password: "password"},
-  {username: "Eldfinnr", email: "a", password: "password"},
   {username: "Xzeel", email: "a", password: "password"},
   {username: "1ch1g0", email: "a", password: "password"},
-  {username: "KingRadical", email: "a", password: "password"},
   {username: "Impotence", email: "a", password: "password"},
   {username: "TyrionTargaryen", email: "a", password: "password"},
   {username: "Mithrandir", email: "a", password: "password"},
   {username: "Xandalf", email: "a", password: "password"},
-  {username: "DildoBaggins", email: "a", password: "password"},
   {username: "YoloSwaggins", email: "a", password: "password"},
   {username: "KvotheTheRaven", email: "a", password: "password"},
   {username: "PMmeYourGOTY", email: "a", password: "password"},
   {username: "PlatScrub", email: "a", password: "password"},
   {username: "RoyGreenhilt", email: "a", password: "password"},
-  {username: "ToxicTerror", email: "a", password: "password"},
-  {username: "4mana77", email: "a", password: "password"},
   {username: "SpikeSpiegel", email: "a", password: "password"},
   {username: "WellMet", email: "a", password: "password"},
-  {username: "Dizzident", email: "a", password: "password"},
   {username: "Naruto2211", email: "a", password: "password"},
   {username: "Kira", email: "a", password: "password"},
   {username: "RubberManLuffy", email: "a", password: "password"},
   {username: "Psyclops", email: "a", password: "password"},
-  {username: "TidusLaugh", email: "a", password: "password"},
   {username: "FusRoDah", email: "a", password: "password"},
   {username: "TaroTanaka", email: "a", password: "password"},
-  {username: "IN-FER-NO", email: "a", password: "password"},
   {username: "ZugZug", email: "a", password: "password"},
   {username: "Blackhand", email: "a", password: "password"},
   {username: "TyraelsMight", email: "a", password: "password"},
-  {username: "1mp3r1us", email: "a", password: "password"},
-  {username: "RyuWagaTekiWoFuckYou", email: "a", password: "password"},
   {username: "Morrigan", email: "a", password: "password"},
   {username: "Revan", email: "a", password: "password"},
   {username: "DialecticDestroyer", email: "a", password: "password"},
@@ -292,7 +272,7 @@ review_array = [
 
 reviews = []
 User.all.each do |user|
-  games.sample(50).each do |g|
+  games.sample(40).each do |g|
     review = review_array.sample
     reviews << {user_id: user.id, game_id: g.id, body: review[:body], title: review[:title]}
   end
@@ -319,7 +299,7 @@ end
 
 User.all.each do |user|
   Game.all.each do |game|
-    ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())} if rand() < 0.1
+    ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())} if rand() < 0.05
   end
 end
 

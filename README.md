@@ -35,8 +35,6 @@ The user may delete or create new libraries at will using buttons located in the
 
 ![Image of Library Dropdown](app/assets/images/library_dropdown.png)
 
-Some more Words.
-
 ### Reviews
 
 Reviews are stored in the database with columns for `id`, `user_id`, `game_id`, `title`, and `body`.  Reviews are displayed after the game description on the game detail page reverse order of creation.  Each review displays the name of the user that created it, the title of the review, and the body of the review.
