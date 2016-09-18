@@ -28,7 +28,10 @@ names.each do |name|
 
 
         if ress.is_a?(Net::HTTPSuccess)
-          datum = Hash.from_xml(ress.body)["Data"]["Game"]
+          datum = nil
+          sqy = Hash.from_xml(ress.body)
+          datum = Hash.from_xml(ress.body)["Data"]["Game"] if sqy["Data"]
+
 
           if datum
             Game.create({title: datum['GameTitle'], release_date: datum['ReleaseDate'],
