@@ -17,7 +17,8 @@ names.each do |name|
     data = Hash.from_xml(res.body)["Data"]["Game"]
     if data
       data.each do |game|
-        id = game["id"]
+        id=""
+        id = game["id"] if game.class == 'Hash'
         urll = URI.parse("http://thegamesdb.net/api/GetGame.php?id=#{id}")
         reqq = Net::HTTP::Get.new(urll.to_s)
         ress = Net::HTTP.start(url.host, url.port) {|http|
