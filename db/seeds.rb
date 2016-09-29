@@ -993,10 +993,18 @@ review_array = [
 ]
 
 reviews = []
-users.each do |user|
-  games.sample(40).each do |g|
-    review = review_array.sample
-    reviews << {user_id: user.id, game_id: g.id, body: review[:body], title: review[:title]}
+# users.each do |user|
+#   games.sample(40).each do |g|
+#     review = review_array.sample
+#     reviews << {user_id: user.id, game_id: g.id, body: review[:body], title: review[:title]}
+#   end
+# end
+
+games.each do |game|
+  revs = review_array.sample(5)
+  use = users.sample(5)
+  (0..4).each do |i|
+    reviews << {user_id: use[i].id, game_id: game.id, body: revs[i][:body], title: revs[i][:title]}
   end
 end
 
@@ -1019,9 +1027,16 @@ def rounder(num)
   end
 end
 
-users.each do |user|
-  games.each do |game|
-    ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())} if rand() < 0.05
+# users.each do |user|
+#   games.each do |game|
+#     ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())} if rand() < 0.05
+#   end
+# end
+
+games.each do |game|
+  use = users.sample(5)
+  use.each do |user|
+    ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())}
   end
 end
 

@@ -106,12 +106,12 @@ class App extends React.Component {
             </form>
           </section>
 
-          <span className="vert-center">
-            {welcome}
-          </span>
-
 
           <section className="buttons">
+
+            <span className="vert-center">
+              {welcome}
+            </span>
 
             <p className={guestClass} onClick={this.handleGuest}>
               Guest Log In

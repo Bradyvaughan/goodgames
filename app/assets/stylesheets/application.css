@@ -179,10 +179,12 @@ body {
   align-self: center;
 }
 
-.game-item-interior:hover {
+/*.game-item-interior:hover {
+  background-color: #aaa;
+  cursor: pointer;
 }
 
-/*.game-item figure:hover + .game-sum {
+.game-item figure:hover + .game-sum {
   color: #22a;
 }*/
 
@@ -339,8 +341,8 @@ nav .search-bar {
 
 .search-bar .bar {
   height: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 nav label {
@@ -357,6 +359,10 @@ nav label {
   border-radius: 5px;
   margin-right: 10px;
   background-color: #22a;
+}
+
+.buttons span {
+  margin-right: 30px;
 }
 
 .button:hover {
