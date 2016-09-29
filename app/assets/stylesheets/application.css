@@ -339,6 +339,8 @@ nav .search-bar {
 
 .search-bar .bar {
   height: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 nav label {
@@ -557,6 +559,11 @@ nav label {
   border-bottom: 0px solid black;
   padding-bottom: 0px;
   flex-wrap: wrap;
+}
+
+.bottom-bar span {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .bottom-bar li {
