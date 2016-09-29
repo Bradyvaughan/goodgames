@@ -932,7 +932,7 @@ n = Library.find_by({user_id: 1, name: "Totally Sweet Games"}).id
   games.sample(12).each { |g| links << {game_id: g.id, library_id: n + m} }
 end
 
-[313, 314, 315, 316, 317, 319, 320, 322, 325, 326, 321, 323].each do |g|
+[278, 279, 280, 281, 282, 285, 287, 290, 291, 811].each do |g|
   links << {game_id: g, library_id: n + 4}
 end
 
@@ -993,12 +993,6 @@ review_array = [
 ]
 
 reviews = []
-# users.each do |user|
-#   games.sample(40).each do |g|
-#     review = review_array.sample
-#     reviews << {user_id: user.id, game_id: g.id, body: review[:body], title: review[:title]}
-#   end
-# end
 
 games.each do |game|
   revs = review_array.sample(5)
@@ -1027,11 +1021,6 @@ def rounder(num)
   end
 end
 
-# users.each do |user|
-#   games.each do |game|
-#     ratings << {user_id: user.id, game_id: game.id, num: rounder(rand())} if rand() < 0.05
-#   end
-# end
 
 games.each do |game|
   use = users.sample(5)

@@ -45,6 +45,10 @@ class App extends React.Component {
     e.preventDefault();
     hashHistory.push('/');
   }
+  showLibList(e) {
+    e.preventDefault();
+    $("#liblist").toggleClass('translated')
+  }
 
   handleLogin(e) {
     e.preventDefault();
@@ -94,8 +98,7 @@ class App extends React.Component {
             </section>
             <div className={libClass}>
               <div className="lib-dropdown">
-                <span className="vert-center button">My Categories</span>
-                <LibraryIndexContainer />
+                <span className="vert-center button" onClick={this.showLibList}>My Categories</span>
               </div>
               <LibraryFormContainer />
             </div>
@@ -126,6 +129,7 @@ class App extends React.Component {
         <div className="children">
           {finalBit}
         </div>
+        <LibraryIndexContainer />
       </div>
     );
   }

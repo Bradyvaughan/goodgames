@@ -11,6 +11,11 @@ class LibraryIndex extends React.Component {
     }
   }
 
+  hide(e) {
+    e.preventDefault();
+    $('#liblist').toggleClass('translated');
+  }
+
   render() {
     let libIndex = Object.keys(this.props.libraries).map((key) => (
       <LibraryIndexItem key={`library-${key}`}
@@ -20,9 +25,10 @@ class LibraryIndex extends React.Component {
          libraryId={key}/>
      ));
     return(
-      <ul className="lib-index">
-        {libIndex}
-      </ul>
+        <ul className="lib-index translated" id="liblist">
+          <span onClick={this.hide}>X</span>
+          {libIndex}
+        </ul>
     );
   }
 }
