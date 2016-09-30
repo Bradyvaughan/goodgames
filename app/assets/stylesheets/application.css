@@ -281,6 +281,19 @@ nav ul {
   opacity: .9;
 }
 
+.def-lib {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.temp {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .translated {
   transform: translateX(-100%);
 }
@@ -329,7 +342,11 @@ nav ul {
   color: #666;
 }
 
-.lib-index li:nth-child(2) {
+.def-lib li:first-child {
+  border-top: none;
+}
+
+.def-lib li:nth-child(2) {
   border-top: none;
 }
 

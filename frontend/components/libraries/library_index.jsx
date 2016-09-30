@@ -17,17 +17,37 @@ class LibraryIndex extends React.Component {
   }
 
   render() {
-    let libIndex = Object.keys(this.props.libraries).map((key) => (
-      <LibraryIndexItem key={`library-${key}`}
-         library={this.props.libraries[key]}
-         getLibrary={this.props.getLibrary}
-         deleteLibrary={this.props.deleteLibrary}
-         libraryId={key}/>
-     ));
+
+    let defaults = [<li className='temp'>Default Libraries</li>];
+    let customs = [<li className='temp'>Custom Libraries</li>];
+
+
+
+    let libIndex = Object.keys(this.props.libraries).forEach((key) => {
+      if (["Played", "To Play", "Currently Playing"]
+      .indexOf(this.props.libraries[key].name) > -1) {
+        defaults.push(<LibraryIndexItem key={`library-${key}`}
+           library={this.props.libraries[key]}
+           getLibrary={this.props.getLibrary}
+           deleteLibrary={this.props.deleteLibrary}
+           libraryId={key}/>)
+      } else {
+        customs.push(<LibraryIndexItem key={`library-${key}`}
+           library={this.props.libraries[key]}
+           getLibrary={this.props.getLibrary}
+           deleteLibrary={this.props.deleteLibrary}
+           libraryId={key}/>)
+      }
+     });
     return(
         <ul className="lib-index translated" id="liblist">
           <span onClick={this.hide}>X</span>
-          {libIndex}
+          <div className='def-lib'>
+            {defaults}
+          </div>
+          <div className='def-lib'>
+            {customs}
+          </div>
         </ul>
     );
   }
