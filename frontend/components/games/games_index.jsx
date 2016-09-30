@@ -8,6 +8,7 @@ class GamesIndex extends React.Component {
     super(props);
     this.state = {page: 1, fn: _.throttle(this.handleScroll.bind(this), 1000)};
     this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   componentDidMount(){
@@ -29,6 +30,11 @@ class GamesIndex extends React.Component {
     }
   }
 
+  handleGuest(e) {
+    e.preventDefault();
+    this.props.login({username: "SidMeier", password: "civilization"});
+  }
+
   handleInfiniteLoad() {
     this.setState({page: this.state.page + 1});
     this.props.getGamesByPage(this.state.page);
@@ -45,10 +51,17 @@ class GamesIndex extends React.Component {
         cover={games[key].cover}
         currentUser={this.props.currentUser}/>);
     });
+
     return(
+      <div className="down">
+        <h1>Welcome to ggwp!  Log in as guest?</h1>
+          <p className='button wid-lim' onClick={this.handleGuest}>
+            Guest Log In
+          </p>
         <ul className="index">
           {gameDex}
         </ul>
+      </div>
     );
   }
 }

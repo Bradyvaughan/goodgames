@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllGames: () => dispatch(getAllGames()),
+  login: (user) => dispatch(login(user)),
   getGame: (gameId) => dispatch(getGame(gameId)),
   getGamesByPage: (page) => dispatch(getGamesByPage(page)),
   clearGames: () => dispatch(clearGames())

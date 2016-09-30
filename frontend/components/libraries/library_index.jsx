@@ -18,8 +18,8 @@ class LibraryIndex extends React.Component {
 
   render() {
 
-    let defaults = [<li className='temp'>Default Libraries</li>];
-    let customs = [<li className='temp'>Custom Libraries</li>];
+    let defaults = [<li className='temp' key={'1'}>Default Libraries</li>];
+    let customs = [<li className='temp' key={'2'}>Custom Libraries</li>];
 
 
 

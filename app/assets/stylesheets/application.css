@@ -354,6 +354,11 @@ nav ul {
   top: 20px;
 }
 
+.wid-lim {
+  width: 8%;
+  left: 46%;
+}
+
 
 nav {
   background-color: lightblue;
