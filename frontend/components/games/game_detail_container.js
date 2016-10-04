@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import GameDetail from './game_detail';
 import { getGame, clearGames, submitRating } from '../../actions/game_actions';
 import { getAllLibraries } from '../../actions/library_actions';
-import { createLink, specCreate } from '../../actions/link_actions';
+import { createLink, specCreate, deleteLink } from '../../actions/link_actions';
 import { getAllReviews, createReview, updateReview } from '../../actions/review_actions';
 
 const mapStateToProps = state => ({
@@ -24,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
   updateReview: (gameId, reviewId, review) =>
     dispatch(updateReview(gameId, reviewId, review)),
   clearGames: () => dispatch(clearGames()),
-  submitRating: (userId, gameId, num) => dispatch(submitRating(userId, gameId, num))
+  submitRating: (userId, gameId, num) => dispatch(submitRating(userId, gameId, num)),
+  deleteLink: (gameId, libId) => dispatch(deleteLink(gameId, libId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDetail);

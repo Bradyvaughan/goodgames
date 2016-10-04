@@ -16,14 +16,20 @@ class GameDetail extends React.Component {
     this.handleEditReview = this.handleEditReview.bind(this);
     this.handleRate = this.handleRate.bind(this);
     this.handleLib = this.handleLib.bind(this);
+    this.handleUnLib = this.handleUnLib.bind(this);
   }
 
   componentWillUnmount() {
+    debugger;
     this.props.clearGames();
   }
 
   handleLib(key) {
     return(() => (hashHistory.push(`/home/${key}`)));
+  }
+
+  handleUnLib(gameId, libId) {
+    return(() => this.props.deleteLink(gameId, libId))
   }
 
   handleAdd(key) {
@@ -80,8 +86,9 @@ class GameDetail extends React.Component {
 
     });
     let libz = game.libraries.map((library) => (
-      <li key={`lib-${library.name}`} onClick={this.handleLib(library.id)}>
-        {library.name}
+      <li key={`lib-${library.name}`}>
+        <span onClick={this.handleUnLib(game.id, library.id)}>x</span>
+        <span onClick={this.handleLib(library.id)}>{library.name}</span>
       </li>
     ));
     if (this.props.currentUser) {
