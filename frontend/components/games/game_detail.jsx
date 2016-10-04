@@ -86,8 +86,8 @@ class GameDetail extends React.Component {
     });
     let libz = game.libraries.map((library) => (
       <li key={`lib-${library.name}`}>
-        <span onClick={this.handleUnLib(game.id, library.id)}>x</span>
-        <span onClick={this.handleLib(library.id)}>{library.name}</span>
+        <span className="cat-x"onClick={this.handleUnLib(game.id, library.id)}>x</span>
+        <span className="cat-name" onClick={this.handleLib(library.id)}>{library.name}</span>
       </li>
     ));
     if (this.props.currentUser) {

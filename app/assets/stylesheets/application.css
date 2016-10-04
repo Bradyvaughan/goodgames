@@ -614,11 +614,27 @@ nav label {
   padding-bottom: 10px;
 }
 
-.bottom-bar a {
+.cat-x {
+  margin-right: 5px;
+  color: #222;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.cat-x:hover {
+  color: #666;
+}
+
+.cat-name {
   color: #22a;
   text-decoration: underline;
   cursor: pointer;
 }
+
+.cat-name:hover {
+  color: #22f;
+}
+
 
 .review-list {
   margin-top: 25px;
@@ -810,15 +826,6 @@ nav label {
   margin-right: 10px;
 }
 
-
-.bottom-bar ul li {
-  color: #00a;
-  cursor: pointer;
-}
-
-.bottom-bar ul li:hover {
-  color: #00f;
-}
 /* Clearfix */
 
 .group:after {
