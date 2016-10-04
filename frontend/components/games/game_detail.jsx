@@ -28,7 +28,7 @@ class GameDetail extends React.Component {
   }
 
   handleUnLib(gameId, libId) {
-    return(() => this.props.deleteLink(gameId, libId))
+    return(() => this.props.deleteLink(gameId, libId, true))
   }
 
   handleAdd(key) {

@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateReview(gameId, reviewId, review)),
   clearGames: () => dispatch(clearGames()),
   submitRating: (userId, gameId, num) => dispatch(submitRating(userId, gameId, num)),
-  deleteLink: (gameId, libId) => dispatch(deleteLink(gameId, libId))
+  deleteLink: (gameId, libId, bool) => dispatch(deleteLink(gameId, libId, bool))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDetail);

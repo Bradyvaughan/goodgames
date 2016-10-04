@@ -31,7 +31,13 @@ export const LinkMiddleware = ({state, dispatch}) => next => action => {
       return next(action);
     case "DELETE_LINK":
       error = (errors) => alert(errors.responseText);
-      success = () => (dispatch(subtractGame(action.gameId)));
+      success = () => {
+        if (!action.bool) {
+          dispatch(subtractGame(action.gameId))
+        } else {
+          dispatch(getGame(action.gameId))
+        }
+      };
       destroyLibraryLink(action.gameId, action.libId, success, error);
       return next(action);
     default:
