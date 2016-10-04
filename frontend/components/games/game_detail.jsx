@@ -20,7 +20,6 @@ class GameDetail extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger;
     this.props.clearGames();
   }
 
